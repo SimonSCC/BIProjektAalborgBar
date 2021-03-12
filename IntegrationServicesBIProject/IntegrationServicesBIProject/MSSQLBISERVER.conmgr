@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0"?>
 <DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
-  DTS:ObjectName="MSSQLServer"
-  DTS:DTSID="{4BA4440F-495A-47F7-8022-1E737464C341}"
+  DTS:ObjectName="MSI_MSSQLBISERVER"
+  DTS:DTSID="{C65E23AE-23F5-47A2-9107-B697CFC04D7D}"
   DTS:CreationName="OLEDB">
   <DTS:ObjectData>
     <DTS:ConnectionManager
