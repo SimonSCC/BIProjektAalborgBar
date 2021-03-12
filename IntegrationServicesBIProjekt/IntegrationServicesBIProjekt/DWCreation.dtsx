@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="17"
-  DTS:VersionGUID="{4D69B65B-10B7-4E08-B66D-4DBFE7092F91}">
+  DTS:VersionBuild="18"
+  DTS:VersionGUID="{74E4058C-4459-4CE7-9CF9-AC999A82D9B8}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -1059,14 +1059,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
         <NodeLayout
           Size="220,42"
           Id="Package\Create Database BIProjektDW"
-          TopLeft="1830.66666666667,78" />
+          TopLeft="468.166666666667,98" />
         <NodeLayout
           Size="175,42"
           Id="Package\Show Error Message"
-          TopLeft="2208.66666666666,178" />
+          TopLeft="846.166666666661,198" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="1940.66666666667,120">
+          TopLeft="578.166666666667,140">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1136,10 +1136,10 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
           PanelSize="236,139"
           Size="236,182"
           Id="Package\Create Schemas on Server"
-          TopLeft="1629.16666666667,185" />
+          TopLeft="266.666666666667,205" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="1905.33333333333,120">
+          TopLeft="542.833333333333,140">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1285,10 +1285,10 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
           PanelSize="288,342"
           Size="288,385"
           Id="Package\Create Dimension Tables"
-          TopLeft="1600.94444444444,474.888888888889" />
+          TopLeft="238.444444444444,494.888888888889" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="1746.05555555556,367">
+          TopLeft="383.555555555555,387">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1455,10 +1455,10 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
           PanelSize="375,613"
           Size="375,656"
           Id="Package\Create Fact Table"
-          TopLeft="1967.48484848485,344.338383838384" />
+          TopLeft="604.984848484848,364.338383838384" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="1888.94444444444,669.863636363636">
+          TopLeft="526.444444444444,689.863636363636">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
