@@ -5,14 +5,14 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="DESKTOP-I1KSM3I"
   DTS:CreatorName="DESKTOP-I1KSM3I\Daniel"
-  DTS:DTSID="{F75EE523-3DC6-4E81-AE4B-01ED62EEE5AE}"
+  DTS:DTSID="{B77F11FC-F446-4E35-83A0-1EE26C7B1ECB}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="15.0.2000.152"
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="5"
-  DTS:VersionGUID="{11EDF3DC-0482-4FCB-9660-E5F48B2B1033}">
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{32DEFF35-C05E-4506-854D-AD3B08DC6E8D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -21,7 +21,7 @@
       DTS:refId="Package\Drop Database"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{11FF3899-6BD4-4A5B-90AC-5240E3067BD0}"
+      DTS:DTSID="{5F01DFA0-A78B-4C0E-ABFE-84E8769AA796}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Drop Database"
@@ -50,7 +50,7 @@
         <NodeLayout
           Size="149,42"
           Id="Package\Drop Database"
-          TopLeft="54,44" />
+          TopLeft="59,116" />
       </GraphLayout>
     </LayoutInfo>
   </Package>

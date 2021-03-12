@@ -1,18 +1,18 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="3/11/2021 9:16:47 AM"
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="MSI"
   DTS:CreatorName="MSI\Simon"
-  DTS:DTSID="{14418C58-C8B2-45C9-8135-48733097F6B6}"
+  DTS:DTSID="{EDEE590F-92BF-4D54-A3FC-895C1590EA9F}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="15.0.2000.152"
   DTS:LocaleID="1030"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
   DTS:VersionBuild="3"
-  DTS:VersionGUID="{D19373B5-8DB9-4D33-8A44-F3D457A2F358}">
+  DTS:VersionGUID="{BE2D9619-89E5-477D-B7DD-46BB3CA6AE61}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -21,7 +21,7 @@
       DTS:refId="Package\Data Flow Task"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{76179697-C31E-4381-8E2C-1CF3BE5338CC}"
+      DTS:DTSID="{A4B32B46-9264-4F12-A8A8-58034EB6CF26}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
       DTS:ObjectName="Data Flow Task"
