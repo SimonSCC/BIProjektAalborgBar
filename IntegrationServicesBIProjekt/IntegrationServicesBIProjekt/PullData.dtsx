@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="2"
-  DTS:VersionGUID="{E99FAE7F-DF94-4637-B5B3-4794037C40D3}">
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{D19373B5-8DB9-4D33-8A44-F3D457A2F358}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -59,12 +59,12 @@
                   description="The Source database table name."
                   expressionType="Notify"
                   name="TableOrViewName"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Member</property>
                 <property
                   dataType="System.Int32"
                   description="Specify the mode to retrieve external column information"
                   name="AccessMode"
-                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">2</property>
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">0</property>
                 <property
                   dataType="System.String"
                   name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
@@ -72,6 +72,8 @@
               <connections>
                 <connection
                   refId="Package\Data Flow Task\ADO NET Source.Connections[IDbConnection]"
+                  connectionManagerID="{4D640DB2-7FAA-42AD-A3B9-9D5F4F1B5527}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[fclub_safe]"
                   description="Managed connection manager"
                   name="IDbConnection" />
               </connections>
@@ -79,14 +81,89 @@
                 <output
                   refId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output]"
                   name="ADO NET Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[id]"
+                      lineageId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[id]"
+                      name="id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[active]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[active]"
+                      lineageId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[active]"
+                      name="active"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[year]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[year]"
+                      lineageId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[year]"
+                      name="year"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[balance]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[balance]"
+                      lineageId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[balance]"
+                      name="balance"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
                   <externalMetadataColumns
-                    isUsed="True" />
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[id]"
+                      dataType="i4"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[active]"
+                      dataType="i2"
+                      name="active" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[year]"
+                      dataType="nText"
+                      name="year" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[balance]"
+                      dataType="i4"
+                      name="balance" />
+                  </externalMetadataColumns>
                 </output>
                 <output
                   refId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output]"
                   isErrorOut="true"
                   name="ADO NET Source Error Output">
                   <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[id]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[active]"
+                      dataType="i2"
+                      lineageId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[active]"
+                      name="active" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[year]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[year]"
+                      name="year" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[balance]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[balance]"
+                      name="balance" />
                     <outputColumn
                       refId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -140,5 +217,13 @@
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\ADO NET Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>

@@ -26,16 +26,17 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">MSI</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAvV6tSU5D+km16ofIMT5hjAAAAAACAAAAAAAQZgAAAAEAACAAAACJAVulO50+UWhPDuAG6S86xdEf+b76e1ziI+LhDfxVIgAAAAAOgAAAAAIAACAAAABoh/HOJGhlO8w8aE1Kd1iq+5mUhXd1F/oI1sB+LtklgpAAAAB0aYQBZZYZWaYhst42PYws0Z5Nm/i5t27TJ84gUfQy7bjA8ljkU3CmIVk//LKO5jhSiLy/YVV+aFZmiCl8JGYV1JSaSYbgzGpWh5Mx3mw3zkbEtLwuyMCQnm2Zr4Tf+k0UMGV4RNE96kBf1tDCNsZ2LuWsSdCZR0l7b11AeQgwRYrbWL+qxrXc7InFeMzBppBAAAAAd9urhEGsqDCz0keoOwJFI7hoLKw3UXL7WvxKgGVWxh4h4+MuJFX3RptZdELoeRa9Hb/hndltVzDejB/aVBR+lw==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA61548qpk/EiT2OTcpAlAwgAAAAACAAAAAAAQZgAAAAEAACAAAAA4IC1i/zHTpJg6esqwwM55u+br3IGoOZwRzi0hwar+FwAAAAAOgAAAAAIAACAAAABRLa1xjtvzn4By+wRZIhUKxHfnuNSE2VX1sm8IZzgkP5AAAAAmry+caUcrllePRE6Y8FNFTxWUU6i6dAfAi6LYB44ZHQayh1IdcKWwGPxBNHbsmrgqrtkY/Fa0rYI6KY6HvHeDNPKEaSSij1VSk4rwa0Y1pcAaMVEX/LD2dchFFeOFtDd1XyKevIkMWYV3eFnUhzibPJQIo7060ToHnoEvEREHdvgeSncskCvvUIfgFVBq5ctAAAAAiCR6PzyaU3F0ld9HhD4loOd0Ci/nOYecM83Yc8G5c33Fm4mIRx+fQS/Xd4ND3r5Q/gn549yIyiV0PV+1At1zZA==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
           <SSIS:Package SSIS:Name="PullData.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="DWCreation.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="Drop Database.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="fclub_safe.conmgr" />
-          <SSIS:ConnectionManager SSIS:Name="MSI_MSSQLBISERVER.conmgr" />
+          <SSIS:ConnectionManager SSIS:Name="localhost.conmgr" />
         </SSIS:ConnectionManagers>
         <SSIS:DeploymentInfo>
           <SSIS:ProjectConnectionParameters>
@@ -65,7 +66,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">Data Source=Fclub data\fclub_safe.mdb;Provider=Microsoft.Jet.OLEDB.4.0;</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">Data Source=IntegrationServicesBIProjekt\Fclub data\fclub_safe.mdb;Provider=Microsoft.Jet.OLEDB.4.0;</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -138,7 +139,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">Fclub data\fclub_safe.mdb</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">IntegrationServicesBIProjekt\Fclub data\fclub_safe.mdb</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -156,7 +157,7 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.MSI_MSSQLBISERVER.ConnectByProxy">
+            <SSIS:Parameter SSIS:Name="CM.localhost.ConnectByProxy">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -171,7 +172,7 @@
                 <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.MSI_MSSQLBISERVER.ConnectionString">
+            <SSIS:Parameter SSIS:Name="CM.localhost.ConnectionString">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -182,11 +183,11 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">Data Source=MSI\MSSQLBISERVER;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">Data Source=localhost;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.MSI_MSSQLBISERVER.ConnectUsingManagedIdentity">
+            <SSIS:Parameter SSIS:Name="CM.localhost.ConnectUsingManagedIdentity">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -201,7 +202,7 @@
                 <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.MSI_MSSQLBISERVER.InitialCatalog">
+            <SSIS:Parameter SSIS:Name="CM.localhost.InitialCatalog">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -215,7 +216,7 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.MSI_MSSQLBISERVER.Password">
+            <SSIS:Parameter SSIS:Name="CM.localhost.Password">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -229,7 +230,7 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.MSI_MSSQLBISERVER.RetainSameConnection">
+            <SSIS:Parameter SSIS:Name="CM.localhost.RetainSameConnection">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -244,7 +245,7 @@
                 <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.MSI_MSSQLBISERVER.ServerName">
+            <SSIS:Parameter SSIS:Name="CM.localhost.ServerName">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -255,11 +256,11 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">MSI\MSSQLBISERVER</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">localhost</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.MSI_MSSQLBISERVER.UserName">
+            <SSIS:Parameter SSIS:Name="CM.localhost.UserName">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -281,10 +282,10 @@
                 <SSIS:Property SSIS:Name="Name">Package</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">2</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">3</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{E99FAE7F-DF94-4637-B5B3-4794037C40D3}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{D19373B5-8DB9-4D33-8A44-F3D457A2F358}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -298,10 +299,27 @@
                 <SSIS:Property SSIS:Name="Name">Package1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">10</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">13</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{BD0C7985-4987-456B-866D-10D20873B97E}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{93052DAE-1F82-4521-B40B-0459B256F78E}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="Drop Database.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{F75EE523-3DC6-4E81-AE4B-01ED62EEE5AE}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Package1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">5</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{11EDF3DC-0482-4FCB-9660-E5F48B2B1033}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
