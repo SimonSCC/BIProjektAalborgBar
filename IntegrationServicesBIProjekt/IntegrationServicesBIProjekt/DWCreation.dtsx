@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="12"
-  DTS:VersionGUID="{871649E9-DD31-444A-B812-44D82D42A498}">
+  DTS:VersionBuild="17"
+  DTS:VersionGUID="{4D69B65B-10B7-4E08-B66D-4DBFE7092F91}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -35,20 +35,361 @@
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\Create Fact Sale Table"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Execute SQL Task"
-      DTS:Disabled="True"
-      DTS:DTSID="{B536E317-6B32-4991-8E65-6F69C9446313}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:refId="Package\Create Dimension Tables"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{44C40BF1-3EAB-4596-988C-3FAD48620CEA}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Create Fact Sale Table"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ObjectName="Create Dimension Tables">
       <DTS:Variables />
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-      </DTS:ObjectData>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Create Dimension Tables\Create Date Dimension"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{001f27b3-c0b2-4a58-b476-2cffed303c6d}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Create Date Dimension"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{15ECAFE5-23F9-4433-9533-0227B2892FD4}"
+              SQLTask:SqlStatementSource="&#xA;USE BIProjektDW&#xA;IF object_id('Dimension.[Date]', 'U') IS NOT NULL&#xA;&#x9;PRINT 'Date table already created!'&#xA;ELSE&#xA;&#x9;BEGIN &#xA;&#x9;PRINT 'Not present! Date table is being created'&#xA;&#x9;CREATE TABLE Dimension.[Date]&#xA;&#x9;(&#xA;&#x9;DateKey DATE,&#xA;&#x9;[Year] INT,&#xA;&#x9;[Quarter] INT,&#xA;&#x9;[Month] INT,&#xA;&#x9;[Week] INT,&#xA;&#x9;WeekDayNumber INT,&#xA;&#x9;[DayOfWeek] INT,&#xA;&#x9;IsWeekend BIT,&#xA;&#xA;&#x9;PRIMARY KEY (DateKey)&#xA;&#x9;);&#xA;&#x9;END&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Create Dimension Tables\Create Member Dimension"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{b5e3e8f3-9e60-49a5-b540-0338c5ae52f3}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Create Member Dimension"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{15ECAFE5-23F9-4433-9533-0227B2892FD4}"
+              SQLTask:SqlStatementSource="USE BIProjektDW&#xA;IF object_id('Dimension.[Member]', 'U') IS NOT NULL&#xA;&#x9;PRINT 'Member table already created!'&#xA;ELSE&#xA;&#x9;BEGIN &#xA;&#x9;PRINT 'Not present! Member table is being created'&#xA;&#x9;CREATE TABLE Dimension.[Member]&#xA;&#x9;(&#xA;&#x9;MemberKey INT IDENTITY(1,1),&#xA;&#x9;MemberID INT,&#xA;&#x9;YearJoined DATE,&#xA;&#x9;SemesterPeriod NVARCHAR(3),&#xA;&#x9;Semester NVARCHAR(10),&#xA;&#x9;IsRowActive BIT,&#xA;&#x9;DeactivateDate DATE,&#xA;&#xA;&#x9;PRIMARY KEY (MemberKey)&#xA;&#x9;);&#xA;&#x9;END&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Create Dimension Tables\Create Product Dimension"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{B462B092-340E-4E99-9F11-D3E83F47017E}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Create Product Dimension"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{15ECAFE5-23F9-4433-9533-0227B2892FD4}"
+              SQLTask:SqlStatementSource="USE BIProjektDW&#xA;IF object_id('Dimension.[Product]', 'U') IS NOT NULL&#xA;&#x9;PRINT 'Product table already created!'&#xA;ELSE&#xA;&#x9;BEGIN &#xA;&#x9;PRINT 'Not present! Product table is being created'&#xA;&#x9;CREATE TABLE Dimension.[Product]&#xA;&#x9;(&#xA;&#x9;ProductKey INT IDENTITY(1,1),&#xA;&#x9;ProductID INT,&#xA;&#x9;[Name] NVARCHAR(255),&#xA;&#x9;ListedPrice INT,&#xA;&#x9;Category NVARCHAR(255),&#xA;&#x9;IsRowActive BIT,&#xA;&#x9;DeactivateDate DATE,&#xA;&#xA;&#x9;PRIMARY KEY (ProductKey)&#xA;&#x9;);&#xA;&#x9;END" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Create Dimension Tables\Create Room Dimension"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{356114b0-65aa-40d7-868c-1a8b5180dfc5}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Create Room Dimension"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{15ECAFE5-23F9-4433-9533-0227B2892FD4}"
+              SQLTask:SqlStatementSource="USE BIProjektDW&#xA;IF object_id('Dimension.[Room]', 'U') IS NOT NULL&#xA;&#x9;PRINT 'Room table already created!'&#xA;ELSE&#xA;&#x9;BEGIN &#xA;&#x9;PRINT 'Not present! Room table is being created'&#xA;&#x9;CREATE TABLE Dimension.[Room]&#xA;&#x9;(&#xA;&#x9;RoomKey INT IDENTITY(1,1),&#xA;&#x9;[Name] NVARCHAR(255),&#xA;&#x9;[Description] NVARCHAR(255),&#xA;&#x9;&#xA;&#xA;&#x9;PRIMARY KEY (RoomKey)&#xA;&#x9;);&#xA;&#x9;END" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Create Dimension Tables\Create Time Dimension"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{d6d4eaac-1e99-46db-a02c-a8fe9af2dd5d}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Create Time Dimension"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{15ECAFE5-23F9-4433-9533-0227B2892FD4}"
+              SQLTask:SqlStatementSource="USE BIProjektDW&#xA;IF object_id('Dimension.[Time]', 'U') IS NOT NULL&#xA;&#x9;PRINT 'Time table already created!'&#xA;ELSE&#xA;&#x9;BEGIN &#xA;&#x9;PRINT 'Not present! Time table is being created'&#xA;&#x9;CREATE TABLE Dimension.[Time]&#xA;&#x9;(&#xA;&#x9;TimeKey TIME,&#xA;&#x9;HourOfDay INT,&#xA;&#x9;MinuteOfDay INT,&#xA;&#x9;TimeOfDay NVARCHAR(30),&#xA;&#xA;&#x9;PRIMARY KEY (TimeKey)&#xA;&#x9;);&#xA;&#x9;END&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Create Dimension Tables.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{79297084-A44F-423E-B7C7-E86347F24799}"
+          DTS:From="Package\Create Dimension Tables\Create Product Dimension"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Create Dimension Tables\Create Member Dimension" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Create Dimension Tables.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{E84FB671-B4F7-4343-B140-796DA94BF9B2}"
+          DTS:From="Package\Create Dimension Tables\Create Member Dimension"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Create Dimension Tables\Create Time Dimension" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Create Dimension Tables.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{9A2847A2-D626-445A-B327-719ADE6F1B4F}"
+          DTS:From="Package\Create Dimension Tables\Create Time Dimension"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Create Dimension Tables\Create Date Dimension" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Create Dimension Tables.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{8687CC3E-A972-4126-A468-F2407777ADEE}"
+          DTS:From="Package\Create Dimension Tables\Create Date Dimension"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\Create Dimension Tables\Create Room Dimension" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Create Fact Table"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{CFB31E5B-4DD7-4B79-909B-AEAF084470E7}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Create Fact Table">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Create Fact Table\Add Constraints"
+          DTS:CreationName="STOCK:SEQUENCE"
+          DTS:Description="Sequence Container"
+          DTS:DTSID="{1ABEFE10-994E-4D95-B500-5633569A5761}"
+          DTS:ExecutableType="STOCK:SEQUENCE"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Add Constraints">
+          <DTS:Variables />
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\Create Fact Table\Add Constraints\Create Sale To Date Constraint"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{0cc8b8b1-c30b-44b9-b775-ab7132302595}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Create Sale To Date Constraint"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{15ECAFE5-23F9-4433-9533-0227B2892FD4}"
+                  SQLTask:SqlStatementSource="&#xA;USE BIProjektDW&#xA;IF NOT EXISTS(SELECT * FROM INFORMATION_SCHEMA.REFERENTIAL_CONSTRAINTS WHERE CONSTRAINT_CATALOG = 'BIProjektDW' AND &#xA;CONSTRAINT_NAME = 'FK_Fact_Sale_DateKey_Dimension_Date_DateKey')&#xA;&#x9;BEGIN&#xA;&#x9;&#x9;ALTER TABLE Fact.Sale ADD CONSTRAINT FK_Fact_Sale_DateKey_Dimension_Date_DateKey FOREIGN KEY (DateKey)&#xA;&#x9;&#x9;REFERENCES Dimension.[Date](DateKey)&#xA;&#x9;END&#xA;ELSE&#xA;&#x9;PRINT 'FK_Fact_Sale_DateKey_Dimension_Date_DateKey constraint already exists!'&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Create Fact Table\Add Constraints\Create Sale To Member Constraint"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{15a2c16a-8485-4f3c-a36e-7ebf15f5c149}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Create Sale To Member Constraint"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{15ECAFE5-23F9-4433-9533-0227B2892FD4}"
+                  SQLTask:SqlStatementSource="&#xA;USE BIProjektDW&#xA;IF NOT EXISTS(SELECT * FROM INFORMATION_SCHEMA.REFERENTIAL_CONSTRAINTS WHERE CONSTRAINT_CATALOG = 'BIProjektDW' AND &#xA;CONSTRAINT_NAME = 'FK_Fact_Sale_MemberKey_Dimension_Member_MemberKey')&#xA;&#x9;BEGIN&#xA;&#x9;&#x9;ALTER TABLE Fact.Sale ADD CONSTRAINT FK_Fact_Sale_MemberKey_Dimension_Member_MemberKey FOREIGN KEY (MemberKey)&#xA;&#x9;&#x9;REFERENCES Dimension.Member(MemberKey)&#xA;&#x9;END&#xA;ELSE&#xA;&#x9;PRINT 'FK_Fact_Sale_MemberKey_Dimension_Member_MemberKey constraint already exists!'&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Create Fact Table\Add Constraints\Create Sale To Product Constraint"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{dbd37c0c-894d-4b31-86f4-43d206bfb94b}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Create Sale To Product Constraint"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{15ECAFE5-23F9-4433-9533-0227B2892FD4}"
+                  SQLTask:SqlStatementSource="USE BIProjektDW&#xA;IF NOT EXISTS(SELECT * FROM INFORMATION_SCHEMA.REFERENTIAL_CONSTRAINTS WHERE CONSTRAINT_CATALOG = 'BIProjektDW' AND &#xA;CONSTRAINT_NAME = 'FK_Fact_Sale_RoomKey_Dimension_Room_RoomKey')&#xA; BEGIN  &#xA;  ALTER TABLE Fact.Sale ADD CONSTRAINT FK_Fact_Sale_RoomKey_Dimension_Room_RoomKey FOREIGN KEY (RoomKey)&#xA;  REFERENCES Dimension.[Room](RoomKey)&#xA; END&#xA;ELSE&#xA; PRINT 'FK_Fact_Sale_RoomKey_Dimension_Room_RoomKey constraint already exists!'&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Create Fact Table\Add Constraints\Create Sale To Room Constraint"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{ad8ece26-fb05-46fe-8fd5-68d51031784c}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Create Sale To Room Constraint"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{15ECAFE5-23F9-4433-9533-0227B2892FD4}"
+                  SQLTask:SqlStatementSource="USE BIProjektDW&#xA;IF NOT EXISTS(SELECT * FROM INFORMATION_SCHEMA.REFERENTIAL_CONSTRAINTS WHERE CONSTRAINT_CATALOG = 'BIProjektDW' AND &#xA;CONSTRAINT_NAME = 'FK_Fact_Sale_RoomKey_Dimension_Room_RoomKey')&#xA;&#x9;BEGIN&#x9;&#x9;&#xA;&#x9;&#x9;ALTER TABLE Fact.Sale ADD CONSTRAINT FK_Fact_Sale_RoomKey_Dimension_Room_RoomKey FOREIGN KEY (RoomKey)&#xA;&#x9;&#x9;REFERENCES Dimension.[Room](RoomKey)&#xA;&#x9;END&#xA;ELSE&#xA;&#x9;PRINT 'FK_Fact_Sale_RoomKey_Dimension_Room_RoomKey constraint already exists!'&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Create Fact Table\Add Constraints\Create Sale To Time Constraint"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{5e056039-0fde-451e-9199-902b567838d5}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Create Sale To Time Constraint"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{15ECAFE5-23F9-4433-9533-0227B2892FD4}"
+                  SQLTask:SqlStatementSource="&#xA;USE BIProjektDW&#xA;IF NOT EXISTS(SELECT * FROM INFORMATION_SCHEMA.REFERENTIAL_CONSTRAINTS WHERE CONSTRAINT_CATALOG = 'BIProjektDW' AND &#xA;CONSTRAINT_NAME = 'FK_Fact_Sale_TimeKey_Dimension_Time_TimeKey')&#xA;&#x9;BEGIN&#xA;&#x9;&#x9;ALTER TABLE Fact.Sale ADD CONSTRAINT FK_Fact_Sale_TimeKey_Dimension_Time_TimeKey FOREIGN KEY (TimeKey)&#xA;&#x9;&#x9;REFERENCES Dimension.[Time](TimeKey)&#xA;&#x9;END&#xA;ELSE&#xA;&#x9;PRINT 'FK_Fact_Sale_TimeKey_Dimension_Time_TimeKey constraint already exists!'&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+          <DTS:PrecedenceConstraints>
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\Create Fact Table\Add Constraints.PrecedenceConstraints[Constraint]"
+              DTS:CreationName=""
+              DTS:DTSID="{4B0127B2-C70F-4095-884F-5B6125A0DFD4}"
+              DTS:From="Package\Create Fact Table\Add Constraints\Create Sale To Member Constraint"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint"
+              DTS:To="Package\Create Fact Table\Add Constraints\Create Sale To Date Constraint" />
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\Create Fact Table\Add Constraints.PrecedenceConstraints[Constraint 1]"
+              DTS:CreationName=""
+              DTS:DTSID="{EE90B0DF-A7E6-4633-8A61-43A099F14099}"
+              DTS:From="Package\Create Fact Table\Add Constraints\Create Sale To Date Constraint"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint 1"
+              DTS:To="Package\Create Fact Table\Add Constraints\Create Sale To Time Constraint" />
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\Create Fact Table\Add Constraints.PrecedenceConstraints[Constraint 2]"
+              DTS:CreationName=""
+              DTS:DTSID="{634A5C7C-2A49-4177-AC25-FC035D635E78}"
+              DTS:From="Package\Create Fact Table\Add Constraints\Create Sale To Time Constraint"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint 2"
+              DTS:To="Package\Create Fact Table\Add Constraints\Create Sale To Room Constraint" />
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\Create Fact Table\Add Constraints.PrecedenceConstraints[Constraint 3]"
+              DTS:CreationName=""
+              DTS:DTSID="{F128275C-6A32-4004-8BC8-492A1D74F699}"
+              DTS:From="Package\Create Fact Table\Add Constraints\Create Sale To Room Constraint"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint 3"
+              DTS:To="Package\Create Fact Table\Add Constraints\Create Sale To Product Constraint" />
+          </DTS:PrecedenceConstraints>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Create Fact Table\Create Sale Fact"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{1060543d-eab0-4528-9794-c3212d7a8a57}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Create Sale Fact"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{15ECAFE5-23F9-4433-9533-0227B2892FD4}"
+              SQLTask:SqlStatementSource="&#xA;USE BIProjektDW&#xA;IF object_id('Fact.[Sale]', 'U') IS NOT NULL&#xA;&#x9;PRINT 'Sale table already created!'&#xA;ELSE&#xA;&#x9;BEGIN &#xA;&#x9;PRINT 'Not present! Sale table is being created'&#xA;&#x9;CREATE TABLE Fact.Sale&#xA;&#x9;(&#xA;&#x9;SaleKey INT IDENTITY(1,1),&#xA;&#x9;MemberKey INT,&#xA;&#x9;ProductKey INT,&#xA;&#x9;TimeKey TIME,&#xA;&#x9;DateKey DATE,&#xA;&#x9;RoomKey INT,&#xA;&#x9;Price MONEY,&#xA;&#x9;&#xA;&#xA;&#x9;PRIMARY KEY (SaleKey)&#xA;&#x9;);&#xA;END" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Create Fact Table.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{87BBB838-F60A-4FCC-9461-9D17E32E8714}"
+          DTS:From="Package\Create Fact Table\Create Sale Fact"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Create Fact Table\Add Constraints" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Create Schemas on Server"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{70AD8DA7-46E7-4038-8679-337392870F2E}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Create Schemas on Server">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Create Schemas on Server\Create Dimension Schema"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{554C50AE-33CB-4C55-981D-029F05129941}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Create Dimension Schema"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{15ECAFE5-23F9-4433-9533-0227B2892FD4}"
+              SQLTask:SqlStatementSource="USE BIProjektDW&#xA;IF NOT EXISTS(SELECT * FROM sys.schemas WHERE name = 'Dimension')&#xA;&#x9;EXEC('CREATE SCHEMA [Dimension]');&#xA;ELSE&#xA;&#x9;PRINT 'Dimension schema already Exists!'&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Create Schemas on Server\Create Fact Schema"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{8AE3E133-410F-48C3-BC17-7C89E36EB363}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Create Fact Schema"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{15ECAFE5-23F9-4433-9533-0227B2892FD4}"
+              SQLTask:SqlStatementSource="USE BIProjektDW&#xA;IF NOT EXISTS(SELECT * FROM sys.schemas WHERE name = 'Fact')&#xA;&#x9;EXEC('CREATE SCHEMA [Fact]');&#xA;ELSE&#xA;&#x9;PRINT 'Fact schema already Exists!'&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Create Schemas on Server.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{101CD318-42FF-4664-AD71-D57913E2A900}"
+          DTS:From="Package\Create Schemas on Server\Create Fact Schema"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Create Schemas on Server\Create Dimension Schema" />
+      </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\Show Error Message"
@@ -58,7 +399,7 @@
       DTS:ExecutableType="Microsoft.ScriptTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Show Error Message"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <ScriptProject
@@ -66,6 +407,15 @@
           VSTAMajorVersion="15"
           VSTAMinorVersion="0"
           Language="CSharp">
+          <ProjectItem
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
           <ProjectItem
             Name="ST_d4287bd37a6d4d078ad72163078c80e0.csproj"
             Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
@@ -285,35 +635,6 @@
   </resheader>
 </root>]]></ProjectItem>
           <ProjectItem
-            Name="Properties\Settings.Designer.cs"
-            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
-// <auto-generated>
-//     This code was generated by a tool.
-//
-//     Changes to this file may cause incorrect behavior and will be lost if
-//     the code is regenerated.
-// </auto-generated>
-//------------------------------------------------------------------------------
-
-[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_d4287bd37a6d4d078ad72163078c80e0.Properties.Settings.get_Default():ST_d4287bd37a6d4d078ad72163078c80e0.Properties.Sett" +
-    "ings")]
-
-namespace ST_d4287bd37a6d4d078ad72163078c80e0.Properties {
-    
-    
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
-        
-        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-        private static Settings defaultInstance = new Settings();
-        
-        public static Settings Default {
-            get {
-                return defaultInstance;
-            }
-        }
-    }
-}]]></ProjectItem>
-          <ProjectItem
             Name="ScriptMain.cs"
             Encoding="UTF8"><![CDATA[#region Help:  Introduction to the script task
 /* The Script Task allows you to perform virtually any operation that can be accomplished in
@@ -449,6 +770,35 @@ namespace ST_d4287bd37a6d4d078ad72163078c80e0
   </msb:ItemGroup>
 </c:Project>]]></ProjectItem>
           <ProjectItem
+            Name="Properties\Settings.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_d4287bd37a6d4d078ad72163078c80e0.Properties.Settings.get_Default():ST_d4287bd37a6d4d078ad72163078c80e0.Properties.Sett" +
+    "ings")]
+
+namespace ST_d4287bd37a6d4d078ad72163078c80e0.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <ProjectItem
             Name="Properties\AssemblyInfo.cs"
             Encoding="UTF8"><![CDATA[using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -478,15 +828,6 @@ using System.Runtime.CompilerServices;
 // by using the '*' as shown below:
 
 [assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
-          <ProjectItem
-            Name="Properties\Settings.settings"
-            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
-</SettingsFile>]]></ProjectItem>
           <ProjectItem
             Name="Properties\Resources.Designer.cs"
             Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
@@ -672,11 +1013,27 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{60E944B7-0B28-4785-90F1-A47D63A00E11}"
+      DTS:DTSID="{9675499D-22AD-4B6A-AF62-15ED84FABB46}"
       DTS:From="Package\Create Database BIProjektDW"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
-      DTS:To="Package\Create Fact Sale Table" />
+      DTS:To="Package\Create Schemas on Server" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{300D8B0C-5E86-4B67-8989-484B494F5EDD}"
+      DTS:From="Package\Create Schemas on Server"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Create Dimension Tables" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{B64894CB-8BCF-4E6C-8E4D-75D8D081E62B}"
+      DTS:From="Package\Create Dimension Tables"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Create Fact Table" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
       DTS:CreationName=""
@@ -698,41 +1055,114 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="220,42"
           Id="Package\Create Database BIProjektDW"
-          TopLeft="134,78" />
+          TopLeft="1830.66666666667,78" />
         <NodeLayout
-          Size="185,42"
-          Id="Package\Create Fact Sale Table"
-          TopLeft="88,189" />
+          Size="175,42"
+          Id="Package\Show Error Message"
+          TopLeft="2208.66666666666,178" />
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="208.666666666667,120">
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="1940.66666666667,120">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-28.1666666666667,69"
+              EndConnector="355.5,58"
               Start="0,0"
-              End="-28.1666666666667,61.5">
+              End="355.5,50.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,23.898916967509" />
+                    End="0,25" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,23.898916967509"
-                    Point2="0,27.898916967509"
-                    Point3="-4,27.898916967509" />
+                    Point1="0,25"
+                    Point2="0,29"
+                    Point3="4,29" />
                   <mssgle:LineSegment
-                    End="-24.1666666666667,27.898916967509" />
+                    End="351.5,29" />
                   <mssgle:CubicBezierSegment
-                    Point1="-24.1666666666667,27.898916967509"
-                    Point2="-28.1666666666667,27.898916967509"
-                    Point3="-28.1666666666667,31.898916967509" />
+                    Point1="351.5,29"
+                    Point2="355.5,29"
+                    Point3="355.5,33" />
                   <mssgle:LineSegment
-                    End="-28.1666666666667,61.5" />
+                    End="355.5,50.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="162.50865234375,34,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="173,42"
+          Id="Package\Create Schemas on Server\Create Fact Schema"
+          TopLeft="27.6666666666665,6.61111111111114" />
+        <NodeLayout
+          Size="202,42"
+          Id="Package\Create Schemas on Server\Create Dimension Schema"
+          TopLeft="21.0000000000002,79.3333333333334" />
+        <EdgeLayout
+          Id="Package\Create Schemas on Server.PrecedenceConstraints[Constraint]"
+          TopLeft="118.083333333333,48.6111111111111">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,30.7222222222223"
+              Start="0,0"
+              End="0,23.2222222222223">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.2222222222223" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="236,139"
+          Size="236,182"
+          Id="Package\Create Schemas on Server"
+          TopLeft="1629.16666666667,185" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="1905.33333333333,120">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-158.166666666667,65"
+              Start="0,0"
+              End="-158.166666666667,57.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.2815884476534" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.2815884476534"
+                    Point2="0,26.2815884476534"
+                    Point3="-4,26.2815884476534" />
+                  <mssgle:LineSegment
+                    End="-154.166666666667,26.2815884476534" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-154.166666666667,26.2815884476534"
+                    Point2="-158.166666666667,26.2815884476534"
+                    Point3="-158.166666666667,30.2815884476534" />
+                  <mssgle:LineSegment
+                    End="-158.166666666667,57.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -742,43 +1172,310 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="175,42"
-          Id="Package\Show Error Message"
-          TopLeft="287,188" />
+          Size="201,42"
+          Id="Package\Create Dimension Tables\Create Product Dimension"
+          TopLeft="48,11" />
+        <NodeLayout
+          Size="204,42"
+          Id="Package\Create Dimension Tables\Create Member Dimension"
+          TopLeft="45,80" />
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="279.333333333333,120">
+          Id="Package\Create Dimension Tables.PrecedenceConstraints[Constraint]"
+          TopLeft="147.75,53">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="95.1666666666667,68"
+              EndConnector="0,27"
               Start="0,0"
-              End="95.1666666666667,60.5">
+              End="0,19.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,23.4945848375451" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,23.4945848375451"
-                    Point2="0,27.4945848375451"
-                    Point3="4,27.4945848375451" />
-                  <mssgle:LineSegment
-                    End="91.1666666666667,27.4945848375451" />
-                  <mssgle:CubicBezierSegment
-                    Point1="91.1666666666667,27.4945848375451"
-                    Point2="95.1666666666667,27.4945848375451"
-                    Point3="95.1666666666667,31.4945848375451" />
-                  <mssgle:LineSegment
-                    End="95.1666666666667,60.5" />
+                    End="0,19.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="32.3419856770833,32.4945848375451,30.4826953125,9.7490234375"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="199,42"
+          Id="Package\Create Dimension Tables\Create Time Dimension"
+          TopLeft="45,149" />
+        <EdgeLayout
+          Id="Package\Create Dimension Tables.PrecedenceConstraints[Constraint 1]"
+          TopLeft="145.75,122">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,27"
+              Start="0,0"
+              End="0,19.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="199,42"
+          Id="Package\Create Dimension Tables\Create Date Dimension"
+          TopLeft="44,215" />
+        <EdgeLayout
+          Id="Package\Create Dimension Tables.PrecedenceConstraints[Constraint 2]"
+          TopLeft="144,191">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,24"
+              Start="0,0"
+              End="0,16.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="201,42"
+          Id="Package\Create Dimension Tables\Create Room Dimension"
+          TopLeft="44,282" />
+        <EdgeLayout
+          Id="Package\Create Dimension Tables.PrecedenceConstraints[Constraint 3]"
+          TopLeft="144,257">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,25"
+              Start="0,0"
+              End="0,17.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="288,342"
+          Size="288,385"
+          Id="Package\Create Dimension Tables"
+          TopLeft="1600.94444444444,474.888888888889" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="1746.05555555556,367">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,107.888888888889"
+              Start="0,0"
+              End="0,100.388888888889">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,100.388888888889" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="180,42"
+          Id="Package\Create Fact Table\Create Sale Fact"
+          TopLeft="94.9595959595958,8.96969696969688" />
+        <NodeLayout
+          Size="241,42"
+          Id="Package\Create Fact Table\Add Constraints\Create Sale To Member Constraint"
+          TopLeft="31.1111111111113,2.44444444444434" />
+        <NodeLayout
+          Size="224,42"
+          Id="Package\Create Fact Table\Add Constraints\Create Sale To Date Constraint"
+          TopLeft="40.1111111111113,74.4444444444443" />
+        <NodeLayout
+          Size="226,42"
+          Id="Package\Create Fact Table\Add Constraints\Create Sale To Time Constraint"
+          TopLeft="40,145" />
+        <NodeLayout
+          Size="230,42"
+          Id="Package\Create Fact Table\Add Constraints\Create Sale To Room Constraint"
+          TopLeft="39,215" />
+        <NodeLayout
+          Size="238,42"
+          Id="Package\Create Fact Table\Add Constraints\Create Sale To Product Constraint"
+          TopLeft="39,281" />
+        <EdgeLayout
+          Id="Package\Create Fact Table\Add Constraints.PrecedenceConstraints[Constraint]"
+          TopLeft="151.861111111111,44.4444444444443">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,30"
+              Start="0,0"
+              End="0,22.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Create Fact Table\Add Constraints.PrecedenceConstraints[Constraint 1]"
+          TopLeft="152.555555555556,116.444444444444">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,28.5555555555557"
+              Start="0,0"
+              End="0,21.0555555555557">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.0555555555557" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Create Fact Table\Add Constraints.PrecedenceConstraints[Constraint 2]"
+          TopLeft="153.5,187">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,28"
+              Start="0,0"
+              End="0,20.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Create Fact Table\Add Constraints.PrecedenceConstraints[Constraint 3]"
+          TopLeft="156,257">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,24"
+              Start="0,0"
+              End="0,16.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="316,376"
+          Size="316,419"
+          Id="Package\Create Fact Table\Add Constraints"
+          TopLeft="26,98" />
+        <EdgeLayout
+          Id="Package\Create Fact Table.PrecedenceConstraints[Constraint]"
+          TopLeft="184.479797979798,50.9696969696969">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47.0303030303031"
+              Start="0,0"
+              End="0,39.5303030303031">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.5303030303031" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="375,613"
+          Size="375,656"
+          Id="Package\Create Fact Table"
+          TopLeft="1967.48484848485,344.338383838384" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="1888.94444444444,669.863636363636">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="78.5404040404044,0"
+              Start="0,0"
+              End="71.0404040404044,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="71.0404040404044,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

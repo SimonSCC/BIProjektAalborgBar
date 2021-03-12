@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">MSI</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAvV6tSU5D+km16ofIMT5hjAAAAAACAAAAAAAQZgAAAAEAACAAAACJAVulO50+UWhPDuAG6S86xdEf+b76e1ziI+LhDfxVIgAAAAAOgAAAAAIAACAAAABoh/HOJGhlO8w8aE1Kd1iq+5mUhXd1F/oI1sB+LtklgpAAAAB0aYQBZZYZWaYhst42PYws0Z5Nm/i5t27TJ84gUfQy7bjA8ljkU3CmIVk//LKO5jhSiLy/YVV+aFZmiCl8JGYV1JSaSYbgzGpWh5Mx3mw3zkbEtLwuyMCQnm2Zr4Tf+k0UMGV4RNE96kBf1tDCNsZ2LuWsSdCZR0l7b11AeQgwRYrbWL+qxrXc7InFeMzBppBAAAAAd9urhEGsqDCz0keoOwJFI7hoLKw3UXL7WvxKgGVWxh4h4+MuJFX3RptZdELoeRa9Hb/hndltVzDejB/aVBR+lw==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAvV6tSU5D+km16ofIMT5hjAAAAAACAAAAAAAQZgAAAAEAACAAAABR+cVHkcN96IJSNSFznMGK59Q4ODdUsa/fa1egtqKiPAAAAAAOgAAAAAIAACAAAADkxTX4/iqErXP9xRfm71GxrCGuB+5awqE2sCbcvEQo45AAAADeo0EMvaurgkP9Ubr7LFJPGSBgrgR9N+B9G2hQLey34uYWTbVbKLu7HwLjg1QZh/fnrkk18M5ziNENaniHBTT9zBMZMwHco1ourktkWaxfVeTe2eb9Be2U9wZvUgvj/4GmjZqaiQ0JOmxMSiv8/g0kYNQ996dNn+cL26po7AZLb8ILnTonlMN8qZKVXxyVpkJAAAAA/6nfvxVqTRdhi5AOW+NgScIoOGLnzQWVJ7vXP+tSH5n52vG4tb02GYpg5QUIe+/AaQsmcGxakQp4VbM0obWDmw==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -65,7 +65,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">Data Source=Fclub data\fclub_safe.mdb;Provider=Microsoft.Jet.OLEDB.4.0;</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">Data Source=IntegrationServicesBIProjekt\Fclub data\fclub_safe.mdb;Provider=Microsoft.Jet.OLEDB.4.0;</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -138,7 +138,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">Fclub data\fclub_safe.mdb</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">IntegrationServicesBIProjekt\Fclub data\fclub_safe.mdb</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -298,10 +298,10 @@
                 <SSIS:Property SSIS:Name="Name">Package1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">10</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">15</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{BD0C7985-4987-456B-866D-10D20873B97E}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{A1F36E90-FEF6-4790-A681-0C283E98C5F3}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
