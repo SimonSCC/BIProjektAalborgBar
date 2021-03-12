@@ -146,6 +146,7 @@ ELSE
 	CREATE TABLE Fact.Sale
 	(
 	SaleKey INT IDENTITY(1,1),
+	AlternativeSaleKey INT UNIQUE,
 	MemberKey INT,
 	ProductKey INT,
 	TimeKey TIME,
