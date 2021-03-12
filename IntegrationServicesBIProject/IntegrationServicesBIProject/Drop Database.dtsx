@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="6"
-  DTS:VersionGUID="{32DEFF35-C05E-4506-854D-AD3B08DC6E8D}">
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{419FE29E-AF72-4627-9C4D-F55DA49927EA}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -30,7 +30,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{D28B335B-7105-434B-9FB0-F71733AD3480}"
+          SQLTask:Connection="{4BA4440F-495A-47F7-8022-1E737464C341}"
           SQLTask:SqlStatementSource="DROP DATABASE BIProjektDW" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
