@@ -30,7 +30,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{15ECAFE5-23F9-4433-9533-0227B2892FD4}"
+          SQLTask:Connection="{8C43B5C8-C778-4FDB-B12F-FB00AD9456C9}"
           SQLTask:SqlStatementSource="IF NOT EXISTS(SELECT * FROM sys.databases WHERE name = 'BIProjektDW')&#xA;BEGIN &#xA;CREATE DATABASE [BIProjektDW]&#xA;END&#xA;GO&#xA;USE [BIProjektDW]&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
