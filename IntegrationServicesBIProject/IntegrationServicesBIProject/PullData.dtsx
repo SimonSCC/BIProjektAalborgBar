@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="5"
-  DTS:VersionGUID="{E6BD6381-0263-4692-B23F-00204E356899}">
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{B240BA83-70C0-4431-8423-BA25133BCAD9}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -72,8 +72,8 @@
               <connections>
                 <connection
                   refId="Package\Data Flow Task\ADO NET Source.Connections[IDbConnection]"
-                  connectionManagerID="{4D640DB2-7FAA-42AD-A3B9-9D5F4F1B5527}:invalid"
-                  connectionManagerRefId="{4D640DB2-7FAA-42AD-A3B9-9D5F4F1B5527}:invalid"
+                  connectionManagerID="{A8697BFD-6ED7-4C86-B44E-F7D392DF375F}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[fclub_safe]"
                   description="Managed connection manager"
                   name="IDbConnection" />
               </connections>
