@@ -8,16 +8,27 @@ GO
 USE [BIProjektDW]
 GO
 
---Create Schemas Fact and Dimension
+--Create Fact Schema
 
 USE BIProjektDW
-GO
-CREATE SCHEMA Fact;
-GO
-CREATE SCHEMA Dimension;
-GO
+IF NOT EXISTS(SELECT * FROM sys.schemas WHERE name = 'Fact')
+	EXEC('CREATE SCHEMA [Fact]');
+ELSE
+	PRINT 'Fact schema already Exists!'
 
-SELECT * FROM sys.schemas
+
+--Create Dimension Schema
+
+USE BIProjektDW
+IF NOT EXISTS(SELECT * FROM sys.schemas WHERE name = 'Dimension')
+	EXEC('CREATE SCHEMA [Dimension]');
+ELSE
+	PRINT 'Dimension schema already Exists!'
+
+--SELECT * FROM sys.schemas
+
+--DROP SCHEMA Dimension
+--DROP SCHEMA Fact
 
 --Create Product Dimension table 
 
@@ -149,25 +160,69 @@ END
 
 --Add Fact Constraints to dimension tables.
 
+
 --Constraint to Dimension.Member
-ALTER TABLE Fact.Sale ADD CONSTRAINT FK_Fact_Sale_MemberKey_Dimension_Member FOREIGN KEY (MemberKey)
-REFERENCES Dimension.Member(MemberKey)
+
+USE BIProjektDW
+IF NOT EXISTS(SELECT * FROM INFORMATION_SCHEMA.REFERENTIAL_CONSTRAINTS WHERE CONSTRAINT_CATALOG = 'BIProjektDW' AND 
+CONSTRAINT_NAME = 'FK_Fact_Sale_MemberKey_Dimension_Member_MemberKey')
+	BEGIN
+		ALTER TABLE Fact.Sale ADD CONSTRAINT FK_Fact_Sale_MemberKey_Dimension_Member_MemberKey FOREIGN KEY (MemberKey)
+		REFERENCES Dimension.Member(MemberKey)
+	END
+ELSE
+	PRINT 'FK_Fact_Sale_MemberKey_Dimension_Member_MemberKey constraint already exists!'
+
 
 --Constraint to Dimension.Date
-ALTER TABLE Fact.Sale ADD CONSTRAINT FK_Fact_Sale_DateKey_Dimension_Date FOREIGN KEY (DateKey)
-REFERENCES Dimension.[Date](DateKey)
+
+USE BIProjektDW
+IF NOT EXISTS(SELECT * FROM INFORMATION_SCHEMA.REFERENTIAL_CONSTRAINTS WHERE CONSTRAINT_CATALOG = 'BIProjektDW' AND 
+CONSTRAINT_NAME = 'FK_Fact_Sale_DateKey_Dimension_Date_DateKey')
+	BEGIN
+		ALTER TABLE Fact.Sale ADD CONSTRAINT FK_Fact_Sale_DateKey_Dimension_Date_DateKey FOREIGN KEY (DateKey)
+		REFERENCES Dimension.[Date](DateKey)
+	END
+ELSE
+	PRINT 'FK_Fact_Sale_DateKey_Dimension_Date_DateKey constraint already exists!'
+
 
 --Constraint to Dimension.Time
-ALTER TABLE Fact.Sale ADD CONSTRAINT FK_Fact_Sale_TimeKey_Dimension_Time FOREIGN KEY (TimeKey)
-REFERENCES Dimension.[Time](TimeKey)
+
+USE BIProjektDW
+IF NOT EXISTS(SELECT * FROM INFORMATION_SCHEMA.REFERENTIAL_CONSTRAINTS WHERE CONSTRAINT_CATALOG = 'BIProjektDW' AND 
+CONSTRAINT_NAME = 'FK_Fact_Sale_TimeKey_Dimension_Time_TimeKey')
+	BEGIN
+		ALTER TABLE Fact.Sale ADD CONSTRAINT FK_Fact_Sale_TimeKey_Dimension_Time_TimeKey FOREIGN KEY (TimeKey)
+		REFERENCES Dimension.[Time](TimeKey)
+	END
+ELSE
+	PRINT 'FK_Fact_Sale_TimeKey_Dimension_Time_TimeKey constraint already exists!'
+
 
 --Constraint to Dimension.Room
-ALTER TABLE Fact.Sale ADD CONSTRAINT FK_Fact_Sale_RoomKey_Dimension_Room FOREIGN KEY (RoomKey)
-REFERENCES Dimension.[Room](RoomKey)
+
+USE BIProjektDW
+IF NOT EXISTS(SELECT * FROM INFORMATION_SCHEMA.REFERENTIAL_CONSTRAINTS WHERE CONSTRAINT_CATALOG = 'BIProjektDW' AND 
+CONSTRAINT_NAME = 'FK_Fact_Sale_RoomKey_Dimension_Room_RoomKey')
+	BEGIN		
+		ALTER TABLE Fact.Sale ADD CONSTRAINT FK_Fact_Sale_RoomKey_Dimension_Room_RoomKey FOREIGN KEY (RoomKey)
+		REFERENCES Dimension.[Room](RoomKey)
+	END
+ELSE
+	PRINT 'FK_Fact_Sale_RoomKey_Dimension_Room_RoomKey constraint already exists!'
 
 --Constraint to Dimension.Product
-ALTER TABLE Fact.Sale ADD CONSTRAINT FK_Fact_Sale_ProductKey_Dimension_Product FOREIGN KEY (ProductKey)
-REFERENCES Dimension.Product(ProductKey)
+
+USE BIProjektDW
+IF NOT EXISTS(SELECT * FROM INFORMATION_SCHEMA.REFERENTIAL_CONSTRAINTS WHERE CONSTRAINT_CATALOG = 'BIProjektDW' AND 
+CONSTRAINT_NAME = 'FK_Fact_Sale_ProductKey_Dimension_Product_ProductKey')
+	BEGIN		
+		ALTER TABLE Fact.Sale ADD CONSTRAINT FK_Fact_Sale_ProductKey_Dimension_Product_ProductKey FOREIGN KEY (ProductKey)
+		REFERENCES Dimension.Product(ProductKey)
+	END
+ELSE
+	PRINT 'FK_Fact_Sale_ProductKey_Dimension_Product_ProductKey constraint already exists!'
 
 --Drop Everything
 
