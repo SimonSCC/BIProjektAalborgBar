@@ -226,6 +226,7 @@ ELSE
 
 --Drop Everything
 
+USE BIProjektDW
 DROP TABLE Fact.Sale
 
 DROP TABLE Dimension.[Product]
@@ -233,6 +234,5 @@ DROP TABLE Dimension.[Time]
 DROP TABLE Dimension.[Member]
 DROP TABLE Dimension.[Date]
 DROP TABLE Dimension.[Room]
-
 
 
