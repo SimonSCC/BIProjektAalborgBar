@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="19"
-  DTS:VersionGUID="{DB9CADCE-B416-4553-BDA2-E444EE5A8476}">
+  DTS:VersionBuild="40"
+  DTS:VersionGUID="{3CCBFC06-1ECD-4CB7-8517-2F6F3D538D06}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -105,41 +105,39 @@
                   <inputColumns>
                     <inputColumn
                       refId="Package\Data Flow Task\Add entries that do not exist to the database.Inputs[OLE DB Destination Input].Columns[year]"
-                      cachedDataType="nText"
+                      cachedDataType="ui4"
                       cachedName="year"
                       externalMetadataColumnId="Package\Data Flow Task\Add entries that do not exist to the database.Inputs[OLE DB Destination Input].ExternalColumns[YearJoined]"
-                      lineageId="Package\Data Flow Task\Get All Members from the Access database.Outputs[ADO NET Source Output].Columns[year]" />
+                      lineageId="Package\Data Flow Task\Get All Members from the Access database.Outputs[OLE DB Source Output].Columns[year]" />
                     <inputColumn
                       refId="Package\Data Flow Task\Add entries that do not exist to the database.Inputs[OLE DB Destination Input].Columns[periode]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="periode"
                       externalMetadataColumnId="Package\Data Flow Task\Add entries that do not exist to the database.Inputs[OLE DB Destination Input].ExternalColumns[SemesterPeriod]"
-                      lineageId="Package\Data Flow Task\Get All Members from the Access database.Outputs[ADO NET Source Output].Columns[periode]" />
+                      lineageId="Package\Data Flow Task\Get All Members from the Access database.Outputs[OLE DB Source Output].Columns[periode]" />
                     <inputColumn
                       refId="Package\Data Flow Task\Add entries that do not exist to the database.Inputs[OLE DB Destination Input].Columns[semester]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="semester"
                       externalMetadataColumnId="Package\Data Flow Task\Add entries that do not exist to the database.Inputs[OLE DB Destination Input].ExternalColumns[Semester]"
-                      lineageId="Package\Data Flow Task\Get All Members from the Access database.Outputs[ADO NET Source Output].Columns[semester]" />
+                      lineageId="Package\Data Flow Task\Get All Members from the Access database.Outputs[OLE DB Source Output].Columns[semester]" />
                     <inputColumn
                       refId="Package\Data Flow Task\Add entries that do not exist to the database.Inputs[OLE DB Destination Input].Columns[id]"
                       cachedDataType="i4"
                       cachedName="id"
                       externalMetadataColumnId="Package\Data Flow Task\Add entries that do not exist to the database.Inputs[OLE DB Destination Input].ExternalColumns[MemberID]"
-                      lineageId="Package\Data Flow Task\Get All Members from the Access database.Outputs[ADO NET Source Output].Columns[id]" />
+                      lineageId="Package\Data Flow Task\Get All Members from the Access database.Outputs[OLE DB Source Output].Columns[id]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Add entries that do not exist to the database.Inputs[OLE DB Destination Input].Columns[CurrentDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="CurrentDate"
+                      externalMetadataColumnId="Package\Data Flow Task\Add entries that do not exist to the database.Inputs[OLE DB Destination Input].ExternalColumns[ValidFrom]"
+                      lineageId="Package\Data Flow Task\Get Current Date.Outputs[Derived Column Output].Columns[CurrentDate]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\Add entries that do not exist to the database.Inputs[OLE DB Destination Input].ExternalColumns[IsRowActive]"
-                      dataType="bool"
-                      name="IsRowActive" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\Add entries that do not exist to the database.Inputs[OLE DB Destination Input].ExternalColumns[DeactivateDate]"
-                      dataType="dbDate"
-                      name="DeactivateDate" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\Add entries that do not exist to the database.Inputs[OLE DB Destination Input].ExternalColumns[MemberKey]"
                       dataType="i4"
@@ -150,18 +148,26 @@
                       name="MemberID" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\Add entries that do not exist to the database.Inputs[OLE DB Destination Input].ExternalColumns[YearJoined]"
-                      dataType="dbDate"
+                      dataType="i4"
                       name="YearJoined" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\Add entries that do not exist to the database.Inputs[OLE DB Destination Input].ExternalColumns[SemesterPeriod]"
                       dataType="wstr"
-                      length="3"
+                      length="50"
                       name="SemesterPeriod" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\Add entries that do not exist to the database.Inputs[OLE DB Destination Input].ExternalColumns[Semester]"
                       dataType="wstr"
-                      length="10"
+                      length="50"
                       name="Semester" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Add entries that do not exist to the database.Inputs[OLE DB Destination Input].ExternalColumns[ValidFrom]"
+                      dataType="dbDate"
+                      name="ValidFrom" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Add entries that do not exist to the database.Inputs[OLE DB Destination Input].ExternalColumns[ValidTo]"
+                      dataType="dbDate"
+                      name="ValidTo" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -264,20 +270,20 @@
                   <inputColumns>
                     <inputColumn
                       refId="Package\Data Flow Task\Add entries that have Semester change.Inputs[OLE DB Destination Input].Columns[year]"
-                      cachedDataType="nText"
+                      cachedDataType="ui4"
                       cachedName="year"
                       externalMetadataColumnId="Package\Data Flow Task\Add entries that have Semester change.Inputs[OLE DB Destination Input].ExternalColumns[YearJoined]"
-                      lineageId="Package\Data Flow Task\Get All Members from the Access database.Outputs[ADO NET Source Output].Columns[year]" />
+                      lineageId="Package\Data Flow Task\Get All Members from the Access database.Outputs[OLE DB Source Output].Columns[year]" />
                     <inputColumn
                       refId="Package\Data Flow Task\Add entries that have Semester change.Inputs[OLE DB Destination Input].Columns[id]"
                       cachedDataType="i4"
                       cachedName="id"
                       externalMetadataColumnId="Package\Data Flow Task\Add entries that have Semester change.Inputs[OLE DB Destination Input].ExternalColumns[MemberID]"
-                      lineageId="Package\Data Flow Task\Get All Members from the Access database.Outputs[ADO NET Source Output].Columns[id]" />
+                      lineageId="Package\Data Flow Task\Get All Members from the Access database.Outputs[OLE DB Source Output].Columns[id]" />
                     <inputColumn
                       refId="Package\Data Flow Task\Add entries that have Semester change.Inputs[OLE DB Destination Input].Columns[Semester]"
                       cachedDataType="wstr"
-                      cachedLength="10"
+                      cachedLength="50"
                       cachedName="Semester"
                       externalMetadataColumnId="Package\Data Flow Task\Add entries that have Semester change.Inputs[OLE DB Destination Input].ExternalColumns[Semester]"
                       lineageId="Package\Data Flow Task\Check if entry already exists.Outputs[Lookup Match Output].Columns[Semester]" />
@@ -287,18 +293,16 @@
                       cachedLength="50"
                       cachedName="periode"
                       externalMetadataColumnId="Package\Data Flow Task\Add entries that have Semester change.Inputs[OLE DB Destination Input].ExternalColumns[SemesterPeriod]"
-                      lineageId="Package\Data Flow Task\Get All Members from the Access database.Outputs[ADO NET Source Output].Columns[periode]" />
+                      lineageId="Package\Data Flow Task\Get All Members from the Access database.Outputs[OLE DB Source Output].Columns[periode]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Add entries that have Semester change.Inputs[OLE DB Destination Input].Columns[CurrentDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="CurrentDate"
+                      externalMetadataColumnId="Package\Data Flow Task\Add entries that have Semester change.Inputs[OLE DB Destination Input].ExternalColumns[ValidFrom]"
+                      lineageId="Package\Data Flow Task\Get Current Date.Outputs[Derived Column Output].Columns[CurrentDate]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\Add entries that have Semester change.Inputs[OLE DB Destination Input].ExternalColumns[IsRowActive]"
-                      dataType="bool"
-                      name="IsRowActive" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\Add entries that have Semester change.Inputs[OLE DB Destination Input].ExternalColumns[DeactivateDate]"
-                      dataType="dbDate"
-                      name="DeactivateDate" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\Add entries that have Semester change.Inputs[OLE DB Destination Input].ExternalColumns[MemberKey]"
                       dataType="i4"
@@ -309,18 +313,26 @@
                       name="MemberID" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\Add entries that have Semester change.Inputs[OLE DB Destination Input].ExternalColumns[YearJoined]"
-                      dataType="dbDate"
+                      dataType="i4"
                       name="YearJoined" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\Add entries that have Semester change.Inputs[OLE DB Destination Input].ExternalColumns[SemesterPeriod]"
                       dataType="wstr"
-                      length="3"
+                      length="50"
                       name="SemesterPeriod" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\Add entries that have Semester change.Inputs[OLE DB Destination Input].ExternalColumns[Semester]"
                       dataType="wstr"
-                      length="10"
+                      length="50"
                       name="Semester" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Add entries that have Semester change.Inputs[OLE DB Destination Input].ExternalColumns[ValidFrom]"
+                      dataType="dbDate"
+                      name="ValidFrom" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Add entries that have Semester change.Inputs[OLE DB Destination Input].ExternalColumns[ValidTo]"
+                      dataType="dbDate"
+                      name="ValidTo" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -423,41 +435,39 @@
                   <inputColumns>
                     <inputColumn
                       refId="Package\Data Flow Task\Add entries that have SemesterPeriod change.Inputs[OLE DB Destination Input].Columns[year]"
-                      cachedDataType="nText"
+                      cachedDataType="ui4"
                       cachedName="year"
                       externalMetadataColumnId="Package\Data Flow Task\Add entries that have SemesterPeriod change.Inputs[OLE DB Destination Input].ExternalColumns[YearJoined]"
-                      lineageId="Package\Data Flow Task\Get All Members from the Access database.Outputs[ADO NET Source Output].Columns[year]" />
+                      lineageId="Package\Data Flow Task\Get All Members from the Access database.Outputs[OLE DB Source Output].Columns[year]" />
                     <inputColumn
                       refId="Package\Data Flow Task\Add entries that have SemesterPeriod change.Inputs[OLE DB Destination Input].Columns[id]"
                       cachedDataType="i4"
                       cachedName="id"
                       externalMetadataColumnId="Package\Data Flow Task\Add entries that have SemesterPeriod change.Inputs[OLE DB Destination Input].ExternalColumns[MemberID]"
-                      lineageId="Package\Data Flow Task\Get All Members from the Access database.Outputs[ADO NET Source Output].Columns[id]" />
+                      lineageId="Package\Data Flow Task\Get All Members from the Access database.Outputs[OLE DB Source Output].Columns[id]" />
                     <inputColumn
                       refId="Package\Data Flow Task\Add entries that have SemesterPeriod change.Inputs[OLE DB Destination Input].Columns[SemesterPeriod]"
                       cachedDataType="wstr"
-                      cachedLength="3"
+                      cachedLength="50"
                       cachedName="SemesterPeriod"
                       externalMetadataColumnId="Package\Data Flow Task\Add entries that have SemesterPeriod change.Inputs[OLE DB Destination Input].ExternalColumns[SemesterPeriod]"
                       lineageId="Package\Data Flow Task\Check if entry already exists.Outputs[Lookup Match Output].Columns[SemesterPeriod]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Add entries that have SemesterPeriod change.Inputs[OLE DB Destination Input].Columns[semester]"
+                      refId="Package\Data Flow Task\Add entries that have SemesterPeriod change.Inputs[OLE DB Destination Input].Columns[Semester]"
                       cachedDataType="wstr"
                       cachedLength="50"
-                      cachedName="semester"
+                      cachedName="Semester"
                       externalMetadataColumnId="Package\Data Flow Task\Add entries that have SemesterPeriod change.Inputs[OLE DB Destination Input].ExternalColumns[Semester]"
-                      lineageId="Package\Data Flow Task\Get All Members from the Access database.Outputs[ADO NET Source Output].Columns[semester]" />
+                      lineageId="Package\Data Flow Task\Check if entry already exists.Outputs[Lookup Match Output].Columns[Semester]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Add entries that have SemesterPeriod change.Inputs[OLE DB Destination Input].Columns[CurrentDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="CurrentDate"
+                      externalMetadataColumnId="Package\Data Flow Task\Add entries that have SemesterPeriod change.Inputs[OLE DB Destination Input].ExternalColumns[ValidFrom]"
+                      lineageId="Package\Data Flow Task\Get Current Date.Outputs[Derived Column Output].Columns[CurrentDate]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\Add entries that have SemesterPeriod change.Inputs[OLE DB Destination Input].ExternalColumns[IsRowActive]"
-                      dataType="bool"
-                      name="IsRowActive" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\Add entries that have SemesterPeriod change.Inputs[OLE DB Destination Input].ExternalColumns[DeactivateDate]"
-                      dataType="dbDate"
-                      name="DeactivateDate" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\Add entries that have SemesterPeriod change.Inputs[OLE DB Destination Input].ExternalColumns[MemberKey]"
                       dataType="i4"
@@ -468,18 +478,26 @@
                       name="MemberID" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\Add entries that have SemesterPeriod change.Inputs[OLE DB Destination Input].ExternalColumns[YearJoined]"
-                      dataType="dbDate"
+                      dataType="i4"
                       name="YearJoined" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\Add entries that have SemesterPeriod change.Inputs[OLE DB Destination Input].ExternalColumns[SemesterPeriod]"
                       dataType="wstr"
-                      length="3"
+                      length="50"
                       name="SemesterPeriod" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\Add entries that have SemesterPeriod change.Inputs[OLE DB Destination Input].ExternalColumns[Semester]"
                       dataType="wstr"
-                      length="10"
+                      length="50"
                       name="Semester" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Add entries that have SemesterPeriod change.Inputs[OLE DB Destination Input].ExternalColumns[ValidFrom]"
+                      dataType="dbDate"
+                      name="ValidFrom" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Add entries that have SemesterPeriod change.Inputs[OLE DB Destination Input].ExternalColumns[ValidTo]"
+                      dataType="dbDate"
+                      name="ValidTo" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -560,12 +578,12 @@ where [refTable].[MemberID] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="MemberKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="MemberID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="YearJoined" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SemesterPeriod" dataType="DT_WSTR" length="3" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Semester" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IsRowActive" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DeactivateDate" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="MemberKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="MemberID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="YearJoined" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SemesterPeriod" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Semester" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ValidFrom" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ValidTo" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Data Flow Task\Get All Members from the Access database.Outputs[ADO NET Source Output].Columns[id]};</property>
+                  name="ParameterMap">#{Package\Data Flow Task\Get All Members from the Access database.Outputs[OLE DB Source Output].Columns[id]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -592,7 +610,7 @@ where [refTable].[MemberID] = ?</property>
                       refId="Package\Data Flow Task\Check if entry already exists.Inputs[Lookup Input].Columns[id]"
                       cachedDataType="i4"
                       cachedName="id"
-                      lineageId="Package\Data Flow Task\Get All Members from the Access database.Outputs[ADO NET Source Output].Columns[id]">
+                      lineageId="Package\Data Flow Task\Get All Members from the Access database.Outputs[OLE DB Source Output].Columns[id]">
                       <properties>
                         <property
                           dataType="System.String"
@@ -620,7 +638,7 @@ where [refTable].[MemberID] = ?</property>
                       refId="Package\Data Flow Task\Check if entry already exists.Outputs[Lookup Match Output].Columns[SemesterPeriod]"
                       dataType="wstr"
                       errorOrTruncationOperation="Copy Column"
-                      length="3"
+                      length="50"
                       lineageId="Package\Data Flow Task\Check if entry already exists.Outputs[Lookup Match Output].Columns[SemesterPeriod]"
                       name="SemesterPeriod"
                       truncationRowDisposition="FailComponent">
@@ -635,7 +653,7 @@ where [refTable].[MemberID] = ?</property>
                       refId="Package\Data Flow Task\Check if entry already exists.Outputs[Lookup Match Output].Columns[Semester]"
                       dataType="wstr"
                       errorOrTruncationOperation="Copy Column"
-                      length="10"
+                      length="50"
                       lineageId="Package\Data Flow Task\Check if entry already exists.Outputs[Lookup Match Output].Columns[Semester]"
                       name="Semester"
                       truncationRowDisposition="FailComponent">
@@ -699,11 +717,11 @@ where [refTable].[MemberID] = ?</property>
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="periode"
-                      lineageId="Package\Data Flow Task\Get All Members from the Access database.Outputs[ADO NET Source Output].Columns[periode]" />
+                      lineageId="Package\Data Flow Task\Get All Members from the Access database.Outputs[OLE DB Source Output].Columns[periode]" />
                     <inputColumn
                       refId="Package\Data Flow Task\Check if SemesterPeriod and Semester changed.Inputs[Conditional Split Input].Columns[SemesterPeriod]"
                       cachedDataType="wstr"
-                      cachedLength="3"
+                      cachedLength="50"
                       cachedName="SemesterPeriod"
                       lineageId="Package\Data Flow Task\Check if entry already exists.Outputs[Lookup Match Output].Columns[SemesterPeriod]" />
                     <inputColumn
@@ -711,11 +729,11 @@ where [refTable].[MemberID] = ?</property>
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="semester"
-                      lineageId="Package\Data Flow Task\Get All Members from the Access database.Outputs[ADO NET Source Output].Columns[semester]" />
+                      lineageId="Package\Data Flow Task\Get All Members from the Access database.Outputs[OLE DB Source Output].Columns[semester]" />
                     <inputColumn
                       refId="Package\Data Flow Task\Check if SemesterPeriod and Semester changed.Inputs[Conditional Split Input].Columns[Semester]"
                       cachedDataType="wstr"
-                      cachedLength="10"
+                      cachedLength="50"
                       cachedName="Semester"
                       lineageId="Package\Data Flow Task\Check if entry already exists.Outputs[Lookup Match Output].Columns[Semester]" />
                   </inputColumns>
@@ -737,7 +755,7 @@ where [refTable].[MemberID] = ?</property>
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
-                      name="Expression">#{Package\Data Flow Task\Check if entry already exists.Outputs[Lookup Match Output].Columns[SemesterPeriod]} != #{Package\Data Flow Task\Get All Members from the Access database.Outputs[ADO NET Source Output].Columns[periode]}</property>
+                      name="Expression">#{Package\Data Flow Task\Check if entry already exists.Outputs[Lookup Match Output].Columns[SemesterPeriod]} != #{Package\Data Flow Task\Get All Members from the Access database.Outputs[OLE DB Source Output].Columns[periode]}</property>
                     <property
                       containsID="true"
                       dataType="System.String"
@@ -765,7 +783,7 @@ where [refTable].[MemberID] = ?</property>
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
-                      name="Expression">#{Package\Data Flow Task\Check if entry already exists.Outputs[Lookup Match Output].Columns[Semester]} != #{Package\Data Flow Task\Get All Members from the Access database.Outputs[ADO NET Source Output].Columns[semester]}</property>
+                      name="Expression">#{Package\Data Flow Task\Check if entry already exists.Outputs[Lookup Match Output].Columns[Semester]} != #{Package\Data Flow Task\Get All Members from the Access database.Outputs[OLE DB Source Output].Columns[semester]}</property>
                     <property
                       containsID="true"
                       dataType="System.String"
@@ -819,172 +837,255 @@ where [refTable].[MemberID] = ?</property>
             </component>
             <component
               refId="Package\Data Flow Task\Get All Members from the Access database"
-              componentClassID="Microsoft.ManagedComponentHost"
-              contactInfo="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
-              description="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server."
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
               name="Get All Members from the Access database"
               usesDispositions="true"
-              version="4">
+              version="7">
               <properties>
                 <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
                   dataType="System.String"
-                  description="Specifies the SQL statement used by the component to extract data."
-                  expressionType="Notify"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT Member.id, Member.active, Member.[year], SemesterGroups.periode, SemesterGroups.semester FROM Member
 INNER JOIN SemesterGroups ON Member.id=SemesterGroups.member_id;</property>
                 <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
                   dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">30</property>
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
                 <property
                   dataType="System.Boolean"
-                  description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
-                  name="AllowImplicitStringConversion">true</property>
-                <property
-                  dataType="System.String"
-                  description="The Source database table name."
-                  expressionType="Notify"
-                  name="TableOrViewName"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Member</property>
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
                 <property
                   dataType="System.Int32"
-                  description="Specify the mode to retrieve external column information"
+                  description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">2</property>
+                  typeConverter="AccessMode">2</property>
                 <property
                   dataType="System.String"
-                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task\Get All Members from the Access database.Connections[IDbConnection]"
-                  connectionManagerID="{A8697BFD-6ED7-4C86-B44E-F7D392DF375F}:external"
+                  refId="Package\Data Flow Task\Get All Members from the Access database.Connections[OleDbConnection]"
+                  connectionManagerID="{AE95B227-76D2-4012-9F1B-7861DEE2E3B4}:external"
                   connectionManagerRefId="Project.ConnectionManagers[fclub_safe]"
-                  description="Managed connection manager"
-                  name="IDbConnection" />
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
               </connections>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\Get All Members from the Access database.Outputs[ADO NET Source Output]"
-                  name="ADO NET Source Output">
+                  refId="Package\Data Flow Task\Get All Members from the Access database.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Get All Members from the Access database.Outputs[ADO NET Source Output].Columns[id]"
+                      refId="Package\Data Flow Task\Get All Members from the Access database.Outputs[OLE DB Source Output].Columns[id]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Get All Members from the Access database.Outputs[ADO NET Source Output].ExternalColumns[id]"
-                      lineageId="Package\Data Flow Task\Get All Members from the Access database.Outputs[ADO NET Source Output].Columns[id]"
+                      externalMetadataColumnId="Package\Data Flow Task\Get All Members from the Access database.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                      lineageId="Package\Data Flow Task\Get All Members from the Access database.Outputs[OLE DB Source Output].Columns[id]"
                       name="id"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Get All Members from the Access database.Outputs[ADO NET Source Output].Columns[active]"
+                      refId="Package\Data Flow Task\Get All Members from the Access database.Outputs[OLE DB Source Output].Columns[active]"
                       dataType="i2"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Get All Members from the Access database.Outputs[ADO NET Source Output].ExternalColumns[active]"
-                      lineageId="Package\Data Flow Task\Get All Members from the Access database.Outputs[ADO NET Source Output].Columns[active]"
+                      externalMetadataColumnId="Package\Data Flow Task\Get All Members from the Access database.Outputs[OLE DB Source Output].ExternalColumns[active]"
+                      lineageId="Package\Data Flow Task\Get All Members from the Access database.Outputs[OLE DB Source Output].Columns[active]"
                       name="active"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Get All Members from the Access database.Outputs[ADO NET Source Output].Columns[year]"
-                      dataType="nText"
+                      refId="Package\Data Flow Task\Get All Members from the Access database.Outputs[OLE DB Source Output].Columns[year]"
+                      dataType="ui4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Get All Members from the Access database.Outputs[ADO NET Source Output].ExternalColumns[year]"
-                      lineageId="Package\Data Flow Task\Get All Members from the Access database.Outputs[ADO NET Source Output].Columns[year]"
+                      externalMetadataColumnId="Package\Data Flow Task\Get All Members from the Access database.Outputs[OLE DB Source Output].ExternalColumns[year]"
+                      lineageId="Package\Data Flow Task\Get All Members from the Access database.Outputs[OLE DB Source Output].Columns[year]"
                       name="year"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Get All Members from the Access database.Outputs[ADO NET Source Output].Columns[periode]"
+                      refId="Package\Data Flow Task\Get All Members from the Access database.Outputs[OLE DB Source Output].Columns[periode]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Get All Members from the Access database.Outputs[ADO NET Source Output].ExternalColumns[periode]"
+                      externalMetadataColumnId="Package\Data Flow Task\Get All Members from the Access database.Outputs[OLE DB Source Output].ExternalColumns[periode]"
                       length="50"
-                      lineageId="Package\Data Flow Task\Get All Members from the Access database.Outputs[ADO NET Source Output].Columns[periode]"
+                      lineageId="Package\Data Flow Task\Get All Members from the Access database.Outputs[OLE DB Source Output].Columns[periode]"
                       name="periode"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Get All Members from the Access database.Outputs[ADO NET Source Output].Columns[semester]"
+                      refId="Package\Data Flow Task\Get All Members from the Access database.Outputs[OLE DB Source Output].Columns[semester]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Get All Members from the Access database.Outputs[ADO NET Source Output].ExternalColumns[semester]"
+                      externalMetadataColumnId="Package\Data Flow Task\Get All Members from the Access database.Outputs[OLE DB Source Output].ExternalColumns[semester]"
                       length="50"
-                      lineageId="Package\Data Flow Task\Get All Members from the Access database.Outputs[ADO NET Source Output].Columns[semester]"
+                      lineageId="Package\Data Flow Task\Get All Members from the Access database.Outputs[OLE DB Source Output].Columns[semester]"
                       name="semester"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Get All Members from the Access database.Outputs[ADO NET Source Output].ExternalColumns[id]"
+                      refId="Package\Data Flow Task\Get All Members from the Access database.Outputs[OLE DB Source Output].ExternalColumns[id]"
                       dataType="i4"
                       name="id" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Get All Members from the Access database.Outputs[ADO NET Source Output].ExternalColumns[active]"
+                      refId="Package\Data Flow Task\Get All Members from the Access database.Outputs[OLE DB Source Output].ExternalColumns[active]"
                       dataType="i2"
                       name="active" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Get All Members from the Access database.Outputs[ADO NET Source Output].ExternalColumns[year]"
+                      refId="Package\Data Flow Task\Get All Members from the Access database.Outputs[OLE DB Source Output].ExternalColumns[year]"
                       dataType="nText"
                       name="year" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Get All Members from the Access database.Outputs[ADO NET Source Output].ExternalColumns[periode]"
+                      refId="Package\Data Flow Task\Get All Members from the Access database.Outputs[OLE DB Source Output].ExternalColumns[periode]"
                       dataType="wstr"
                       length="50"
                       name="periode" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Get All Members from the Access database.Outputs[ADO NET Source Output].ExternalColumns[semester]"
+                      refId="Package\Data Flow Task\Get All Members from the Access database.Outputs[OLE DB Source Output].ExternalColumns[semester]"
                       dataType="wstr"
                       length="50"
                       name="semester" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\Data Flow Task\Get All Members from the Access database.Outputs[ADO NET Source Error Output]"
+                  refId="Package\Data Flow Task\Get All Members from the Access database.Outputs[OLE DB Source Error Output]"
                   isErrorOut="true"
-                  name="ADO NET Source Error Output">
+                  name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Get All Members from the Access database.Outputs[ADO NET Source Error Output].Columns[id]"
+                      refId="Package\Data Flow Task\Get All Members from the Access database.Outputs[OLE DB Source Error Output].Columns[id]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Get All Members from the Access database.Outputs[ADO NET Source Error Output].Columns[id]"
+                      lineageId="Package\Data Flow Task\Get All Members from the Access database.Outputs[OLE DB Source Error Output].Columns[id]"
                       name="id" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Get All Members from the Access database.Outputs[ADO NET Source Error Output].Columns[active]"
+                      refId="Package\Data Flow Task\Get All Members from the Access database.Outputs[OLE DB Source Error Output].Columns[active]"
                       dataType="i2"
-                      lineageId="Package\Data Flow Task\Get All Members from the Access database.Outputs[ADO NET Source Error Output].Columns[active]"
+                      lineageId="Package\Data Flow Task\Get All Members from the Access database.Outputs[OLE DB Source Error Output].Columns[active]"
                       name="active" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Get All Members from the Access database.Outputs[ADO NET Source Error Output].Columns[year]"
+                      refId="Package\Data Flow Task\Get All Members from the Access database.Outputs[OLE DB Source Error Output].Columns[year]"
                       dataType="nText"
-                      lineageId="Package\Data Flow Task\Get All Members from the Access database.Outputs[ADO NET Source Error Output].Columns[year]"
+                      lineageId="Package\Data Flow Task\Get All Members from the Access database.Outputs[OLE DB Source Error Output].Columns[year]"
                       name="year" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Get All Members from the Access database.Outputs[ADO NET Source Error Output].Columns[periode]"
+                      refId="Package\Data Flow Task\Get All Members from the Access database.Outputs[OLE DB Source Error Output].Columns[periode]"
                       dataType="wstr"
                       length="50"
-                      lineageId="Package\Data Flow Task\Get All Members from the Access database.Outputs[ADO NET Source Error Output].Columns[periode]"
+                      lineageId="Package\Data Flow Task\Get All Members from the Access database.Outputs[OLE DB Source Error Output].Columns[periode]"
                       name="periode" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Get All Members from the Access database.Outputs[ADO NET Source Error Output].Columns[semester]"
+                      refId="Package\Data Flow Task\Get All Members from the Access database.Outputs[OLE DB Source Error Output].Columns[semester]"
                       dataType="wstr"
                       length="50"
-                      lineageId="Package\Data Flow Task\Get All Members from the Access database.Outputs[ADO NET Source Error Output].Columns[semester]"
+                      lineageId="Package\Data Flow Task\Get All Members from the Access database.Outputs[OLE DB Source Error Output].Columns[semester]"
                       name="semester" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Get All Members from the Access database.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      refId="Package\Data Flow Task\Get All Members from the Access database.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Get All Members from the Access database.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Data Flow Task\Get All Members from the Access database.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Get All Members from the Access database.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\Data Flow Task\Get All Members from the Access database.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Get All Members from the Access database.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Data Flow Task\Get All Members from the Access database.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Get Current Date"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Get Current Date"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Get Current Date.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Get Current Date.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Data Flow Task\Get Current Date.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Get Current Date.Outputs[Derived Column Output].Columns[CurrentDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Get Current Date.Outputs[Derived Column Output].Columns[CurrentDate]"
+                      name="CurrentDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[GETDATE]()</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">GETDATE()</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Get Current Date.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Data Flow Task\Get Current Date.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Get Current Date.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Get Current Date.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Get Current Date.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Get Current Date.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -995,10 +1096,10 @@ INNER JOIN SemesterGroups ON Member.id=SemesterGroups.member_id;</property>
           </components>
           <paths>
             <path
-              refId="Package\Data Flow Task.Paths[ADO NET Source Output]"
+              refId="Package\Data Flow Task.Paths[Derived Column Output]"
               endId="Package\Data Flow Task\Check if entry already exists.Inputs[Lookup Input]"
-              name="ADO NET Source Output"
-              startId="Package\Data Flow Task\Get All Members from the Access database.Outputs[ADO NET Source Output]" />
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\Get Current Date.Outputs[Derived Column Output]" />
             <path
               refId="Package\Data Flow Task.Paths[Lookup Match Output]"
               endId="Package\Data Flow Task\Check if SemesterPeriod and Semester changed.Inputs[Conditional Split Input]"
@@ -1009,6 +1110,11 @@ INNER JOIN SemesterGroups ON Member.id=SemesterGroups.member_id;</property>
               endId="Package\Data Flow Task\Add entries that do not exist to the database.Inputs[OLE DB Destination Input]"
               name="Lookup No Match Output"
               startId="Package\Data Flow Task\Check if entry already exists.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task\Get Current Date.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task\Get All Members from the Access database.Outputs[OLE DB Source Output]" />
             <path
               refId="Package\Data Flow Task.Paths[Semester already exists]"
               endId="Package\Data Flow Task\Add entries that have Semester change.Inputs[OLE DB Destination Input]"
@@ -1051,160 +1157,34 @@ INNER JOIN SemesterGroups ON Member.id=SemesterGroups.member_id;</property>
         <NodeLayout
           Size="281,42"
           Id="Package\Data Flow Task\Get All Members from the Access database"
-          TopLeft="434,29" />
-        <NodeLayout
-          Size="290,42"
-          Id="Package\Data Flow Task\Add entries that do not exist to the database"
-          TopLeft="215,235" />
-        <NodeLayout
-          Size="211,42"
-          Id="Package\Data Flow Task\Check if entry already exists"
-          TopLeft="470,130" />
-        <EdgeLayout
-          Id="Package\Data Flow Task.Paths[ADO NET Source Output]"
-          TopLeft="575,71">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,59"
-              Start="0,0"
-              End="0,51.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,51.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="294,42"
-          Id="Package\Data Flow Task\Add entries that have SemesterPeriod change"
-          TopLeft="469,346" />
-        <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Lookup No Match Output]"
-          TopLeft="541.666666666667,172">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-181.666666666667,63"
-              Start="0,0"
-              End="-181.666666666667,55.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,21.4844778927563" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,21.4844778927563"
-                    Point2="0,25.4844778927563"
-                    Point3="-4,25.4844778927563" />
-                  <mssgle:LineSegment
-                    End="-177.666666666667,25.4844778927563" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-177.666666666667,25.4844778927563"
-                    Point2="-181.666666666667,25.4844778927563"
-                    Point3="-181.666666666667,29.4844778927563" />
-                  <mssgle:LineSegment
-                    End="-181.666666666667,55.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-146.639720052083,30.4844778927563,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          TopLeft="245,34" />
         <NodeLayout
           Size="304,42"
           Id="Package\Data Flow Task\Check if SemesterPeriod and Semester changed"
-          TopLeft="652,235" />
-        <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Lookup Match Output]"
-          TopLeft="609.333333333333,172">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="194.666666666667,63"
-              Start="0,0"
-              End="194.666666666667,55.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,21.4844778927564" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,21.4844778927564"
-                    Point2="0,25.4844778927564"
-                    Point3="4,25.4844778927564" />
-                  <mssgle:LineSegment
-                    End="190.666666666667,25.4844778927564" />
-                  <mssgle:CubicBezierSegment
-                    Point1="190.666666666667,25.4844778927564"
-                    Point2="194.666666666667,25.4844778927564"
-                    Point3="194.666666666667,29.4844778927564" />
-                  <mssgle:LineSegment
-                    End="194.666666666667,55.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="49.1419466145834,30.4844778927564,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          TopLeft="469,304" />
+        <NodeLayout
+          Size="159,42"
+          Id="Package\Data Flow Task\Get Current Date"
+          TopLeft="305,110" />
         <NodeLayout
           Size="265,42"
           Id="Package\Data Flow Task\Add entries that have Semester change"
-          TopLeft="853,348" />
-        <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Semester already exists]"
-          TopLeft="853.333333333333,277">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="132.166666666667,71"
-              Start="0,0"
-              End="132.166666666667,63.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,24.6230366492147" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,24.6230366492147"
-                    Point2="0,28.6230366492147"
-                    Point3="4,28.6230366492147" />
-                  <mssgle:LineSegment
-                    End="128.166666666667,28.6230366492147" />
-                  <mssgle:CubicBezierSegment
-                    Point1="128.166666666667,28.6230366492147"
-                    Point2="132.166666666667,28.6230366492147"
-                    Point3="132.166666666667,32.6230366492147" />
-                  <mssgle:LineSegment
-                    End="132.166666666667,63.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="3.20009114583336,33.6230366492147,105.766484375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          TopLeft="670,417" />
+        <NodeLayout
+          Size="294,42"
+          Id="Package\Data Flow Task\Add entries that have SemesterPeriod change"
+          TopLeft="286,415" />
+        <NodeLayout
+          Size="211,42"
+          Id="Package\Data Flow Task\Check if entry already exists"
+          TopLeft="276,187" />
+        <NodeLayout
+          Size="290,42"
+          Id="Package\Data Flow Task\Add entries that do not exist to the database"
+          TopLeft="32,304" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[SemesterPeriod already exists]"
-          TopLeft="754.666666666667,277">
+          TopLeft="571.666666666667,346">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1234,8 +1214,160 @@ INNER JOIN SemesterGroups ON Member.id=SemesterGroups.member_id;</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-123.026575520833,33.6230366492147,133.386484375,11.609375"
+              BoundingBox="-136.026575520833,32.8167539267016,133.386484375,11.609375"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Semester already exists]"
+          TopLeft="670.333333333333,346">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="132.166666666667,71"
+              Start="0,0"
+              End="132.166666666667,63.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.6230366492147" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.6230366492147"
+                    Point2="0,28.6230366492147"
+                    Point3="4,28.6230366492147" />
+                  <mssgle:LineSegment
+                    End="128.166666666667,28.6230366492147" />
+                  <mssgle:CubicBezierSegment
+                    Point1="128.166666666667,28.6230366492147"
+                    Point2="132.166666666667,28.6230366492147"
+                    Point3="132.166666666667,32.6230366492147" />
+                  <mssgle:LineSegment
+                    End="132.166666666667,63.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="13.2000911458335,33.6230366492147,105.766484375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="385,76">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,34"
+              Start="0,0"
+              End="0,26.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Lookup No Match Output]"
+          TopLeft="347.666666666667,229">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-170.666666666667,75"
+              Start="0,0"
+              End="-170.666666666667,67.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.3386641580432" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.3386641580432"
+                    Point2="0,30.3386641580432"
+                    Point3="-4,30.3386641580432" />
+                  <mssgle:LineSegment
+                    End="-166.666666666667,30.3386641580432" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-166.666666666667,30.3386641580432"
+                    Point2="-170.666666666667,30.3386641580432"
+                    Point3="-170.666666666667,34.3386641580432" />
+                  <mssgle:LineSegment
+                    End="-170.666666666667,67.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-141.139720052083,35.3386641580432,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Lookup Match Output]"
+          TopLeft="415.333333333333,229">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="205.666666666667,75"
+              Start="0,0"
+              End="205.666666666667,67.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.3386641580433" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.3386641580433"
+                    Point2="0,30.3386641580433"
+                    Point3="4,30.3386641580433" />
+                  <mssgle:LineSegment
+                    End="201.666666666667,30.3386641580433" />
+                  <mssgle:CubicBezierSegment
+                    Point1="201.666666666667,30.3386641580433"
+                    Point2="205.666666666667,30.3386641580433"
+                    Point3="205.666666666667,34.3386641580433" />
+                  <mssgle:LineSegment
+                    End="205.666666666667,67.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="54.6419466145833,35.3386641580433,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Derived Column Output]"
+          TopLeft="383,152">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35"
+              Start="0,0"
+              End="0,27.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -1243,14 +1375,6 @@ INNER JOIN SemesterGroups ON Member.id=SemesterGroups.member_id;</property>
   </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\Data Flow Task\Get All Members from the Access database">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\Add entries that do not exist to the database">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1263,25 +1387,15 @@ INNER JOIN SemesterGroups ON Member.id=SemesterGroups.member_id;</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\Check if entry already exists">
+    design-time-name="Package\Data Flow Task\Add entries that have Semester change">
     <Properties>
       <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[Dimension].[Member]</Value>
+        <Name>DataSourceViewID</Name>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -1299,7 +1413,30 @@ INNER JOIN SemesterGroups ON Member.id=SemesterGroups.member_id;</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\Add entries that have Semester change">
+    design-time-name="Package\Data Flow Task\Check if entry already exists">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[Dimension].[Member]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Add entries that do not exist to the database">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
