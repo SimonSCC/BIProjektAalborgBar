@@ -5,23 +5,45 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="MSI"
   DTS:CreatorName="MSI\Simon"
-  DTS:DTSID="{AEBC6432-B334-4952-BA1F-4D54AF53C9F8}"
+  DTS:DTSID="{D7787C72-3CD2-4779-800B-D3E9CFF1B43E}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="15.0.2000.152"
   DTS:LocaleID="1030"
-  DTS:ObjectName="Package1"
+  DTS:ObjectName="ImportProductDimension"
   DTS:PackageType="5"
-  DTS:VersionBuild="23"
-  DTS:VersionGUID="{87ABB39F-7B67-46F9-8251-4DB7D413018C}">
+  DTS:VersionBuild="27"
+  DTS:VersionGUID="{C3CC5FF7-D28B-48DE-8B61-75ACE6ADC006}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[fclub_safe 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{0DA7CBE7-4D90-4938-B1F3-AF7072CA8DCF}"
+      DTS:ObjectName="fclub_safe 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=C:\Users\Simon\Desktop\Code\SchoolYear2\BusinessIntelligence\IntegrationServicesProjectOwnWork\Fclub data\fclub_safe.mdb;Provider=Microsoft.Jet.OLEDB.4.0;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[MSI\MSSQLBISERVER.BIProjektDW1]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{0F1B81C8-88DF-4C75-9E10-B81C5B9C16EA}"
+      DTS:ObjectName="MSI\MSSQLBISERVER.BIProjektDW1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=MSI\MSSQLBISERVER;Initial Catalog=BIProjektDW;Integrated Security=True;Application Name=SSIS-ImportProductDimension-{0F1B81C8-88DF-4C75-9E10-B81C5B9C16EA}MSI\MSSQLBISERVER.BIProjektDW1;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
       DTS:refId="Package\Data Flow Task"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{4C47F7AD-6890-4E98-A1B0-C1D64A33E2DF}"
+      DTS:DTSID="{24A7DC27-0DF8-4CE0-8833-8098CBFA2725}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
       DTS:ObjectName="Data Flow Task"
@@ -299,7 +321,7 @@ where [refTable].[ProductID] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[id]};</property>
+                  name="ParameterMap">#{Package\Data Flow Task\179:invalid};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -312,8 +334,8 @@ where [refTable].[ProductID] = ?</property>
               <connections>
                 <connection
                   refId="Package\Data Flow Task\Is the rows an UPDATE or an INSERT.Connections[OleDbConnection]"
-                  connectionManagerID="{DDAC2ECF-A23F-4F12-9676-124F256D6748}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[BIProjektDW]"
+                  connectionManagerID="{4FA198D2-2B35-4AEE-962E-CA800AD165C6}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[MSSQLServer.BIProjektDW]"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
               </connections>
@@ -487,8 +509,8 @@ where [refTable].[ProductID] = ?</property>
               <connections>
                 <connection
                   refId="Package\Data Flow Task\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="{DDAC2ECF-A23F-4F12-9676-124F256D6748}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[BIProjektDW]"
+                  connectionManagerID="{4FA198D2-2B35-4AEE-962E-CA800AD165C6}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[MSSQLServer.BIProjektDW]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -501,17 +523,11 @@ where [refTable].[ProductID] = ?</property>
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[id]"
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ProductID]"
                       cachedDataType="i4"
-                      cachedName="id"
+                      cachedName="ProductID"
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[id]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[price]"
-                      cachedDataType="i4"
-                      cachedName="price"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ListedPrice]"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[price]" />
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[ProductID]" />
                     <inputColumn
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ConvertedName]"
                       cachedDataType="wstr"
@@ -519,6 +535,12 @@ where [refTable].[ProductID] = ?</property>
                       cachedName="ConvertedName"
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
                       lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[ConvertedName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[price]"
+                      cachedDataType="i4"
+                      cachedName="price"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ListedPrice]"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[price]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -631,8 +653,8 @@ where [refTable].[ProductID] = ?</property>
               <connections>
                 <connection
                   refId="Package\Data Flow Task\OLE DB Source.Connections[OleDbConnection]"
-                  connectionManagerID="{CDA631D8-30EA-45B9-9BCB-3C31BAD2DF71}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[fclub_safe.mdb]"
+                  connectionManagerID="Package.ConnectionManagers[fclub_safe 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[fclub_safe 1]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -784,19 +806,6 @@ where [refTable].[ProductID] = ?</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[name]"
-                      cachedDataType="nText"
-                      cachedName="name"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[name]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[name]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
                       refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[price]"
                       cachedDataType="i4"
                       cachedName="price"
@@ -807,32 +816,6 @@ where [refTable].[ProductID] = ?</property>
                           dataType="System.Int32"
                           description="Output column lineage ID"
                           name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[price]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[active]"
-                      cachedDataType="i2"
-                      cachedName="active"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[active]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[active]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[deactivate_date]"
-                      cachedDataType="date"
-                      cachedName="deactivate_date"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[deactivate_date]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[deactivate_date]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
@@ -873,6 +856,45 @@ where [refTable].[ProductID] = ?</property>
                           dataType="System.Int32"
                           description="Output column lineage ID"
                           name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[ConvertedName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[active]"
+                      cachedDataType="i2"
+                      cachedName="active"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[active]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[active]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[deactivate_date]"
+                      cachedDataType="date"
+                      cachedName="deactivate_date"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[deactivate_date]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[deactivate_date]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[name]"
+                      cachedDataType="nText"
+                      cachedName="name"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[name]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[name]}</property>
                       </properties>
                     </inputColumn>
                   </inputColumns>
@@ -923,16 +945,17 @@ where [refTable].[ProductID] = ?</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 3].Columns[active]"
-                      cachedDataType="i2"
-                      cachedName="active"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[active]">
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 3].Columns[DT_WSTR NAME]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="DT_WSTR NAME"
+                      lineageId="Package\Data Flow Task\Convert Name column to nvarchar(255).Outputs[Data Conversion Output].Columns[DT_WSTR NAME]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[active]}</property>
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[ConvertedName]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
@@ -949,17 +972,16 @@ where [refTable].[ProductID] = ?</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 3].Columns[DT_WSTR NAME]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="DT_WSTR NAME"
-                      lineageId="Package\Data Flow Task\Convert Name column to nvarchar(255).Outputs[Data Conversion Output].Columns[DT_WSTR NAME]">
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 3].Columns[active]"
+                      cachedDataType="i2"
+                      cachedName="active"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[active]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[ConvertedName]}</property>
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[active]}</property>
                       </properties>
                     </inputColumn>
                   </inputColumns>
@@ -1107,39 +1129,9 @@ where [refTable].[ProductID] = ?</property>
           Id="Package\Data Flow Task\Duplicate Streams"
           TopLeft="617,355" />
         <NodeLayout
-          Size="171,42"
-          Id="Package\Data Flow Task\OLE DB Destination"
-          TopLeft="367,461" />
-        <NodeLayout
           Size="192,42"
           Id="Package\Data Flow Task\Check for price changes"
           TopLeft="603,255" />
-        <NodeLayout
-          Size="150,42"
-          Id="Package\Data Flow Task\OLE DB Source"
-          TopLeft="376,83" />
-        <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Union All Output 1]"
-          TopLeft="455.25,398.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,62.5"
-              Start="0,0"
-              End="0,55">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,55" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Type 2 change]"
           TopLeft="699,297">
@@ -1162,28 +1154,6 @@ where [refTable].[ProductID] = ?</property>
             <mssgm:EdgeLabel
               BoundingBox="-33.44244140625,19.41845703125,66.8848828125,11.6630859375"
               RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
-          TopLeft="449.5,125">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,27"
-              Start="0,0"
-              End="0,19.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,19.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -1299,12 +1269,64 @@ where [refTable].[ProductID] = ?</property>
           Id="26618e92-8443-42fb-8957-f1a61803db8e"
           TopLeft="607,99" />
         <AnnotationLayout
-          Text="Man ville ikke tjekke om UPDATE&#xD;&#xA;i en full load som er det vi laver.&#xD;&#xA;Fordi der vil alrdig være flere versioner i&#xD;&#xA;source db"
+          Text="Man ville ikke tjekke om UPDATE&#xA;i en full load som er det vi laver.&#xA;Fordi der vil alrdig være flere versioner i&#xA;source db"
           ParentId="Package\Data Flow Task"
           FontInfo="{assembly:Null}"
           Size="239,88"
           Id="440c3ec3-0087-49d4-b432-b5bf2816db47"
           TopLeft="66,125" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Data Flow Task\OLE DB Destination"
+          TopLeft="378,452" />
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Data Flow Task\OLE DB Source"
+          TopLeft="372,62" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="447.5,104">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48"
+              Start="0,0"
+              End="0,40.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Union All Output 1]"
+          TopLeft="460.75,398.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,53.5"
+              Start="0,0"
+              End="0,46">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,46" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
