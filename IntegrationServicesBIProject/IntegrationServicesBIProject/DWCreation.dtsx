@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="25"
-  DTS:VersionGUID="{FF076138-AC7F-4E47-A715-30BCF310F62B}">
+  DTS:VersionBuild="30"
+  DTS:VersionGUID="{6404E390-C619-421B-B114-22E16FD08E99}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -75,7 +75,7 @@
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4BA4440F-495A-47F7-8022-1E737464C341}"
-              SQLTask:SqlStatementSource="USE BIProjektDW&#xA;IF object_id('Dimension.[Member]', 'U') IS NOT NULL&#xA;&#x9;PRINT 'Member table already created!'&#xA;ELSE&#xA;&#x9;BEGIN &#xA;&#x9;PRINT 'Not present! Member table is being created'&#xA;&#x9;CREATE TABLE Dimension.[Member]&#xA;&#x9;(&#xA;&#x9;MemberKey INT IDENTITY(1,1),&#xA;&#x9;MemberID INT,&#xA;&#x9;YearJoined DATE,&#xA;&#x9;SemesterPeriod NVARCHAR(3),&#xA;&#x9;Semester NVARCHAR(10),&#xA;&#x9;IsRowActive BIT,&#xA;&#x9;DeactivateDate DATE,&#xA;&#xA;&#x9;PRIMARY KEY (MemberKey)&#xA;&#x9;);&#xA;&#x9;END&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:SqlStatementSource="USE BIProjektDW&#xA;IF object_id('Dimension.[Member]', 'U') IS NOT NULL&#xA;&#x9;PRINT 'Member table already created!'&#xA;ELSE&#xA;&#x9;BEGIN &#xA;&#x9;PRINT 'Not present! Member table is being created'&#xA;&#x9;CREATE TABLE Dimension.[Member]&#xA;&#x9;(&#xA;&#x9;MemberKey INT IDENTITY(1,1),&#xA;&#x9;MemberID INT,&#xA;&#x9;YearJoined DATE,&#xA;&#x9;SemesterPeriod NVARCHAR(50),&#xA;&#x9;Semester NVARCHAR(50),&#xA;&#x9;ValidFrom DATE,&#xA;&#x9;ValidTo DATE,&#xA;&#xA;&#x9;PRIMARY KEY (MemberKey)&#xA;&#x9;);&#xA;&#x9;END&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -92,7 +92,7 @@
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4BA4440F-495A-47F7-8022-1E737464C341}"
-              SQLTask:SqlStatementSource="USE BIProjektDW&#xA;IF object_id('Dimension.[Product]', 'U') IS NOT NULL&#xA;&#x9;PRINT 'Product table already created!'&#xA;ELSE&#xA;&#x9;BEGIN &#xA;&#x9;PRINT 'Not present! Product table is being created'&#xA;&#x9;CREATE TABLE Dimension.[Product]&#xA;&#x9;(&#xA;&#x9;ProductKey INT IDENTITY(1,1),&#xA;&#x9;ProductID INT,&#xA;&#x9;[Name] NVARCHAR(255),&#xA;&#x9;ListedPrice INT,&#xA;&#x9;Category NVARCHAR(255),&#xA;&#x9;IsRowActive BIT,&#xA;&#x9;DeactivateDate DATE,&#xA;&#xA;&#x9;PRIMARY KEY (ProductKey)&#xA;&#x9;);&#xA;&#x9;END" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:SqlStatementSource="USE BIProjektDW&#xA;IF object_id('Dimension.[Product]', 'U') IS NOT NULL&#xA;&#x9;PRINT 'Product table already created!'&#xA;ELSE&#xA;&#x9;BEGIN &#xA;&#x9;PRINT 'Not present! Product table is being created'&#xA;&#x9;CREATE TABLE Dimension.[Product]&#xA;&#x9;(&#xA;&#x9;ProductKey INT IDENTITY(1,1),&#xA;&#x9;ProductID INT,&#xA;&#x9;[Name] NVARCHAR(255),&#xA;&#x9;ListedPrice INT,&#xA;&#x9;Category NVARCHAR(255),&#xA;&#x9;ValidFrom DATE,&#xA;&#x9;ValidTo DATE,&#xA;&#xA;&#x9;PRIMARY KEY (ProductKey)&#xA;&#x9;);&#xA;&#x9;END&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -233,7 +233,7 @@
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
                   SQLTask:Connection="{4BA4440F-495A-47F7-8022-1E737464C341}"
-                  SQLTask:SqlStatementSource="USE BIProjektDW&#xA;IF NOT EXISTS(SELECT * FROM INFORMATION_SCHEMA.REFERENTIAL_CONSTRAINTS WHERE CONSTRAINT_CATALOG = 'BIProjektDW' AND &#xA;CONSTRAINT_NAME = 'FK_Fact_Sale_ProductKey_Dimension_Product_ProductKey')&#xA;&#x9;BEGIN&#x9;&#x9;&#xA;&#x9;&#x9;ALTER TABLE Fact.Sale ADD CONSTRAINT FK_Fact_Sale_ProductKey_Dimension_Product_ProductKey FOREIGN KEY (ProductKey)&#xA;&#x9;&#x9;REFERENCES Dimension.Product(ProductKey)&#xA;&#x9;END&#xA;ELSE&#xA;&#x9;PRINT 'FK_Fact_Sale_ProductKey_Dimension_Product_ProductKey constraint already exists!'&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+                  SQLTask:SqlStatementSource="&#xA;USE BIProjektDW&#xA;IF NOT EXISTS(SELECT * FROM INFORMATION_SCHEMA.REFERENTIAL_CONSTRAINTS WHERE CONSTRAINT_CATALOG = 'BIProjektDW' AND &#xA;CONSTRAINT_NAME = 'FK_Fact_Sale_ProductKey_Dimension_Product_ProductKey')&#xA;&#x9;BEGIN&#x9;&#x9;&#xA;&#x9;&#x9;ALTER TABLE Fact.Sale ADD CONSTRAINT FK_Fact_Sale_ProductKey_Dimension_Product_ProductKey FOREIGN KEY (ProductKey)&#xA;&#x9;&#x9;REFERENCES Dimension.Product(ProductKey)&#xA;&#x9;END&#xA;ELSE&#xA;&#x9;PRINT 'FK_Fact_Sale_ProductKey_Dimension_Product_ProductKey constraint already exists!'&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
               </DTS:ObjectData>
             </DTS:Executable>
             <DTS:Executable
@@ -320,7 +320,7 @@
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4BA4440F-495A-47F7-8022-1E737464C341}"
-              SQLTask:SqlStatementSource="&#xA;USE BIProjektDW&#xA;IF object_id('Fact.[Sale]', 'U') IS NOT NULL&#xA;&#x9;PRINT 'Sale table already created!'&#xA;ELSE&#xA;&#x9;BEGIN &#xA;&#x9;PRINT 'Not present! Sale table is being created'&#xA;&#x9;CREATE TABLE Fact.Sale&#xA;&#x9;(&#xA;&#x9;SaleKey INT IDENTITY(1,1),&#xA;&#x9;MemberKey INT,&#xA;&#x9;ProductKey INT,&#xA;&#x9;TimeKey TIME,&#xA;&#x9;DateKey DATE,&#xA;&#x9;RoomKey INT,&#xA;&#x9;Price MONEY,&#xA;&#x9;&#xA;&#xA;&#x9;PRIMARY KEY (SaleKey)&#xA;&#x9;);&#xA;END" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:SqlStatementSource="USE BIProjektDW&#xA;IF object_id('Fact.[Sale]', 'U') IS NOT NULL&#xA;&#x9;PRINT 'Sale table already created!'&#xA;ELSE&#xA;&#x9;BEGIN &#xA;&#x9;PRINT 'Not present! Sale table is being created'&#xA;&#x9;CREATE TABLE Fact.Sale&#xA;&#x9;(&#xA;&#x9;SaleKey INT IDENTITY(1,1),&#xA;&#x9;AlternativeSaleKey INT UNIQUE,&#xA;&#x9;MemberKey INT,&#xA;&#x9;ProductKey INT,&#xA;&#x9;TimeKey TIME,&#xA;&#x9;DateKey DATE,&#xA;&#x9;RoomKey INT,&#xA;&#x9;Price MONEY,&#xA;&#x9;&#xA;&#xA;&#x9;PRIMARY KEY (SaleKey)&#xA;&#x9;);&#xA;END" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
