@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="21"
-  DTS:VersionGUID="{B14D5F4F-4BDA-4285-A1F6-BE22F1562F28}">
+  DTS:VersionBuild="23"
+  DTS:VersionGUID="{87ABB39F-7B67-46F9-8251-4DB7D413018C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -251,7 +251,7 @@
       ,[Name]
       ,[ListedPrice]
 FROM [Dimension].[Product]
-WHERE [DeactivateDate] IS NULL;</property>
+WHERE [ValidTo] IS NULL;</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
@@ -262,7 +262,7 @@ WHERE [DeactivateDate] IS NULL;</property>
       ,[Name]
       ,[ListedPrice]
 FROM [Dimension].[Product]
-WHERE [DeactivateDate] IS NULL;) [refTable]
+WHERE [ValidTo] IS NULL;) [refTable]
 where [refTable].[ProductID] = ?</property>
                 <property
                   dataType="System.Int32"
@@ -545,13 +545,13 @@ where [refTable].[ProductID] = ?</property>
                       length="255"
                       name="Category" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IsRowActive]"
-                      dataType="bool"
-                      name="IsRowActive" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DeactivateDate]"
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ValidFrom]"
                       dataType="dbDate"
-                      name="DeactivateDate" />
+                      name="ValidFrom" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ValidTo]"
+                      dataType="dbDate"
+                      name="ValidTo" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1089,38 +1089,38 @@ where [refTable].[ProductID] = ?</property>
     design-time-name="Package\Data Flow Task">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="266,42"
           Id="Package\Data Flow Task\Convert Name column to nvarchar(255)"
-          TopLeft="303,152" />
+          TopLeft="315,152" />
         <NodeLayout
           Size="121,42"
           Id="Package\Data Flow Task\Union All"
-          TopLeft="385.5,356.5" />
+          TopLeft="397.5,356.5" />
         <NodeLayout
           Size="256,42"
           Id="Package\Data Flow Task\Is the rows an UPDATE or an INSERT"
-          TopLeft="313,217" />
+          TopLeft="325,217" />
         <NodeLayout
           Size="164,42"
           Id="Package\Data Flow Task\Duplicate Streams"
-          TopLeft="605,355" />
+          TopLeft="617,355" />
         <NodeLayout
           Size="171,42"
           Id="Package\Data Flow Task\OLE DB Destination"
-          TopLeft="355,461" />
+          TopLeft="367,461" />
         <NodeLayout
           Size="192,42"
           Id="Package\Data Flow Task\Check for price changes"
-          TopLeft="591,255" />
+          TopLeft="603,255" />
         <NodeLayout
           Size="150,42"
           Id="Package\Data Flow Task\OLE DB Source"
-          TopLeft="364,83" />
+          TopLeft="376,83" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Union All Output 1]"
-          TopLeft="443.25,398.5">
+          TopLeft="455.25,398.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1142,7 +1142,7 @@ where [refTable].[ProductID] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Type 2 change]"
-          TopLeft="687,297">
+          TopLeft="699,297">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1166,7 +1166,7 @@ where [refTable].[ProductID] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
-          TopLeft="437.5,125">
+          TopLeft="449.5,125">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1188,7 +1188,7 @@ where [refTable].[ProductID] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Multicast Output 1]"
-          TopLeft="605,376.75">
+          TopLeft="617,376.75">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1210,7 +1210,7 @@ where [refTable].[ProductID] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Lookup No Match Output]"
-          TopLeft="443.5,259">
+          TopLeft="455.5,259">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1234,7 +1234,7 @@ where [refTable].[ProductID] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Lookup Match Output]"
-          TopLeft="569,232.5">
+          TopLeft="581,232.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1264,7 +1264,7 @@ where [refTable].[ProductID] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Data Conversion Output]"
-          TopLeft="438.5,194">
+          TopLeft="450.5,194">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1290,14 +1290,21 @@ where [refTable].[ProductID] = ?</property>
           FontInfo="{assembly:Null}"
           Size="326,120"
           Id="b3331ac7-4efd-4da2-8304-5d452cf4045a"
-          TopLeft="792,250" />
+          TopLeft="804,250" />
         <AnnotationLayout
           Text="Here we check if the productID already exists. If it doesn't it would &#xA;mean a new insert.&#xA;If it does exist, we will need to check for SCD type 2 changes.&#xA;We also have a select statement that grabs only the data we want"
           ParentId="Package\Data Flow Task"
           FontInfo="{assembly:Null}"
           Size="382,88"
           Id="26618e92-8443-42fb-8957-f1a61803db8e"
-          TopLeft="595,99" />
+          TopLeft="607,99" />
+        <AnnotationLayout
+          Text="Man ville ikke tjekke om UPDATE&#xD;&#xA;i en full load som er det vi laver.&#xD;&#xA;Fordi der vil alrdig være flere versioner i&#xD;&#xA;source db"
+          ParentId="Package\Data Flow Task"
+          FontInfo="{assembly:Null}"
+          Size="239,88"
+          Id="440c3ec3-0087-49d4-b432-b5bf2816db47"
+          TopLeft="66,125" />
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -1307,7 +1314,7 @@ where [refTable].[ProductID] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -1317,7 +1324,7 @@ where [refTable].[ProductID] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
