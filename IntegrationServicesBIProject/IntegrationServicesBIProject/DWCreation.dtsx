@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="37"
-  DTS:VersionGUID="{C9F137A4-5386-41C7-AAA2-1AC54AB6A006}">
+  DTS:VersionBuild="38"
+  DTS:VersionGUID="{C3A7F71A-DB00-4FE5-B76F-7D7576C198F6}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -92,7 +92,7 @@
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4BA4440F-495A-47F7-8022-1E737464C341}"
-              SQLTask:SqlStatementSource="USE BIProjektDW&#xA;IF object_id('Dimension.[Product]', 'U') IS NOT NULL&#xA;&#x9;PRINT 'Product table already created!'&#xA;ELSE&#xA;&#x9;BEGIN &#xA;&#x9;PRINT 'Not present! Product table is being created'&#xA;&#x9;CREATE TABLE Dimension.[Product]&#xA;&#x9;(&#xA;&#x9;ProductKey INT IDENTITY(1,1),&#xA;&#x9;ProductID INT,&#xA;&#x9;[Name] NVARCHAR(255),&#xA;&#x9;ListedPrice INT,&#xA;&#x9;Category NVARCHAR(255),&#xA;&#x9;ValidFrom DATE,&#xA;&#x9;ValidTo DATE,&#xA;&#xA;&#x9;PRIMARY KEY (ProductKey)&#xA;&#x9;);&#xA;&#x9;END&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:SqlStatementSource="USE BIProjektDW&#xA;IF object_id('Dimension.[Product]', 'U') IS NOT NULL&#xA;&#x9;PRINT 'Product table already created!'&#xA;ELSE&#xA;&#x9;BEGIN &#xA;&#x9;PRINT 'Not present! Product table is being created'&#xA;&#x9;CREATE TABLE Dimension.[Product]&#xA;&#x9;(&#xA;&#x9;ProductKey INT IDENTITY(1,1),&#xA;&#x9;ProductID INT,&#xA;&#x9;[Name] NVARCHAR(255),&#xA;&#x9;ListedPrice MONEY,&#xA;&#x9;Category NVARCHAR(255),&#xA;&#x9;ValidFrom DATE,&#xA;&#x9;ValidTo DATE,&#xA;&#xA;&#x9;PRIMARY KEY (ProductKey)&#xA;&#x9;);&#xA;&#x9;END&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable

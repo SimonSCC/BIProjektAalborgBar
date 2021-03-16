@@ -5,14 +5,14 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="DESKTOP-8MNAKIP"
   DTS:CreatorName="DESKTOP-8MNAKIP\Tobias"
-  DTS:DTSID="{CE9360CD-9938-442F-A2AF-DBCB48C97385}"
+  DTS:DTSID="{0F083DEF-F55A-4553-8AD1-404E2721C5F9}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="15.0.2000.152"
   DTS:LocaleID="1033"
   DTS:ObjectName="ImportDateDimension"
   DTS:PackageType="5"
-  DTS:VersionBuild="61"
-  DTS:VersionGUID="{CE9C7093-EA9C-48E8-B9CC-08704D83552B}">
+  DTS:VersionBuild="62"
+  DTS:VersionGUID="{13AD6076-680A-41EE-B272-8F5AD153F20E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -33,7 +33,7 @@
       DTS:refId="Package\Import Date"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{80544B12-E5B3-47CE-BBEB-30B539DF9A2D}"
+      DTS:DTSID="{A9160584-8160-49D5-AF2C-761397C5C50B}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
       DTS:ObjectName="Import Date"
@@ -1207,7 +1207,7 @@
       DTS:refId="Package\Truncate Date Table"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{BAFEDF94-CEFD-4657-8E44-7DAE32D6DC68}"
+      DTS:DTSID="{59E8B7AC-247B-434E-9323-403414D7DCBD}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate Date Table"
@@ -1226,7 +1226,7 @@
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{6261B100-D37C-4C47-978F-D49F7DFBD01F}"
+      DTS:DTSID="{DFF0AB73-EBE5-48A5-9A03-7F7763FC0FB6}"
       DTS:From="Package\Truncate Date Table"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
@@ -1247,25 +1247,37 @@
         <NodeLayout
           Size="136,42"
           Id="Package\Import Date"
-          TopLeft="30.5,120.5" />
+          TopLeft="16.5,123.5" />
         <NodeLayout
           Size="175,42"
           Id="Package\Truncate Date Table"
           TopLeft="14,21" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="100,63">
+          TopLeft="103.5,63">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,57.5"
+              EndConnector="-19,60.5"
               Start="0,0"
-              End="0,50">
+              End="-19,53">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,50" />
+                    End="0,26.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.25"
+                    Point2="0,30.25"
+                    Point3="-4,30.25" />
+                  <mssgle:LineSegment
+                    End="-15,30.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-15,30.25"
+                    Point2="-19,30.25"
+                    Point3="-19,34.25" />
+                  <mssgle:LineSegment
+                    End="-19,53" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1283,18 +1295,6 @@
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="177,42"
-          Id="Package\Import Date\OLE DB Destination"
-          TopLeft="431,729" />
-        <NodeLayout
-          Size="102,42"
-          Id="Package\Import Date\Year"
-          TopLeft="64,256" />
-        <NodeLayout
-          Size="116,42"
-          Id="Package\Import Date\Quarter"
-          TopLeft="62,565" />
-        <NodeLayout
           Size="192,42"
           Id="Package\Import Date\Timestamp Conversion"
           TopLeft="19,122" />
@@ -1307,17 +1307,9 @@
           Id="Package\Import Date\IsWeekEnd"
           TopLeft="58,643" />
         <NodeLayout
-          Size="156,42"
-          Id="Package\Import Date\WeekDayName"
-          TopLeft="238,723" />
-        <NodeLayout
           Size="157,42"
           Id="Package\Import Date\OLE DB Source"
           TopLeft="96,27" />
-        <NodeLayout
-          Size="107,42"
-          Id="Package\Import Date\Week"
-          TopLeft="62,480" />
         <NodeLayout
           Size="99,42"
           Id="Package\Import Date\Sort"
@@ -1327,9 +1319,29 @@
           Id="Package\Import Date\Month"
           TopLeft="59,349" />
         <NodeLayout
+          Size="156,42"
+          Id="Package\Import Date\WeekDayName"
+          TopLeft="238,723" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Import Date\OLE DB Destination"
+          TopLeft="431,729" />
+        <NodeLayout
+          Size="116,42"
+          Id="Package\Import Date\Quarter"
+          TopLeft="62,565" />
+        <NodeLayout
+          Size="107,42"
+          Id="Package\Import Date\Week"
+          TopLeft="62,480" />
+        <NodeLayout
           Size="138,42"
           Id="Package\Import Date\DayOfWeek"
           TopLeft="50,726" />
+        <NodeLayout
+          Size="102,42"
+          Id="Package\Import Date\Year"
+          TopLeft="64,256" />
         <EdgeLayout
           Id="Package\Import Date.Paths[Sort Output]"
           TopLeft="284,275.5">

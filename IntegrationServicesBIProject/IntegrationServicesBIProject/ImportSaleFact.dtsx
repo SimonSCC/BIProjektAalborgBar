@@ -5,14 +5,14 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="DESKTOP-8MNAKIP"
   DTS:CreatorName="DESKTOP-8MNAKIP\Tobias"
-  DTS:DTSID="{3CF3704C-BA0B-4948-A06B-BBA3288991ED}"
+  DTS:DTSID="{503506DB-47B3-415B-963B-A7D8850AB8EB}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="15.0.2000.152"
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
   DTS:VersionBuild="1"
-  DTS:VersionGUID="{5ABCB21A-3C6A-4116-9607-47F7D90D5368}">
+  DTS:VersionGUID="{102E54E9-6098-4220-9461-56C319838459}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -21,7 +21,7 @@
       DTS:refId="Package\Data Flow Task"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{25D8904F-7D7C-4A41-867E-45A725B4AB32}"
+      DTS:DTSID="{50BBDBE4-CF88-43B5-80F6-15570B54AE11}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
       DTS:ObjectName="Data Flow Task"
@@ -485,7 +485,7 @@
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
       DTS:Disabled="True"
-      DTS:DTSID="{841A9F6F-E79B-4A9D-9CDF-AAEE0A38E5FE}"
+      DTS:DTSID="{68D5284A-4724-4FB2-8A96-A0EEF3302E61}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate Date Table"
@@ -504,7 +504,7 @@
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{6FD5CF8F-D3AA-4716-A902-E7B10B608FAB}"
+      DTS:DTSID="{D303AA8E-2B78-4903-90E4-871334AA0F96}"
       DTS:From="Package\Truncate Date Table"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
