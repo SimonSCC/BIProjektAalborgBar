@@ -26,25 +26,24 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">MSI</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA61548qpk/EiT2OTcpAlAwgAAAAACAAAAAAAQZgAAAAEAACAAAAATk0+Uk9+83Rs1YOD0A4z2hPBpCEAK8zQdsBzpd3sY/AAAAAAOgAAAAAIAACAAAADKexxLd0OXlbcDgIGsELxIfuXIJhJANzxvyjYnKwweg5AAAACY5dDXty699SEmAZ9ydV0EOjZeiuJiymrDn4t3ZceLyhiRKsxNTQoEEBGb1sfuj+v+hwc3ESSK0if51lvhhWuN4u+L/pU8oLFdX2dfy32wPLRcgNYItdDTYywbTsaB7r91zvbnHmOxDdYu0xvdtpSJ6IpkRYrJWgm2qP8sO4oNtXla0M2BGs2xFT3z6/i7i7VAAAAAOK+C9o/gSSApoT1VD6gTsKAN7UwRwJzT0z2eXNlFyxkeUfAoJaY/3fI5jY5s9PEyLg/BS/tIhhGSNFXSVqXKrA==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA61548qpk/EiT2OTcpAlAwgAAAAACAAAAAAAQZgAAAAEAACAAAACh7hlEHtumfdb3+jK9W3O6QQljA7IOGD9eP4L6vaypCQAAAAAOgAAAAAIAACAAAABNZAUdVkQeBzp47YkX8Jtqt3qwVgxyS+s0fpzUd2IzypAAAACM/ylm0/UEgJFXFQmem/RUKojcQbi1+9D9DDB6CnoPX8Zacmvw5Lt2F432AKxQ3IIUdZWoFos1kPyjnw1L5/ELEyF8H1arHqTtuWvbcqpTkhq1rHlVQYtW0zHndQ5zOmuBk+veHFjMAjMpB0/C0Fc8UUBEt0qemj8Aoyv4ynN5YcDasvTfAJrkbx2H8a78IWpAAAAAkDi6wDldUqd9OgqgsguOCrIUtpz//L1BNN8k0W5wjtQzsCjsXVTd1aaA3hec+bSip/ZFhpUCm8jJZDrJy2aU8w==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
           <SSIS:Package SSIS:Name="Drop Database.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="DWCreation.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="ImportMemberDimension.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="ImportRoomDimension.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="ImportProductDimension.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="ImportDateDimension.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="DropDatabase-DWCreation.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="ImportTimeDimension.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="DropDatabase-DWCreation.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="ImportDateDimension.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="ImportProductDimension.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="ImportSaleFact.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="MSSQLServer.conmgr" />
           <SSIS:ConnectionManager SSIS:Name="MSSQLServer.BIProjektDW.conmgr" />
           <SSIS:ConnectionManager SSIS:Name="fclub_safe.conmgr" />
-          <SSIS:ConnectionManager SSIS:Name="Excel Connection Manager.conmgr" />
+          <SSIS:ConnectionManager SSIS:Name="Excel Connection Manager 1.conmgr" />
         </SSIS:ConnectionManagers>
         <SSIS:DeploymentInfo>
           <SSIS:ProjectConnectionParameters>
@@ -400,7 +399,7 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.Excel Connection Manager.ConnectByProxy">
+            <SSIS:Parameter SSIS:Name="CM.Excel Connection Manager 1.ConnectByProxy">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -415,7 +414,7 @@
                 <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.Excel Connection Manager.ConnectionString">
+            <SSIS:Parameter SSIS:Name="CM.Excel Connection Manager 1.ConnectionString">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -426,11 +425,11 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Daniel\Desktop\IntegrationServicesBIProject\IntegrationServicesBIProject\Fclub data\categori.xls;Extended Properties="EXCEL 8.0;HDR=YES";</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Daniel\Desktop\BI Projekt\BIProjektAalborgBar\BIProjektAalborgBar\IntegrationServicesBIProject\IntegrationServicesBIProject\Fclub data\categori.xls;Extended Properties="EXCEL 8.0;HDR=YES";</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.Excel Connection Manager.ExcelFilePath">
+            <SSIS:Parameter SSIS:Name="CM.Excel Connection Manager 1.ExcelFilePath">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -441,11 +440,11 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">C:\Users\Daniel\Desktop\IntegrationServicesBIProject\IntegrationServicesBIProject\Fclub data\categori.xls</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">C:\Users\Daniel\Desktop\BI Projekt\BIProjektAalborgBar\BIProjektAalborgBar\IntegrationServicesBIProject\IntegrationServicesBIProject\Fclub data\categori.xls</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.Excel Connection Manager.FirstRowHasColumnName">
+            <SSIS:Parameter SSIS:Name="CM.Excel Connection Manager 1.FirstRowHasColumnName">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -460,7 +459,7 @@
                 <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.Excel Connection Manager.InitialCatalog">
+            <SSIS:Parameter SSIS:Name="CM.Excel Connection Manager 1.InitialCatalog">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -474,7 +473,7 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.Excel Connection Manager.Password">
+            <SSIS:Parameter SSIS:Name="CM.Excel Connection Manager 1.Password">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -488,7 +487,7 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.Excel Connection Manager.RetainSameConnection">
+            <SSIS:Parameter SSIS:Name="CM.Excel Connection Manager 1.RetainSameConnection">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -503,7 +502,7 @@
                 <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.Excel Connection Manager.ServerName">
+            <SSIS:Parameter SSIS:Name="CM.Excel Connection Manager 1.ServerName">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -514,11 +513,11 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">C:\Users\Daniel\Desktop\IntegrationServicesBIProject\IntegrationServicesBIProject\Fclub data\categori.xls</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">C:\Users\Daniel\Desktop\BI Projekt\BIProjektAalborgBar\BIProjektAalborgBar\IntegrationServicesBIProject\IntegrationServicesBIProject\Fclub data\categori.xls</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.Excel Connection Manager.UserName">
+            <SSIS:Parameter SSIS:Name="CM.Excel Connection Manager 1.UserName">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -557,10 +556,10 @@
                 <SSIS:Property SSIS:Name="Name">Package1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">37</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">38</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{C9F137A4-5386-41C7-AAA2-1AC54AB6A006}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{C3A7F71A-DB00-4FE5-B76F-7D7576C198F6}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -574,10 +573,10 @@
                 <SSIS:Property SSIS:Name="Name">Package</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">39</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">40</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{FEA5E1EA-88DB-45E7-8ADC-F9D90AED56A0}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{3CCBFC06-1ECD-4CB7-8517-2F6F3D538D06}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -585,16 +584,16 @@
               </SSIS:Properties>
               <SSIS:Parameters />
             </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="ImportRoomDimension.dtsx">
+            <SSIS:PackageMetaData SSIS:Name="ImportTimeDimension.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{AD10009B-BB14-4CB2-94C0-47F4ECD0EF37}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{84103ADC-4995-4023-B692-6D84C5E0C4E0}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">Package1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">10</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">2</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{88C9A25A-D849-4ACC-A17A-9050020A04C8}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{141DB7EA-C194-4266-A11F-2469AE3A0123}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -602,16 +601,16 @@
               </SSIS:Properties>
               <SSIS:Parameters />
             </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="ImportProductDimension.dtsx">
+            <SSIS:PackageMetaData SSIS:Name="DropDatabase-DWCreation.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{C614E690-D35E-452C-9E9D-EC53A3149581}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">ImportProductDimension</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{968D8758-8E6B-413F-91B3-8E5E45374755}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">DropDatabase-DWCreation</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">44</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">4</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{65AB546C-CDB6-43E0-BA70-FCF9D5F57B8A}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{B3B45023-F326-4F40-881E-9687AD9FE826}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -621,14 +620,14 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="ImportDateDimension.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{CE9360CD-9938-442F-A2AF-DBCB48C97385}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{B09343C6-ADDB-478C-8D92-9DCFB507E574}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">ImportDateDimension</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">61</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">63</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{CE9C7093-EA9C-48E8-B9CC-08704D83552B}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{B10C1C91-CAF3-47EC-AEEC-84496968C4D8}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -755,33 +754,16 @@
                 </SSIS:Parameter>
               </SSIS:Parameters>
             </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="DropDatabase-DWCreation.dtsx">
+            <SSIS:PackageMetaData SSIS:Name="ImportProductDimension.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{64BF73FF-22F3-44A0-B504-758F9B196477}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">Package1</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{9AA25E65-4245-4F04-ADA7-5F4A9F3B2187}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">ImportProductDimension</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">3</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">79</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{90B38667-A630-4C50-8219-533844AC8BE9}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="ImportTimeDimension.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{F3C531B1-9574-4782-A3A0-1C1D910CE03D}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">Package1</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">22</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{EDCA0E2A-489F-4010-A96E-57B1EA6D5EE3}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{982027C6-E5AD-4189-A3FA-D2103263B8DA}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -791,14 +773,14 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="ImportSaleFact.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{3CF3704C-BA0B-4948-A06B-BBA3288991ED}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">Package1</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{96789F9F-2638-4F83-8857-14E578DA2894}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">ImportSaleFact</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">2</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{5ABCB21A-3C6A-4116-9607-47F7D90D5368}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{A53238C5-6522-4A85-BCE7-A43491702B95}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>

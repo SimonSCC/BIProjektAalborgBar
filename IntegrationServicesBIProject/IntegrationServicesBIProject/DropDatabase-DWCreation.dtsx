@@ -5,20 +5,20 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="DESKTOP-I1KSM3I"
   DTS:CreatorName="DESKTOP-I1KSM3I\Daniel"
-  DTS:DTSID="{64BF73FF-22F3-44A0-B504-758F9B196477}"
+  DTS:DTSID="{968D8758-8E6B-413F-91B3-8E5E45374755}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="15.0.2000.152"
   DTS:LocaleID="1033"
-  DTS:ObjectName="Package1"
+  DTS:ObjectName="DropDatabase-DWCreation"
   DTS:PackageType="5"
-  DTS:VersionBuild="3"
-  DTS:VersionGUID="{90B38667-A630-4C50-8219-533844AC8BE9}">
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{B3B45023-F326-4F40-881E-9687AD9FE826}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{FF915AAC-E7DF-4CA7-A782-95CCDEB51AD4}"
+      DTS:DTSID="{C0339A00-3F89-4C4D-BB40-59BDCE617C38}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="HourStart">
@@ -27,7 +27,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{BC2F95BC-26F2-4947-90FE-666797BA907F}"
+      DTS:DTSID="{4A911662-86C8-4F8A-B101-7B49446B5AD0}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="MinuteStart">
@@ -40,7 +40,7 @@
       DTS:refId="Package\Drop Database Package"
       DTS:CreationName="Microsoft.ExecutePackageTask"
       DTS:Description="Execute Package Task"
-      DTS:DTSID="{B89DFE22-ACFF-4C83-B842-2218596DDFE2}"
+      DTS:DTSID="{3F7BDFEA-793D-466E-97F6-A1CD4FA2E997}"
       DTS:ExecutableType="Microsoft.ExecutePackageTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Drop Database Package"
@@ -57,7 +57,7 @@
       DTS:refId="Package\DWCreation Package"
       DTS:CreationName="Microsoft.ExecutePackageTask"
       DTS:Description="Execute Package Task"
-      DTS:DTSID="{24C5EA3E-865F-472C-8CC5-EB01FC6304CD}"
+      DTS:DTSID="{459A425D-932F-4729-BFDB-122436DEF356}"
       DTS:ExecutableType="Microsoft.ExecutePackageTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="DWCreation Package"
@@ -75,7 +75,7 @@
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{CCCBFC52-DE42-49F8-86D4-5E8B9A793618}"
+      DTS:DTSID="{61FA429A-D6F0-4091-A411-8AB6635C4E18}"
       DTS:From="Package\Drop Database Package"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"

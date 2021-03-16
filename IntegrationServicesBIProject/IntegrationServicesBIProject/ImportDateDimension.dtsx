@@ -5,21 +5,21 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="DESKTOP-8MNAKIP"
   DTS:CreatorName="DESKTOP-8MNAKIP\Tobias"
-  DTS:DTSID="{0F083DEF-F55A-4553-8AD1-404E2721C5F9}"
+  DTS:DTSID="{B09343C6-ADDB-478C-8D92-9DCFB507E574}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="15.0.2000.152"
   DTS:LocaleID="1033"
   DTS:ObjectName="ImportDateDimension"
   DTS:PackageType="5"
-  DTS:VersionBuild="62"
-  DTS:VersionGUID="{13AD6076-680A-41EE-B272-8F5AD153F20E}">
+  DTS:VersionBuild="63"
+  DTS:VersionGUID="{B10C1C91-CAF3-47EC-AEEC-84496968C4D8}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[LocalHost.BIProjektDW]"
       DTS:CreationName="OLEDB"
-      DTS:DTSID="{3187E416-49D0-4024-95EE-6FCBB8A1A501}"
+      DTS:DTSID="{B17BCD15-11D8-4BB9-B030-B0260F96F618}"
       DTS:ObjectName="LocalHost.BIProjektDW">
       <DTS:ObjectData>
         <DTS:ConnectionManager
@@ -33,7 +33,7 @@
       DTS:refId="Package\Import Date"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{A9160584-8160-49D5-AF2C-761397C5C50B}"
+      DTS:DTSID="{B065FA76-8320-4E3B-A5BB-597812C8374D}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
       DTS:ObjectName="Import Date"
@@ -1207,7 +1207,7 @@
       DTS:refId="Package\Truncate Date Table"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{59E8B7AC-247B-434E-9323-403414D7DCBD}"
+      DTS:DTSID="{84309E54-9D9C-422C-B731-91EAA2248AC4}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate Date Table"
@@ -1216,7 +1216,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{3187E416-49D0-4024-95EE-6FCBB8A1A501}"
+          SQLTask:Connection="{B17BCD15-11D8-4BB9-B030-B0260F96F618}"
           SQLTask:BypassPrepare="False"
           SQLTask:SqlStatementSource="USE BIProjektDW;&#xA;ALTER TABLE Fact.Sale&#xA;DROP CONSTRAINT FK_Fact_Sale_DateKey_Dimension_Date_DateKey;&#xA;TRUNCATE TABLE Dimension.Date;&#xA;&#x9;&#x9;ALTER TABLE Fact.Sale ADD CONSTRAINT FK_Fact_Sale_DateKey_Dimension_Date_DateKey FOREIGN KEY (DateKey)&#xA;&#x9;&#x9;REFERENCES Dimension.[Date](DateKey)&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
@@ -1226,7 +1226,7 @@
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{DFF0AB73-EBE5-48A5-9A03-7F7763FC0FB6}"
+      DTS:DTSID="{CA558F69-C4E0-4F0E-B1C4-2334EEEE3189}"
       DTS:From="Package\Truncate Date Table"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"

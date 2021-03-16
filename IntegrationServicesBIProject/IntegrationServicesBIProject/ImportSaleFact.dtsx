@@ -1,18 +1,18 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="3/16/2021 11:53:44 AM"
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="DESKTOP-8MNAKIP"
   DTS:CreatorName="DESKTOP-8MNAKIP\Tobias"
-  DTS:DTSID="{503506DB-47B3-415B-963B-A7D8850AB8EB}"
+  DTS:DTSID="{96789F9F-2638-4F83-8857-14E578DA2894}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="15.0.2000.152"
   DTS:LocaleID="1033"
-  DTS:ObjectName="Package1"
+  DTS:ObjectName="ImportSaleFact"
   DTS:PackageType="5"
-  DTS:VersionBuild="1"
-  DTS:VersionGUID="{102E54E9-6098-4220-9461-56C319838459}">
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{A53238C5-6522-4A85-BCE7-A43491702B95}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -21,7 +21,7 @@
       DTS:refId="Package\Data Flow Task"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{50BBDBE4-CF88-43B5-80F6-15570B54AE11}"
+      DTS:DTSID="{7C643811-E000-458A-9DA5-4FA83AE06BD4}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
       DTS:ObjectName="Data Flow Task"
@@ -82,8 +82,8 @@
               <connections>
                 <connection
                   refId="Package\Data Flow Task\OLE DB Source.Connections[OleDbConnection]"
-                  connectionManagerID="{AE95B227-76D2-4012-9F1B-7861DEE2E3B4}:invalid"
-                  connectionManagerRefId="{AE95B227-76D2-4012-9F1B-7861DEE2E3B4}:invalid"
+                  connectionManagerID="{AE95B227-76D2-4012-9F1B-7861DEE2E3B4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[fclub_safe]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -485,7 +485,7 @@
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
       DTS:Disabled="True"
-      DTS:DTSID="{68D5284A-4724-4FB2-8A96-A0EEF3302E61}"
+      DTS:DTSID="{EE2C4CA5-2796-48BF-8232-5B98A4CDCF54}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate Date Table"
@@ -504,7 +504,7 @@
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{D303AA8E-2B78-4903-90E4-871334AA0F96}"
+      DTS:DTSID="{E28AD1E3-CDE5-4C1A-A621-62876444F122}"
       DTS:From="Package\Truncate Date Table"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
@@ -523,13 +523,13 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="179,42"
-          Id="Package\Truncate Date Table"
-          TopLeft="127,50" />
-        <NodeLayout
           Size="155,42"
           Id="Package\Data Flow Task"
           TopLeft="236,194" />
+        <NodeLayout
+          Size="179,42"
+          Id="Package\Truncate Date Table"
+          TopLeft="127,50" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="216.5,92">
