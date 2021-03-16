@@ -5,6 +5,6 @@
   DTS:CreationName="EXCEL">
   <DTS:ObjectData>
     <DTS:ConnectionManager
-      DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Simon\Desktop\Code\SchoolYear2\BusinessIntelligence\BIProjektAalborgBar\IntegrationServicesBIProject\IntegrationServicesBIProject\Fclub data\categori.xls;Extended Properties=&quot;EXCEL 8.0;HDR=YES&quot;;" />
+      DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Daniel\Desktop\BI Projekt\BIProjektAalborgBar - Copy\IntegrationServicesBIProject\IntegrationServicesBIProject\Fclub data\categori.xls;Extended Properties=&quot;EXCEL 8.0;HDR=YES&quot;;" />
   </DTS:ObjectData>
 </DTS:ConnectionManager>
