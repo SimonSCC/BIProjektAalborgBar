@@ -45,8 +45,8 @@ ELSE
 	[Name] NVARCHAR(255),
 	ListedPrice INT,
 	Category NVARCHAR(255),
-	IsRowActive BIT,
-	DeactivateDate DATE,
+	ValidFrom DATE,
+	ValidTo DATE,
 
 	PRIMARY KEY (ProductKey)
 	);
@@ -65,10 +65,10 @@ ELSE
 	MemberKey INT IDENTITY(1,1),
 	MemberID INT,
 	YearJoined DATE,
-	SemesterPeriod NVARCHAR(3),
-	Semester NVARCHAR(10),
-	IsRowActive BIT,
-	DeactivateDate DATE,
+	SemesterPeriod NVARCHAR(50),
+	Semester NVARCHAR(50),
+	ValidFrom DATE,
+	ValidTo DATE,
 
 	PRIMARY KEY (MemberKey)
 	);
@@ -237,3 +237,9 @@ DROP TABLE Dimension.[Date]
 DROP TABLE Dimension.[Room]
 
 
+--USE MASTER 
+--GO
+
+----ALTER DATABASE BiProjektDW 
+----SET multi_user WITH ROLLBACK IMMEDIATE
+----GO
