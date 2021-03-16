@@ -26,19 +26,23 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">MSI</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA0upvhwuT1ECzeph586hk1AAAAAACAAAAAAAQZgAAAAEAACAAAADunondyzc0CJmgX3eyfDJ5Zpy1LIPCeZTJti+vI09ZGwAAAAAOgAAAAAIAACAAAACXAJCgxissqT2dZefMRrGYfaYo7BREetJHnjsMNCdgg5AAAAA9idGxlec7NB0j7qokUfV6TJbblUcQvvcHwFkNIVTlArDmjn1M4012HYFoePCF2pNwtrTK7I+vZrm3cqpsj03Wo3LgGYlY97RjslNXtI94/4E1dKhL2w9vDXEygJEZwU5cu6s6KiVAcgp6+21XH093EYx0JPeTY2gmVR6gjcxtltw4C7gwhYdaYKegGU0noZ9AAAAAHcHjN03hDxQ+7Z4YQH9cfT5thb1Zi75zS5hrd27Tnt6ICf72VefrCSjTWfg6ep4ddhCFD8QtTIA/mV90GP5Hrg==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAvV6tSU5D+km16ofIMT5hjAAAAAACAAAAAAAQZgAAAAEAACAAAABJfbdTmYiRS+WJllwH3LANput5XoZFitEhCY+hVxEaQwAAAAAOgAAAAAIAACAAAACGQ+EHLREfHu54Km50syF6kBEJwHaPwhCSExjGJQ2qj5AAAABNalvsb9nify9pG1lhCy3kIdc+930qCzJj6G5pGwYIKTuvwG6QP+W7CkZX1AU48Vb/7CTl9cHQPb+IYsFxW/yFnq2HeSXL3Ex3HmmrZipGbLYIm7KIhhMqS+GoZX9kXYqgdJ540a6/c6FL2vGg1Vtqxd2QB70RgnemzWoyB0q6EeJDVgjDphHn9xc4ecNGA4pAAAAAzrl3CIEnRPcFYSHKARxACdybflGJon4vjFwv7VYpg3JymysfG6HUoon8MaRcGPCEXuVJG1vSKVt56clFzLZuEg==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
-          <SSIS:Package SSIS:Name="PullData.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="Drop Database.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="DWCreation.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="ImportDateDimension.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="ImportMemberDimension.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="ImportRoomDimension.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="ImportTimeDimension.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="ImportProductDimension.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="ImportDateDimension.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="MSSQLServer.conmgr" />
+          <SSIS:ConnectionManager SSIS:Name="MSSQLServer.BIProjektDW.conmgr" />
           <SSIS:ConnectionManager SSIS:Name="fclub_safe.conmgr" />
+          <SSIS:ConnectionManager SSIS:Name="Excel Connection Manager.conmgr" />
         </SSIS:ConnectionManagers>
         <SSIS:DeploymentInfo>
           <SSIS:ProjectConnectionParameters>
@@ -159,6 +163,124 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
+            <SSIS:Parameter SSIS:Name="CM.MSSQLServer.BIProjektDW.ConnectByProxy">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="CreationName">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">false</SSIS:Property>
+                <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+              </SSIS:Properties>
+            </SSIS:Parameter>
+            <SSIS:Parameter SSIS:Name="CM.MSSQLServer.BIProjektDW.ConnectionString">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="CreationName">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">Data Source=MSI\MSSQLBISERVER;Initial Catalog=BIProjektDW;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;</SSIS:Property>
+                <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+              </SSIS:Properties>
+            </SSIS:Parameter>
+            <SSIS:Parameter SSIS:Name="CM.MSSQLServer.BIProjektDW.ConnectUsingManagedIdentity">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="CreationName">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">false</SSIS:Property>
+                <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+              </SSIS:Properties>
+            </SSIS:Parameter>
+            <SSIS:Parameter SSIS:Name="CM.MSSQLServer.BIProjektDW.InitialCatalog">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="CreationName">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">BIProjektDW</SSIS:Property>
+                <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+              </SSIS:Properties>
+            </SSIS:Parameter>
+            <SSIS:Parameter SSIS:Name="CM.MSSQLServer.BIProjektDW.Password">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="CreationName">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Sensitive">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+              </SSIS:Properties>
+            </SSIS:Parameter>
+            <SSIS:Parameter SSIS:Name="CM.MSSQLServer.BIProjektDW.RetainSameConnection">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="CreationName">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">false</SSIS:Property>
+                <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+              </SSIS:Properties>
+            </SSIS:Parameter>
+            <SSIS:Parameter SSIS:Name="CM.MSSQLServer.BIProjektDW.ServerName">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="CreationName">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">MSI\MSSQLBISERVER</SSIS:Property>
+                <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+              </SSIS:Properties>
+            </SSIS:Parameter>
+            <SSIS:Parameter SSIS:Name="CM.MSSQLServer.BIProjektDW.UserName">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="CreationName">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+              </SSIS:Properties>
+            </SSIS:Parameter>
             <SSIS:Parameter SSIS:Name="CM.fclub_safe.ConnectByProxy">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
@@ -185,7 +307,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">Data Source=C:\Users\Tobias\source\repos\BIProjektAalborgBar\IntegrationServicesBIProject\IntegrationServicesBIProject\Fclub data\fclub_safe.mdb;Provider=Microsoft.Jet.OLEDB.4.0;</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">Data Source=C:\Users\Simon\Desktop\Code\SchoolYear2\BusinessIntelligence\BIProjektAalborgBar\IntegrationServicesBIProject\IntegrationServicesBIProject\Fclub data\fclub_safe.mdb;Provider=Microsoft.Jet.OLEDB.4.0;</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -258,7 +380,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">C:\Users\Tobias\source\repos\BIProjektAalborgBar\IntegrationServicesBIProject\IntegrationServicesBIProject\Fclub data\fclub_safe.mdb</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">C:\Users\Simon\Desktop\Code\SchoolYear2\BusinessIntelligence\BIProjektAalborgBar\IntegrationServicesBIProject\IntegrationServicesBIProject\Fclub data\fclub_safe.mdb</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -276,35 +398,150 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-          </SSIS:ProjectConnectionParameters>
-          <SSIS:PackageInfo>
-            <SSIS:PackageMetaData SSIS:Name="PullData.dtsx">
+            <SSIS:Parameter SSIS:Name="CM.Excel Connection Manager.ConnectByProxy">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{EDEE590F-92BF-4D54-A3FC-895C1590EA9F}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">Package</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">5</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
+                <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{E6BD6381-0263-4692-B23F-00204E356899}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="CreationName">
+                </SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">false</SSIS:Property>
+                <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
               </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
+            </SSIS:Parameter>
+            <SSIS:Parameter SSIS:Name="CM.Excel Connection Manager.ConnectionString">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="CreationName">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Simon\Desktop\Code\SchoolYear2\BusinessIntelligence\BIProjektAalborgBar\IntegrationServicesBIProject\IntegrationServicesBIProject\Fclub data\categori.xls;Extended Properties="EXCEL 8.0;HDR=YES";</SSIS:Property>
+                <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+              </SSIS:Properties>
+            </SSIS:Parameter>
+            <SSIS:Parameter SSIS:Name="CM.Excel Connection Manager.ExcelFilePath">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="CreationName">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">C:\Users\Simon\Desktop\Code\SchoolYear2\BusinessIntelligence\BIProjektAalborgBar\IntegrationServicesBIProject\IntegrationServicesBIProject\Fclub data\categori.xls</SSIS:Property>
+                <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+              </SSIS:Properties>
+            </SSIS:Parameter>
+            <SSIS:Parameter SSIS:Name="CM.Excel Connection Manager.FirstRowHasColumnName">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="CreationName">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+                <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+              </SSIS:Properties>
+            </SSIS:Parameter>
+            <SSIS:Parameter SSIS:Name="CM.Excel Connection Manager.InitialCatalog">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="CreationName">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+              </SSIS:Properties>
+            </SSIS:Parameter>
+            <SSIS:Parameter SSIS:Name="CM.Excel Connection Manager.Password">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="CreationName">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Sensitive">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+              </SSIS:Properties>
+            </SSIS:Parameter>
+            <SSIS:Parameter SSIS:Name="CM.Excel Connection Manager.RetainSameConnection">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="CreationName">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">false</SSIS:Property>
+                <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+              </SSIS:Properties>
+            </SSIS:Parameter>
+            <SSIS:Parameter SSIS:Name="CM.Excel Connection Manager.ServerName">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="CreationName">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">C:\Users\Simon\Desktop\Code\SchoolYear2\BusinessIntelligence\BIProjektAalborgBar\IntegrationServicesBIProject\IntegrationServicesBIProject\Fclub data\categori.xls</SSIS:Property>
+                <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+              </SSIS:Properties>
+            </SSIS:Parameter>
+            <SSIS:Parameter SSIS:Name="CM.Excel Connection Manager.UserName">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="CreationName">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+              </SSIS:Properties>
+            </SSIS:Parameter>
+          </SSIS:ProjectConnectionParameters>
+          <SSIS:PackageInfo>
             <SSIS:PackageMetaData SSIS:Name="Drop Database.dtsx">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">{B77F11FC-F446-4E35-83A0-1EE26C7B1ECB}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">Package1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">10</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">19</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{8F132B40-CAB7-4574-9623-EE6E5C136725}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{DFA956A8-E610-4AEE-A1E3-047B5D320D34}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -318,10 +555,78 @@
                 <SSIS:Property SSIS:Name="Name">Package1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">27</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">36</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{2A819C70-D14B-4089-B3B6-AEDD195851C0}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{9C6D5771-A058-45B0-A26D-AA247CA2A212}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="ImportMemberDimension.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{EDEE590F-92BF-4D54-A3FC-895C1590EA9F}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Package</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">39</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{FEA5E1EA-88DB-45E7-8ADC-F9D90AED56A0}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="ImportRoomDimension.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{AD10009B-BB14-4CB2-94C0-47F4ECD0EF37}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Package1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">10</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{88C9A25A-D849-4ACC-A17A-9050020A04C8}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="ImportTimeDimension.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{84103ADC-4995-4023-B692-6D84C5E0C4E0}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Package1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">2</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{141DB7EA-C194-4266-A11F-2469AE3A0123}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="ImportProductDimension.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{C614E690-D35E-452C-9E9D-EC53A3149581}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">ImportProductDimension</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">44</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{65AB546C-CDB6-43E0-BA70-FCF9D5F57B8A}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -331,150 +636,14 @@
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="ImportDateDimension.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{FFDB50A0-A773-464B-B76F-D5B9C602AD03}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{A7D28571-494E-40B2-B8CD-270B4CBF9D94}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">Package1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">43</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">50</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{7A09FEC4-3B13-428B-AB40-9BA126CF97A3}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="CM.LocalHost.BIProjektDW.ConnectByProxy">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">false</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.LocalHost.BIProjektDW.ConnectionString">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">Data Source=.;Initial Catalog=BIProjektDW;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.LocalHost.BIProjektDW.ConnectUsingManagedIdentity">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">false</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.LocalHost.BIProjektDW.InitialCatalog">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">BIProjektDW</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.LocalHost.BIProjektDW.Password">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">1</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.LocalHost.BIProjektDW.RetainSameConnection">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">false</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.LocalHost.BIProjektDW.ServerName">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">.</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.LocalHost.BIProjektDW.UserName">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-              </SSIS:Parameters>
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="ImportTimeDimension.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{89C6335B-B960-4699-B57C-B2B6493347FC}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">Package1</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{53CEE50E-D757-4FF4-AE01-B0B31CEF22AE}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{ACD9360A-2E83-4346-8E3C-A2D3044AE3D9}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>

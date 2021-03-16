@@ -5,35 +5,23 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="DESKTOP-8MNAKIP"
   DTS:CreatorName="DESKTOP-8MNAKIP\Tobias"
-  DTS:DTSID="{FFDB50A0-A773-464B-B76F-D5B9C602AD03}"
+  DTS:DTSID="{A7D28571-494E-40B2-B8CD-270B4CBF9D94}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="15.0.2000.152"
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="47"
-  DTS:VersionGUID="{87E36E1C-3AA9-4BC5-A53D-3B4AD5DEE03A}">
+  DTS:VersionBuild="55"
+  DTS:VersionGUID="{198EF51E-2CC6-4398-AAF3-D271361BA3B4}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:ConnectionManagers>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[LocalHost.BIProjektDW]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{950792F0-51AD-41BB-8474-78295F9041DD}"
-      DTS:ObjectName="LocalHost.BIProjektDW">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=.;Initial Catalog=BIProjektDW;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-  </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
       DTS:refId="Package\Import Date"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{E2D17FA0-F653-4919-AC88-EC29EA5E3178}"
+      DTS:DTSID="{4B99AE54-EB7D-4585-9FFE-791F41A81F81}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
       DTS:ObjectName="Import Date"
@@ -43,102 +31,6 @@
         <pipeline
           version="1">
           <components>
-            <component
-              refId="Package\Import Date\ADO NET Source"
-              componentClassID="Microsoft.ManagedComponentHost"
-              contactInfo="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
-              description="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server."
-              name="ADO NET Source"
-              usesDispositions="true"
-              version="4">
-              <properties>
-                <property
-                  dataType="System.String"
-                  description="Specifies the SQL statement used by the component to extract data."
-                  expressionType="Notify"
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT timestamp FROM Sale</property>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">30</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
-                  name="AllowImplicitStringConversion">true</property>
-                <property
-                  dataType="System.String"
-                  description="The Source database table name."
-                  expressionType="Notify"
-                  name="TableOrViewName"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Sale</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specify the mode to retrieve external column information"
-                  name="AccessMode"
-                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">2</property>
-                <property
-                  dataType="System.String"
-                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Import Date\ADO NET Source.Connections[IDbConnection]"
-                  connectionManagerID="{A8697BFD-6ED7-4C86-B44E-F7D392DF375F}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[fclub_safe]"
-                  description="Managed connection manager"
-                  name="IDbConnection" />
-              </connections>
-              <outputs>
-                <output
-                  refId="Package\Import Date\ADO NET Source.Outputs[ADO NET Source Output]"
-                  name="ADO NET Source Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Import Date\ADO NET Source.Outputs[ADO NET Source Output].Columns[timestamp]"
-                      dataType="dbTimeStamp"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import Date\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[timestamp]"
-                      lineageId="Package\Import Date\ADO NET Source.Outputs[ADO NET Source Output].Columns[timestamp]"
-                      name="timestamp"
-                      truncationRowDisposition="FailComponent" />
-                  </outputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\Import Date\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[timestamp]"
-                      dataType="dbTimeStamp"
-                      name="timestamp" />
-                  </externalMetadataColumns>
-                </output>
-                <output
-                  refId="Package\Import Date\ADO NET Source.Outputs[ADO NET Source Error Output]"
-                  isErrorOut="true"
-                  name="ADO NET Source Error Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Import Date\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[timestamp]"
-                      dataType="dbTimeStamp"
-                      lineageId="Package\Import Date\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[timestamp]"
-                      name="timestamp" />
-                    <outputColumn
-                      refId="Package\Import Date\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Import Date\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Import Date\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Import Date\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
             <component
               refId="Package\Import Date\Data Conversion"
               componentClassID="Microsoft.DataConvert"
@@ -567,8 +459,8 @@
               <connections>
                 <connection
                   refId="Package\Import Date\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LocalHost.BIProjektDW]"
-                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.BIProjektDW]"
+                  connectionManagerID="{4FA198D2-2B35-4AEE-962E-CA800AD165C6}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[MSSQLServer.BIProjektDW]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -611,17 +503,24 @@
                       externalMetadataColumnId="Package\Import Date\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IsWeekend]"
                       lineageId="Package\Import Date\IsWeekEnd.Outputs[Derived Column Output].Columns[IsWeekEnd]" />
                     <inputColumn
-                      refId="Package\Import Date\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[date]"
-                      cachedDataType="date"
-                      cachedName="date"
-                      externalMetadataColumnId="Package\Import Date\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DateKey]"
-                      lineageId="Package\Import Date\Sort.Outputs[Sort Output].Columns[date]" />
-                    <inputColumn
                       refId="Package\Import Date\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[weekday]"
                       cachedDataType="i4"
                       cachedName="weekday"
                       externalMetadataColumnId="Package\Import Date\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WeekDayNumber]"
                       lineageId="Package\Import Date\WeekDayNumber.Outputs[Derived Column Output].Columns[weekday]" />
+                    <inputColumn
+                      refId="Package\Import Date\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[WeekDayName]"
+                      cachedDataType="wstr"
+                      cachedLength="9"
+                      cachedName="WeekDayName"
+                      externalMetadataColumnId="Package\Import Date\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DayOfWeek]"
+                      lineageId="Package\Import Date\WeekDayName.Outputs[Derived Column Output].Columns[WeekDayName]" />
+                    <inputColumn
+                      refId="Package\Import Date\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[date]"
+                      cachedDataType="date"
+                      cachedName="date"
+                      externalMetadataColumnId="Package\Import Date\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DateKey]"
+                      lineageId="Package\Import Date\Sort.Outputs[Sort Output].Columns[date]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -651,7 +550,8 @@
                       name="WeekDayNumber" />
                     <externalMetadataColumn
                       refId="Package\Import Date\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DayOfWeek]"
-                      dataType="i4"
+                      dataType="wstr"
+                      length="55"
                       name="DayOfWeek" />
                     <externalMetadataColumn
                       refId="Package\Import Date\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IsWeekend]"
@@ -678,6 +578,132 @@
                       refId="Package\Import Date\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
                       lineageId="Package\Import Date\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import Date\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Sale</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import Date\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="{AE95B227-76D2-4012-9F1B-7861DEE2E3B4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[fclub_safe]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Import Date\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Date\OLE DB Source.Outputs[OLE DB Source Output].Columns[timestamp]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Date\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[timestamp]"
+                      lineageId="Package\Import Date\OLE DB Source.Outputs[OLE DB Source Output].Columns[timestamp]"
+                      name="timestamp"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import Date\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                      dataType="i4"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Import Date\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[member_id]"
+                      dataType="i4"
+                      name="member_id" />
+                    <externalMetadataColumn
+                      refId="Package\Import Date\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_id]"
+                      dataType="i4"
+                      name="product_id" />
+                    <externalMetadataColumn
+                      refId="Package\Import Date\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[room_id]"
+                      dataType="i4"
+                      name="room_id" />
+                    <externalMetadataColumn
+                      refId="Package\Import Date\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[timestamp]"
+                      dataType="date"
+                      name="timestamp" />
+                    <externalMetadataColumn
+                      refId="Package\Import Date\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[price]"
+                      dataType="i4"
+                      name="price" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Import Date\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Date\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import Date\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import Date\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[timestamp]"
+                      dataType="date"
+                      lineageId="Package\Import Date\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[timestamp]"
+                      name="timestamp" />
+                    <outputColumn
+                      refId="Package\Import Date\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import Date\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -790,9 +816,9 @@
                   <inputColumns>
                     <inputColumn
                       refId="Package\Import Date\Sort.Inputs[Sort Input].Columns[timestamp]"
-                      cachedDataType="dbTimeStamp"
+                      cachedDataType="date"
                       cachedName="timestamp"
-                      lineageId="Package\Import Date\ADO NET Source.Outputs[ADO NET Source Output].Columns[timestamp]">
+                      lineageId="Package\Import Date\OLE DB Source.Outputs[OLE DB Source Output].Columns[timestamp]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -867,7 +893,7 @@
                   <outputColumns>
                     <outputColumn
                       refId="Package\Import Date\Sort.Outputs[Sort Output].Columns[timestamp]"
-                      dataType="dbTimeStamp"
+                      dataType="date"
                       lineageId="Package\Import Date\Sort.Outputs[Sort Output].Columns[timestamp]"
                       name="timestamp">
                       <properties>
@@ -875,7 +901,7 @@
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\Import Date\ADO NET Source.Outputs[ADO NET Source Output].Columns[timestamp]}</property>
+                          name="SortColumnId">#{Package\Import Date\OLE DB Source.Outputs[OLE DB Source Output].Columns[timestamp]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
@@ -940,9 +966,9 @@
                   <inputColumns>
                     <inputColumn
                       refId="Package\Import Date\Timestamp Conversion.Inputs[Data Conversion Input].Columns[timestamp]"
-                      cachedDataType="dbTimeStamp"
+                      cachedDataType="date"
                       cachedName="timestamp"
-                      lineageId="Package\Import Date\ADO NET Source.Outputs[ADO NET Source Output].Columns[timestamp]" />
+                      lineageId="Package\Import Date\OLE DB Source.Outputs[OLE DB Source Output].Columns[timestamp]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -967,7 +993,7 @@
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Import Date\ADO NET Source.Outputs[ADO NET Source Output].Columns[timestamp]}</property>
+                          name="SourceInputColumnLineageID">#{Package\Import Date\OLE DB Source.Outputs[OLE DB Source Output].Columns[timestamp]}</property>
                         <property
                           dataType="System.Boolean"
                           description="Indicates whether the column uses the faster, locale-neutral parsing routines."
@@ -1325,11 +1351,6 @@
           </components>
           <paths>
             <path
-              refId="Package\Import Date.Paths[ADO NET Source Output]"
-              endId="Package\Import Date\Timestamp Conversion.Inputs[Data Conversion Input]"
-              name="ADO NET Source Output"
-              startId="Package\Import Date\ADO NET Source.Outputs[ADO NET Source Output]" />
-            <path
               refId="Package\Import Date.Paths[Data Conversion Output]"
               endId="Package\Import Date\Data Conversion.Inputs[Data Conversion Input]"
               name="Data Conversion Output"
@@ -1385,6 +1406,11 @@
               name="Derived Column Output"
               startId="Package\Import Date\WeekDayName.Outputs[Derived Column Output]" />
             <path
+              refId="Package\Import Date.Paths[OLE DB Source Output]"
+              endId="Package\Import Date\Timestamp Conversion.Inputs[Data Conversion Input]"
+              name="OLE DB Source Output"
+              startId="Package\Import Date\OLE DB Source.Outputs[OLE DB Source Output]" />
+            <path
               refId="Package\Import Date.Paths[Sort Output]"
               endId="Package\Import Date\Year.Inputs[Derived Column Input]"
               name="Sort Output"
@@ -1397,7 +1423,7 @@
       DTS:refId="Package\Truncate Date Table"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{9ADBDC3D-107C-42FC-8358-491D08BE6F76}"
+      DTS:DTSID="{B788FC19-9CEF-4CC9-8E47-A77AA8315401}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate Date Table"
@@ -1406,7 +1432,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{950792F0-51AD-41BB-8474-78295F9041DD}"
+          SQLTask:Connection="{4FA198D2-2B35-4AEE-962E-CA800AD165C6}"
           SQLTask:BypassPrepare="False"
           SQLTask:SqlStatementSource="USE BIProjektDW;&#xA;ALTER TABLE Fact.Sale&#xA;DROP CONSTRAINT FK_Fact_Sale_DateKey_Dimension_Date_DateKey;&#xA;TRUNCATE TABLE Dimension.Date;&#xA;&#x9;&#x9;ALTER TABLE Fact.Sale ADD CONSTRAINT FK_Fact_Sale_DateKey_Dimension_Date_DateKey FOREIGN KEY (DateKey)&#xA;&#x9;&#x9;REFERENCES Dimension.[Date](DateKey)&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
@@ -1416,7 +1442,7 @@
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{47B542B3-C44E-4767-99EF-96282A0C72D7}"
+      DTS:DTSID="{15371117-6DFE-40BE-B596-544E595F6F7D}"
       DTS:From="Package\Truncate Date Table"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
@@ -1437,37 +1463,25 @@
         <NodeLayout
           Size="136,42"
           Id="Package\Import Date"
-          TopLeft="16.5,123.5" />
+          TopLeft="28.5,125.5" />
         <NodeLayout
           Size="179,42"
           Id="Package\Truncate Date Table"
           TopLeft="14,21" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="103.5,63">
+          TopLeft="100,63">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-19,60.5"
+              EndConnector="0,62.5"
               Start="0,0"
-              End="-19,53">
+              End="0,55">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26.25" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,26.25"
-                    Point2="0,30.25"
-                    Point3="-4,30.25" />
-                  <mssgle:LineSegment
-                    End="-15,30.25" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-15,30.25"
-                    Point2="-19,30.25"
-                    Point3="-19,34.25" />
-                  <mssgle:LineSegment
-                    End="-19,53" />
+                    End="0,55" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1483,11 +1497,19 @@
     design-time-name="Package\Import Date">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="135,42"
+          Id="Package\Import Date\IsWeekEnd"
+          TopLeft="58,643" />
         <NodeLayout
           Size="156,42"
           Id="Package\Import Date\WeekDayName"
           TopLeft="238,723" />
+        <NodeLayout
+          Size="157,42"
+          Id="Package\Import Date\OLE DB Source"
+          TopLeft="112,37" />
         <NodeLayout
           Size="99,42"
           Id="Package\Import Date\Sort"
@@ -1497,13 +1519,9 @@
           Id="Package\Import Date\Week"
           TopLeft="62,480" />
         <NodeLayout
-          Size="138,42"
-          Id="Package\Import Date\DayOfWeek"
-          TopLeft="50,726" />
-        <NodeLayout
-          Size="177,42"
-          Id="Package\Import Date\OLE DB Destination"
-          TopLeft="431,729" />
+          Size="158,42"
+          Id="Package\Import Date\Derived Column"
+          TopLeft="392,188" />
         <NodeLayout
           Size="102,42"
           Id="Package\Import Date\Year"
@@ -1517,9 +1535,13 @@
           Id="Package\Import Date\Timestamp Conversion"
           TopLeft="19,122" />
         <NodeLayout
-          Size="158,42"
-          Id="Package\Import Date\Derived Column"
-          TopLeft="392,188" />
+          Size="171,42"
+          Id="Package\Import Date\OLE DB Destination"
+          TopLeft="445,727" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\Import Date\WeekDayNumber"
+          TopLeft="38,415" />
         <NodeLayout
           Size="161,42"
           Id="Package\Import Date\Data Conversion"
@@ -1529,17 +1551,213 @@
           Id="Package\Import Date\Month"
           TopLeft="59,349" />
         <NodeLayout
-          Size="166,42"
-          Id="Package\Import Date\WeekDayNumber"
-          TopLeft="38,415" />
-        <NodeLayout
-          Size="135,42"
-          Id="Package\Import Date\IsWeekEnd"
-          TopLeft="58,643" />
-        <NodeLayout
-          Size="166,42"
-          Id="Package\Import Date\ADO NET Source"
-          TopLeft="28.5,12.5" />
+          Size="138,42"
+          Id="Package\Import Date\DayOfWeek"
+          TopLeft="50,726" />
+        <EdgeLayout
+          Id="Package\Import Date.Paths[OLE DB Source Output]"
+          TopLeft="190.5,79">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-75.5,43"
+              Start="0,0"
+              End="-75.5,35.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.5"
+                    Point2="0,21.5"
+                    Point3="-4,21.5" />
+                  <mssgle:LineSegment
+                    End="-71.5,21.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-71.5,21.5"
+                    Point2="-75.5,21.5"
+                    Point3="-75.5,25.5" />
+                  <mssgle:LineSegment
+                    End="-75.5,35.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Import Date.Paths[Derived Column Output8]"
+          TopLeft="394,746">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="51,0"
+              Start="0,0"
+              End="43.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="43.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="13.75,5,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Import Date.Paths[Derived Column Output7]"
+          TopLeft="188,745.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="50,0"
+              Start="0,0"
+              End="42.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="42.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Import Date.Paths[Derived Column Output6]"
+          TopLeft="471,230">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-137.5,23"
+              Start="0,0"
+              End="-137.5,15.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,7.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,7.5"
+                    Point2="0,11.5"
+                    Point3="-4,11.5" />
+                  <mssgle:LineSegment
+                    End="-133.5,11.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-133.5,11.5"
+                    Point2="-137.5,11.5"
+                    Point3="-137.5,15.5" />
+                  <mssgle:LineSegment
+                    End="-137.5,15.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-76.75,16.5,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Import Date.Paths[Derived Column Output5]"
+          TopLeft="114.5,298">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,51"
+              Start="0,0"
+              End="0,43.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Import Date.Paths[Derived Column Output4]"
+          TopLeft="122.25,685">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41"
+              Start="0,0"
+              End="0,33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Import Date.Paths[Derived Column Output3]"
+          TopLeft="122.75,607">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36"
+              Start="0,0"
+              End="0,28.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Import Date.Paths[Derived Column Output2]"
+          TopLeft="117.75,522">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43"
+              Start="0,0"
+              End="0,35.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Import Date.Paths[Derived Column Output1]"
           TopLeft="118.25,457">
@@ -1653,28 +1871,6 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Import Date.Paths[ADO NET Source Output]"
-          TopLeft="113.25,54.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,67.5"
-              Start="0,0"
-              End="0,60">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,60" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package\Import Date.Paths[Sort Output]"
           TopLeft="284,275.5">
           <EdgeLayout.Curve>
@@ -1696,177 +1892,11 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Import Date.Paths[Derived Column Output8]"
-          TopLeft="394,747">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="37,0"
-              Start="0,0"
-              End="29.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="29.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Import Date.Paths[Derived Column Output7]"
-          TopLeft="188,745.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="50,0"
-              Start="0,0"
-              End="42.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="42.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Import Date.Paths[Derived Column Output6]"
-          TopLeft="471,230">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-137.5,23"
-              Start="0,0"
-              End="-137.5,15.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,7.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,7.5"
-                    Point2="0,11.5"
-                    Point3="-4,11.5" />
-                  <mssgle:LineSegment
-                    End="-133.5,11.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-133.5,11.5"
-                    Point2="-137.5,11.5"
-                    Point3="-137.5,15.5" />
-                  <mssgle:LineSegment
-                    End="-137.5,15.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Import Date.Paths[Derived Column Output5]"
-          TopLeft="114.5,298">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,51"
-              Start="0,0"
-              End="0,43.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,43.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Import Date.Paths[Derived Column Output4]"
-          TopLeft="122.25,685">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,41"
-              Start="0,0"
-              End="0,33.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,33.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Import Date.Paths[Derived Column Output3]"
-          TopLeft="122.75,607">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,36"
-              Start="0,0"
-              End="0,28.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,28.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Import Date.Paths[Derived Column Output2]"
-          TopLeft="117.75,522">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,43"
-              Start="0,0"
-              End="0,35.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,35.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Import Date\OLE DB Destination">
+    design-time-name="Package\Import Date\OLE DB Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1879,10 +1909,15 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Import Date\ADO NET Source">
+    design-time-name="Package\Import Date\OLE DB Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

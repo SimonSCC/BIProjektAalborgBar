@@ -45,8 +45,8 @@ ELSE
 	[Name] NVARCHAR(255),
 	ListedPrice INT,
 	Category NVARCHAR(255),
-	IsRowActive BIT,
-	DeactivateDate DATE,
+	ValidFrom DATE,
+	ValidTo DATE,
 
 	PRIMARY KEY (ProductKey)
 	);
@@ -64,11 +64,11 @@ ELSE
 	(
 	MemberKey INT IDENTITY(1,1),
 	MemberID INT,
-	YearJoined DATE,
-	SemesterPeriod NVARCHAR(3),
-	Semester NVARCHAR(10),
-	IsRowActive BIT,
-	DeactivateDate DATE,
+	YearJoined INT,
+	SemesterPeriod NVARCHAR(50),
+	Semester NVARCHAR(50),
+	ValidFrom DATE,
+	ValidTo DATE,
 
 	PRIMARY KEY (MemberKey)
 	);
@@ -109,31 +109,13 @@ ELSE
 	[Month] INT,
 	[Week] INT,
 	WeekDayNumber INT,
-	[DayOfWeek] INT,
+	[DayOfWeek] NVARCHAR(55),
 	IsWeekend BIT,
 
 	PRIMARY KEY (DateKey)
 	);
 	END
 
---Create Room Dimension table
-
-USE BIProjektDW
-IF object_id('Dimension.[Room]', 'U') IS NOT NULL
-	PRINT 'Room table already created!'
-ELSE
-	BEGIN 
-	PRINT 'Not present! Room table is being created'
-	CREATE TABLE Dimension.[Room]
-	(
-	RoomKey INT IDENTITY(1,1),
-	[Name] NVARCHAR(255),
-	[Description] NVARCHAR(255),
-	
-
-	PRIMARY KEY (RoomKey)
-	);
-	END
 
 --Create Sale Fact table
 
@@ -153,6 +135,7 @@ ELSE
 	DateKey DATE,
 	RoomKey INT,
 	Price MONEY,
+	SaleLocation NVARCHAR(255),
 	
 
 	PRIMARY KEY (SaleKey)
@@ -201,17 +184,6 @@ ELSE
 	PRINT 'FK_Fact_Sale_TimeKey_Dimension_Time_TimeKey constraint already exists!'
 
 
---Constraint to Dimension.Room
-
-USE BIProjektDW
-IF NOT EXISTS(SELECT * FROM INFORMATION_SCHEMA.REFERENTIAL_CONSTRAINTS WHERE CONSTRAINT_CATALOG = 'BIProjektDW' AND 
-CONSTRAINT_NAME = 'FK_Fact_Sale_RoomKey_Dimension_Room_RoomKey')
-	BEGIN		
-		ALTER TABLE Fact.Sale ADD CONSTRAINT FK_Fact_Sale_RoomKey_Dimension_Room_RoomKey FOREIGN KEY (RoomKey)
-		REFERENCES Dimension.[Room](RoomKey)
-	END
-ELSE
-	PRINT 'FK_Fact_Sale_RoomKey_Dimension_Room_RoomKey constraint already exists!'
 
 --Constraint to Dimension.Product
 
@@ -237,3 +209,47 @@ DROP TABLE Dimension.[Date]
 DROP TABLE Dimension.[Room]
 
 
+--USE MASTER 
+--GO
+
+----ALTER DATABASE BiProjektDW 
+----SET multi_user WITH ROLLBACK IMMEDIATE
+----GO
+
+
+
+
+
+
+--OLD ROOM DIMENSION WHICH IS NOW A DEGENERATE DIMENSION
+
+--Create Room Dimension table
+
+USE BIProjektDW
+IF object_id('Dimension.[Room]', 'U') IS NOT NULL
+	PRINT 'Room table already created!'
+ELSE
+	BEGIN 
+	PRINT 'Not present! Room table is being created'
+	CREATE TABLE Dimension.[Room]
+	(
+	RoomKey INT IDENTITY(1,1),
+	[Name] NVARCHAR(255),
+	[Description] NVARCHAR(255),
+	
+
+	PRIMARY KEY (RoomKey)
+	);
+	END
+
+--Constraint to Dimension.Room
+
+USE BIProjektDW
+IF NOT EXISTS(SELECT * FROM INFORMATION_SCHEMA.REFERENTIAL_CONSTRAINTS WHERE CONSTRAINT_CATALOG = 'BIProjektDW' AND 
+CONSTRAINT_NAME = 'FK_Fact_Sale_RoomKey_Dimension_Room_RoomKey')
+	BEGIN		
+		ALTER TABLE Fact.Sale ADD CONSTRAINT FK_Fact_Sale_RoomKey_Dimension_Room_RoomKey FOREIGN KEY (RoomKey)
+		REFERENCES Dimension.[Room](RoomKey)
+	END
+ELSE
+	PRINT 'FK_Fact_Sale_RoomKey_Dimension_Room_RoomKey constraint already exists!'
