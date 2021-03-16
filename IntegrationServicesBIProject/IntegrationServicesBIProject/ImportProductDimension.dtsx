@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="ImportProductDimension"
   DTS:PackageType="5"
-  DTS:VersionBuild="80"
-  DTS:VersionGUID="{F8B32D09-A24D-4EA2-BBF0-A9339AC0E4AB}">
+  DTS:VersionBuild="82"
+  DTS:VersionGUID="{2E4757C9-8095-4BD6-8A65-3E8EB57C971D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -49,7 +49,7 @@
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="PriceAsString"
-                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[PriceAsString]" />
+                      lineageId="Package\Data Flow Task\PriceToString.Outputs[Data Conversion Output].Columns[PriceAsString]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -76,7 +76,7 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">#{Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[PriceAsString]} + ",00"</property>
+                          name="Expression">#{Package\Data Flow Task\PriceToString.Outputs[Data Conversion Output].Columns[PriceAsString]} + ",00"</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -485,7 +485,7 @@
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="PriceAsString"
-                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[PriceAsString]" />
+                      lineageId="Package\Data Flow Task\PriceToString.Outputs[Data Conversion Output].Columns[PriceAsString]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -505,7 +505,7 @@
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
-                      name="Expression">#{Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[PriceAsString]} != "0"</property>
+                      name="Expression">#{Package\Data Flow Task\PriceToString.Outputs[Data Conversion Output].Columns[PriceAsString]} != "0"</property>
                     <property
                       containsID="true"
                       dataType="System.String"
@@ -902,7 +902,7 @@
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="PriceAsString"
-                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[PriceAsString]" />
+                      lineageId="Package\Data Flow Task\PriceToString.Outputs[Data Conversion Output].Columns[PriceAsString]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -929,7 +929,7 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[SUBSTRING](#{Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[PriceAsString]},1,([LEN](#{Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[PriceAsString]}) - 2)) + "," + [SUBSTRING](#{Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[PriceAsString]},([LEN](#{Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[PriceAsString]}) - 1),2)</property>
+                          name="Expression">[SUBSTRING](#{Package\Data Flow Task\PriceToString.Outputs[Data Conversion Output].Columns[PriceAsString]},1,([LEN](#{Package\Data Flow Task\PriceToString.Outputs[Data Conversion Output].Columns[PriceAsString]}) - 2)) + "," + [SUBSTRING](#{Package\Data Flow Task\PriceToString.Outputs[Data Conversion Output].Columns[PriceAsString]},([LEN](#{Package\Data Flow Task\PriceToString.Outputs[Data Conversion Output].Columns[PriceAsString]}) - 1),2)</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -959,82 +959,6 @@
                       refId="Package\Data Flow Task\Convert Price to Comma.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       dataType="i4"
                       lineageId="Package\Data Flow Task\Convert Price to Comma.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\Data Flow Task\Data Conversion"
-              componentClassID="Microsoft.DataConvert"
-              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Data Conversion"
-              name="Data Conversion"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]"
-                  name="Data Conversion Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[price]"
-                      cachedDataType="i4"
-                      cachedName="price"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[price]" />
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output]"
-                  exclusionGroup="1"
-                  name="Data Conversion Output"
-                  synchronousInputId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[PriceAsString]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      length="50"
-                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[PriceAsString]"
-                      name="PriceAsString"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[price]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Data Conversion Error Output"
-                  synchronousInputId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -1869,6 +1793,82 @@ where [refTable].[ProductID] = ?</property>
                       refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
                       lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\PriceToString"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="PriceToString"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\PriceToString.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\PriceToString.Inputs[Data Conversion Input].Columns[price]"
+                      cachedDataType="i4"
+                      cachedName="price"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[price]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\PriceToString.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Data Flow Task\PriceToString.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\PriceToString.Outputs[Data Conversion Output].Columns[PriceAsString]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Data Flow Task\PriceToString.Outputs[Data Conversion Output].Columns[PriceAsString]"
+                      name="PriceAsString"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[price]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\PriceToString.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Data Flow Task\PriceToString.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\PriceToString.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\PriceToString.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\PriceToString.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\PriceToString.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -2747,7 +2747,7 @@ where [refTable].[ProductID] = ?</property>
               startId="Package\Data Flow Task\Convert DT_R8 to DT_I4 1.Outputs[Data Conversion Output]" />
             <path
               refId="Package\Data Flow Task.Paths[Data Conversion Output1]"
-              endId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]"
+              endId="Package\Data Flow Task\PriceToString.Inputs[Data Conversion Input]"
               name="Data Conversion Output"
               startId="Package\Data Flow Task\Convert Name column to nvarchar(255).Outputs[Data Conversion Output]" />
             <path
@@ -2759,7 +2759,7 @@ where [refTable].[ProductID] = ?</property>
               refId="Package\Data Flow Task.Paths[Data Conversion Output3]"
               endId="Package\Data Flow Task\Conditional Split.Inputs[Conditional Split Input]"
               name="Data Conversion Output"
-              startId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output]" />
+              startId="Package\Data Flow Task\PriceToString.Outputs[Data Conversion Output]" />
             <path
               refId="Package\Data Flow Task.Paths[Data Conversion Output4]"
               endId="Package\Data Flow Task\Sort 1.Inputs[Sort Input]"
@@ -2921,7 +2921,7 @@ where [refTable].[ProductID] = ?</property>
         <NodeLayout
           Size="155,42"
           Id="Package\Data Flow Task\Conditional Split"
-          TopLeft="773.888888888889,241.666666666667" />
+          TopLeft="774.888888888889,242.666666666667" />
         <NodeLayout
           Size="168,42"
           Id="Package\Data Flow Task\Join With Category"
@@ -2947,9 +2947,9 @@ where [refTable].[ProductID] = ?</property>
           Id="Package\Data Flow Task\JoinCategory"
           TopLeft="194,460.666666666667" />
         <NodeLayout
-          Size="156,42"
-          Id="Package\Data Flow Task\Data Conversion"
-          TopLeft="777.666666666667,157.555555555556" />
+          Size="141,42"
+          Id="Package\Data Flow Task\PriceToString"
+          TopLeft="778.666666666667,158.555555555556" />
         <NodeLayout
           Size="150,42"
           Id="Package\Data Flow Task\OLE DB Source"
@@ -2969,11 +2969,11 @@ where [refTable].[ProductID] = ?</property>
         <NodeLayout
           Size="193,42"
           Id="Package\Data Flow Task\Convert Price to Comma"
-          TopLeft="501,245.666666666667" />
+          TopLeft="502,246.666666666667" />
         <NodeLayout
           Size="120,42"
           Id="Package\Data Flow Task\Combine"
-          TopLeft="535,338" />
+          TopLeft="536,339" />
         <NodeLayout
           Size="121,42"
           Id="Package\Data Flow Task\Union All"
@@ -2992,7 +2992,7 @@ where [refTable].[ProductID] = ?</property>
           TopLeft="96,156.666666666667" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Data Conversion Output3]"
-          TopLeft="853.527777777778,199.555555555556">
+          TopLeft="850.777777777778,200.555555555556">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3036,18 +3036,18 @@ where [refTable].[ProductID] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Data Conversion Output1]"
-          TopLeft="734,177.111111111111">
+          TopLeft="734,177.611111111111">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="43.666666666667,0"
+              EndConnector="44.666666666667,0"
               Start="0,0"
-              End="36.166666666667,0">
+              End="37.166666666667,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="36.166666666667,0" />
+                    End="37.166666666667,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3080,18 +3080,18 @@ where [refTable].[ProductID] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Union All Output 11]"
-          TopLeft="594.5,380">
+          TopLeft="595,381">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,48.484848484849"
+              EndConnector="0,47.484848484849"
               Start="0,0"
-              End="0,40.984848484849">
+              End="0,39.984848484849">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,40.984848484849" />
+                    End="0,39.984848484849" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3282,7 +3282,7 @@ where [refTable].[ProductID] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Not 0]"
-          TopLeft="773.888888888889,264.666666666667">
+          TopLeft="774.888888888889,265.666666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3420,25 +3420,25 @@ where [refTable].[ProductID] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Is 0]"
-          TopLeft="852.444444444445,283.666666666667">
+          TopLeft="852.944444444445,284.666666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,51.333333333333"
+              EndConnector="0,50.333333333333"
               Start="0,0"
-              End="0,43.833333333333">
+              End="0,42.833333333333">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,43.833333333333" />
+                    End="0,42.833333333333" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-8.9598046875,17.1324869791665,17.919609375,9.568359375"
+              BoundingBox="-8.9598046875,16.6324869791665,17.919609375,9.568359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -3488,18 +3488,18 @@ where [refTable].[ProductID] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Derived Column Output2]"
-          TopLeft="788,357.5">
+          TopLeft="788,358">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-133,0"
+              EndConnector="-132,0"
               Start="0,0"
-              End="-125.5,0">
+              End="-124.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-125.5,0" />
+                    End="-124.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3532,7 +3532,7 @@ where [refTable].[ProductID] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Derived Column Output]"
-          TopLeft="596.25,287.666666666667">
+          TopLeft="597.25,288.666666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3595,6 +3595,13 @@ where [refTable].[ProductID] = ?</property>
           Size="239,88"
           Id="440c3ec3-0087-49d4-b432-b5bf2816db47"
           TopLeft="759,15.6666666666667" />
+        <AnnotationLayout
+          Text="Duplicate streams because I want to update the other validto attribute&#xA;on the match later."
+          ParentId="Package\Data Flow Task"
+          FontInfo="{assembly:Null}"
+          Size="400,56"
+          Id="c5f77258-4bda-4c4f-96a2-2de1392eadb4"
+          TopLeft="864,685" />
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -3604,7 +3611,7 @@ where [refTable].[ProductID] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -3614,7 +3621,7 @@ where [refTable].[ProductID] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>

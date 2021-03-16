@@ -261,3 +261,14 @@ ELSE
 --VALUES (99, 'poo', 6.55, 'CoolStuff');
 
 --SELECT ListedPrice from Dimension.Product
+
+
+
+ -- SELECT * FROM Dimension.[Time] where TimeKey = '14:11'
+ --DELETE FROM Dimension.[Time] where TimeKey = '12:10:00.0000000'
+
+
+
+ --SELECT * FROM Fact.Sale WHERE TimeKey = '12:10'
+
+ --6237
