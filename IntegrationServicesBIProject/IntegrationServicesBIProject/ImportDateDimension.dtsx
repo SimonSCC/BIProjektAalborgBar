@@ -5,23 +5,35 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="DESKTOP-8MNAKIP"
   DTS:CreatorName="DESKTOP-8MNAKIP\Tobias"
-  DTS:DTSID="{A7D28571-494E-40B2-B8CD-270B4CBF9D94}"
+  DTS:DTSID="{CE9360CD-9938-442F-A2AF-DBCB48C97385}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="15.0.2000.152"
   DTS:LocaleID="1033"
-  DTS:ObjectName="Package1"
+  DTS:ObjectName="ImportDateDimension"
   DTS:PackageType="5"
-  DTS:VersionBuild="55"
-  DTS:VersionGUID="{198EF51E-2CC6-4398-AAF3-D271361BA3B4}">
+  DTS:VersionBuild="61"
+  DTS:VersionGUID="{CE9C7093-EA9C-48E8-B9CC-08704D83552B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.BIProjektDW]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{3187E416-49D0-4024-95EE-6FCBB8A1A501}"
+      DTS:ObjectName="LocalHost.BIProjektDW">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=BIProjektDW;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
       DTS:refId="Package\Import Date"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{4B99AE54-EB7D-4585-9FFE-791F41A81F81}"
+      DTS:DTSID="{80544B12-E5B3-47CE-BBEB-30B539DF9A2D}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
       DTS:ObjectName="Import Date"
@@ -31,83 +43,6 @@
         <pipeline
           version="1">
           <components>
-            <component
-              refId="Package\Import Date\Data Conversion"
-              componentClassID="Microsoft.DataConvert"
-              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Data Conversion"
-              name="Data Conversion"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\Import Date\Data Conversion.Inputs[Data Conversion Input]"
-                  name="Data Conversion Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Import Date\Data Conversion.Inputs[Data Conversion Input].Columns[date]"
-                      cachedDataType="date"
-                      cachedName="date"
-                      lineageId="Package\Import Date\Timestamp Conversion.Outputs[Data Conversion Output].Columns[date]" />
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Import Date\Data Conversion.Outputs[Data Conversion Output]"
-                  exclusionGroup="1"
-                  name="Data Conversion Output"
-                  synchronousInputId="Package\Import Date\Data Conversion.Inputs[Data Conversion Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Import Date\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of date]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      length="50"
-                      lineageId="Package\Import Date\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of date]"
-                      name="Copy of date"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Import Date\Timestamp Conversion.Outputs[Data Conversion Output].Columns[date]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Import Date\Data Conversion.Outputs[Data Conversion Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Data Conversion Error Output"
-                  synchronousInputId="Package\Import Date\Data Conversion.Inputs[Data Conversion Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Import Date\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Import Date\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Import Date\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Import Date\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
             <component
               refId="Package\Import Date\DayOfWeek"
               componentClassID="Microsoft.DerivedColumn"
@@ -150,89 +85,6 @@
                       refId="Package\Import Date\DayOfWeek.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       dataType="i4"
                       lineageId="Package\Import Date\DayOfWeek.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\Import Date\Derived Column"
-              componentClassID="Microsoft.DerivedColumn"
-              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-              name="Derived Column"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\Import Date\Derived Column.Inputs[Derived Column Input]"
-                  description="Input to the Derived Column Transformation"
-                  name="Derived Column Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Import Date\Derived Column.Inputs[Derived Column Input].Columns[Copy of date]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="Copy of date"
-                      lineageId="Package\Import Date\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of date]" />
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Import Date\Derived Column.Outputs[Derived Column Output]"
-                  description="Default Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  name="Derived Column Output"
-                  synchronousInputId="Package\Import Date\Derived Column.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Import Date\Derived Column.Outputs[Derived Column Output].Columns[SortingDate]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      length="10"
-                      lineageId="Package\Import Date\Derived Column.Outputs[Derived Column Output].Columns[SortingDate]"
-                      name="SortingDate"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[LEFT](#{Package\Import Date\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of date]},10)</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">LEFT([Copy of date],10)</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Import Date\Derived Column.Outputs[Derived Column Error Output]"
-                  description="Error Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Derived Column Error Output"
-                  synchronousInputId="Package\Import Date\Derived Column.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Import Date\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Import Date\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Import Date\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Import Date\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -335,8 +187,9 @@
                   <inputColumns>
                     <inputColumn
                       refId="Package\Import Date\Month.Inputs[Derived Column Input].Columns[date]"
-                      cachedDataType="date"
+                      cachedDataType="dbDate"
                       cachedName="date"
+                      cachedSortKeyPosition="1"
                       lineageId="Package\Import Date\Sort.Outputs[Sort Output].Columns[date]" />
                   </inputColumns>
                   <externalMetadataColumns />
@@ -459,8 +312,8 @@
               <connections>
                 <connection
                   refId="Package\Import Date\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="{4FA198D2-2B35-4AEE-962E-CA800AD165C6}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[MSSQLServer.BIProjektDW]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.BIProjektDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.BIProjektDW]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -503,6 +356,13 @@
                       externalMetadataColumnId="Package\Import Date\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IsWeekend]"
                       lineageId="Package\Import Date\IsWeekEnd.Outputs[Derived Column Output].Columns[IsWeekEnd]" />
                     <inputColumn
+                      refId="Package\Import Date\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[date]"
+                      cachedDataType="dbDate"
+                      cachedName="date"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\Import Date\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DateKey]"
+                      lineageId="Package\Import Date\Sort.Outputs[Sort Output].Columns[date]" />
+                    <inputColumn
                       refId="Package\Import Date\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[weekday]"
                       cachedDataType="i4"
                       cachedName="weekday"
@@ -515,12 +375,6 @@
                       cachedName="WeekDayName"
                       externalMetadataColumnId="Package\Import Date\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DayOfWeek]"
                       lineageId="Package\Import Date\WeekDayName.Outputs[Derived Column Output].Columns[WeekDayName]" />
-                    <inputColumn
-                      refId="Package\Import Date\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[date]"
-                      cachedDataType="date"
-                      cachedName="date"
-                      externalMetadataColumnId="Package\Import Date\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DateKey]"
-                      lineageId="Package\Import Date\Sort.Outputs[Sort Output].Columns[date]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -726,8 +580,9 @@
                   <inputColumns>
                     <inputColumn
                       refId="Package\Import Date\Quarter.Inputs[Derived Column Input].Columns[date]"
-                      cachedDataType="date"
+                      cachedDataType="dbDate"
                       cachedName="date"
+                      cachedSortKeyPosition="1"
                       lineageId="Package\Import Date\Sort.Outputs[Sort Output].Columns[date]" />
                   </inputColumns>
                   <externalMetadataColumns />
@@ -832,44 +687,9 @@
                     </inputColumn>
                     <inputColumn
                       refId="Package\Import Date\Sort.Inputs[Sort Input].Columns[date]"
-                      cachedDataType="date"
+                      cachedDataType="dbDate"
                       cachedName="date"
                       lineageId="Package\Import Date\Timestamp Conversion.Outputs[Data Conversion Output].Columns[date]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">0</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Import Date\Sort.Inputs[Sort Input].Columns[Copy of date]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="Copy of date"
-                      lineageId="Package\Import Date\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of date]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the comparison options for character data."
-                          name="NewComparisonFlags">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">0</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Import Date\Sort.Inputs[Sort Input].Columns[SortingDate]"
-                      cachedDataType="wstr"
-                      cachedLength="10"
-                      cachedName="SortingDate"
-                      lineageId="Package\Import Date\Derived Column.Outputs[Derived Column Output].Columns[SortingDate]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -906,45 +726,16 @@
                     </outputColumn>
                     <outputColumn
                       refId="Package\Import Date\Sort.Outputs[Sort Output].Columns[date]"
-                      dataType="date"
+                      dataType="dbDate"
                       lineageId="Package\Import Date\Sort.Outputs[Sort Output].Columns[date]"
-                      name="date">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\Import Date\Timestamp Conversion.Outputs[Data Conversion Output].Columns[date]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Import Date\Sort.Outputs[Sort Output].Columns[Copy of date]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
-                      lineageId="Package\Import Date\Sort.Outputs[Sort Output].Columns[Copy of date]"
-                      name="Copy of date">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\Import Date\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of date]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Import Date\Sort.Outputs[Sort Output].Columns[SortingDate]"
-                      dataType="wstr"
-                      length="10"
-                      lineageId="Package\Import Date\Sort.Outputs[Sort Output].Columns[SortingDate]"
-                      name="SortingDate"
+                      name="date"
                       sortKeyPosition="1">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\Import Date\Derived Column.Outputs[Derived Column Output].Columns[SortingDate]}</property>
+                          name="SortColumnId">#{Package\Import Date\Timestamp Conversion.Outputs[Data Conversion Output].Columns[date]}</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -982,7 +773,7 @@
                   <outputColumns>
                     <outputColumn
                       refId="Package\Import Date\Timestamp Conversion.Outputs[Data Conversion Output].Columns[date]"
-                      dataType="date"
+                      dataType="dbDate"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       lineageId="Package\Import Date\Timestamp Conversion.Outputs[Data Conversion Output].Columns[date]"
@@ -1042,8 +833,9 @@
                   <inputColumns>
                     <inputColumn
                       refId="Package\Import Date\Week.Inputs[Derived Column Input].Columns[date]"
-                      cachedDataType="date"
+                      cachedDataType="dbDate"
                       cachedName="date"
+                      cachedSortKeyPosition="1"
                       lineageId="Package\Import Date\Sort.Outputs[Sort Output].Columns[date]" />
                   </inputColumns>
                   <externalMetadataColumns />
@@ -1203,8 +995,9 @@
                   <inputColumns>
                     <inputColumn
                       refId="Package\Import Date\WeekDayNumber.Inputs[Derived Column Input].Columns[date]"
-                      cachedDataType="date"
+                      cachedDataType="dbDate"
                       cachedName="date"
+                      cachedSortKeyPosition="1"
                       lineageId="Package\Import Date\Sort.Outputs[Sort Output].Columns[date]" />
                   </inputColumns>
                   <externalMetadataColumns />
@@ -1283,8 +1076,9 @@
                   <inputColumns>
                     <inputColumn
                       refId="Package\Import Date\Year.Inputs[Derived Column Input].Columns[date]"
-                      cachedDataType="date"
+                      cachedDataType="dbDate"
                       cachedName="date"
+                      cachedSortKeyPosition="1"
                       lineageId="Package\Import Date\Sort.Outputs[Sort Output].Columns[date]" />
                   </inputColumns>
                   <externalMetadataColumns />
@@ -1352,14 +1146,9 @@
           <paths>
             <path
               refId="Package\Import Date.Paths[Data Conversion Output]"
-              endId="Package\Import Date\Data Conversion.Inputs[Data Conversion Input]"
+              endId="Package\Import Date\Sort.Inputs[Sort Input]"
               name="Data Conversion Output"
               startId="Package\Import Date\Timestamp Conversion.Outputs[Data Conversion Output]" />
-            <path
-              refId="Package\Import Date.Paths[Data Conversion Output1]"
-              endId="Package\Import Date\Derived Column.Inputs[Derived Column Input]"
-              name="Data Conversion Output"
-              startId="Package\Import Date\Data Conversion.Outputs[Data Conversion Output]" />
             <path
               refId="Package\Import Date.Paths[Derived Column Output]"
               endId="Package\Import Date\WeekDayNumber.Inputs[Derived Column Input]"
@@ -1392,16 +1181,11 @@
               startId="Package\Import Date\Year.Outputs[Derived Column Output]" />
             <path
               refId="Package\Import Date.Paths[Derived Column Output6]"
-              endId="Package\Import Date\Sort.Inputs[Sort Input]"
-              name="Derived Column Output"
-              startId="Package\Import Date\Derived Column.Outputs[Derived Column Output]" />
-            <path
-              refId="Package\Import Date.Paths[Derived Column Output7]"
               endId="Package\Import Date\WeekDayName.Inputs[Derived Column Input]"
               name="Derived Column Output"
               startId="Package\Import Date\DayOfWeek.Outputs[Derived Column Output]" />
             <path
-              refId="Package\Import Date.Paths[Derived Column Output8]"
+              refId="Package\Import Date.Paths[Derived Column Output7]"
               endId="Package\Import Date\OLE DB Destination.Inputs[OLE DB Destination Input]"
               name="Derived Column Output"
               startId="Package\Import Date\WeekDayName.Outputs[Derived Column Output]" />
@@ -1423,7 +1207,7 @@
       DTS:refId="Package\Truncate Date Table"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{B788FC19-9CEF-4CC9-8E47-A77AA8315401}"
+      DTS:DTSID="{BAFEDF94-CEFD-4657-8E44-7DAE32D6DC68}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate Date Table"
@@ -1432,7 +1216,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{4FA198D2-2B35-4AEE-962E-CA800AD165C6}"
+          SQLTask:Connection="{3187E416-49D0-4024-95EE-6FCBB8A1A501}"
           SQLTask:BypassPrepare="False"
           SQLTask:SqlStatementSource="USE BIProjektDW;&#xA;ALTER TABLE Fact.Sale&#xA;DROP CONSTRAINT FK_Fact_Sale_DateKey_Dimension_Date_DateKey;&#xA;TRUNCATE TABLE Dimension.Date;&#xA;&#x9;&#x9;ALTER TABLE Fact.Sale ADD CONSTRAINT FK_Fact_Sale_DateKey_Dimension_Date_DateKey FOREIGN KEY (DateKey)&#xA;&#x9;&#x9;REFERENCES Dimension.[Date](DateKey)&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
@@ -1442,7 +1226,7 @@
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{15371117-6DFE-40BE-B596-544E595F6F7D}"
+      DTS:DTSID="{6261B100-D37C-4C47-978F-D49F7DFBD01F}"
       DTS:From="Package\Truncate Date Table"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
@@ -1463,9 +1247,9 @@
         <NodeLayout
           Size="136,42"
           Id="Package\Import Date"
-          TopLeft="28.5,125.5" />
+          TopLeft="30.5,120.5" />
         <NodeLayout
-          Size="179,42"
+          Size="175,42"
           Id="Package\Truncate Date Table"
           TopLeft="14,21" />
         <EdgeLayout
@@ -1474,14 +1258,14 @@
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,62.5"
+              EndConnector="0,57.5"
               Start="0,0"
-              End="0,55">
+              End="0,50">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,55" />
+                    End="0,50" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1497,31 +1281,11 @@
     design-time-name="Package\Import Date">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="135,42"
-          Id="Package\Import Date\IsWeekEnd"
-          TopLeft="58,643" />
-        <NodeLayout
-          Size="156,42"
-          Id="Package\Import Date\WeekDayName"
-          TopLeft="238,723" />
-        <NodeLayout
-          Size="157,42"
-          Id="Package\Import Date\OLE DB Source"
-          TopLeft="112,37" />
-        <NodeLayout
-          Size="99,42"
-          Id="Package\Import Date\Sort"
-          TopLeft="284,253" />
-        <NodeLayout
-          Size="107,42"
-          Id="Package\Import Date\Week"
-          TopLeft="62,480" />
-        <NodeLayout
-          Size="158,42"
-          Id="Package\Import Date\Derived Column"
-          TopLeft="392,188" />
+          Size="177,42"
+          Id="Package\Import Date\OLE DB Destination"
+          TopLeft="431,729" />
         <NodeLayout
           Size="102,42"
           Id="Package\Import Date\Year"
@@ -1535,17 +1299,29 @@
           Id="Package\Import Date\Timestamp Conversion"
           TopLeft="19,122" />
         <NodeLayout
-          Size="171,42"
-          Id="Package\Import Date\OLE DB Destination"
-          TopLeft="445,727" />
-        <NodeLayout
           Size="166,42"
           Id="Package\Import Date\WeekDayNumber"
           TopLeft="38,415" />
         <NodeLayout
-          Size="161,42"
-          Id="Package\Import Date\Data Conversion"
-          TopLeft="308,113" />
+          Size="135,42"
+          Id="Package\Import Date\IsWeekEnd"
+          TopLeft="58,643" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Import Date\WeekDayName"
+          TopLeft="238,723" />
+        <NodeLayout
+          Size="157,42"
+          Id="Package\Import Date\OLE DB Source"
+          TopLeft="96,27" />
+        <NodeLayout
+          Size="107,42"
+          Id="Package\Import Date\Week"
+          TopLeft="62,480" />
+        <NodeLayout
+          Size="99,42"
+          Id="Package\Import Date\Sort"
+          TopLeft="284,253" />
         <NodeLayout
           Size="110,42"
           Id="Package\Import Date\Month"
@@ -1555,31 +1331,19 @@
           Id="Package\Import Date\DayOfWeek"
           TopLeft="50,726" />
         <EdgeLayout
-          Id="Package\Import Date.Paths[OLE DB Source Output]"
-          TopLeft="190.5,79">
+          Id="Package\Import Date.Paths[Sort Output]"
+          TopLeft="284,275.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-75.5,43"
+              EndConnector="-118,0"
               Start="0,0"
-              End="-75.5,35.5">
+              End="-110.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,17.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,17.5"
-                    Point2="0,21.5"
-                    Point3="-4,21.5" />
-                  <mssgle:LineSegment
-                    End="-71.5,21.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-71.5,21.5"
-                    Point2="-75.5,21.5"
-                    Point3="-75.5,25.5" />
-                  <mssgle:LineSegment
-                    End="-75.5,35.5" />
+                    End="-110.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1589,31 +1353,63 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Import Date.Paths[Derived Column Output8]"
-          TopLeft="394,746">
+          Id="Package\Import Date.Paths[OLE DB Source Output]"
+          TopLeft="174.5,69">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="51,0"
+              EndConnector="-59.5,53"
               Start="0,0"
-              End="43.5,0">
+              End="-59.5,45.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="43.5,0" />
+                    End="0,22.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.5"
+                    Point2="0,26.5"
+                    Point3="-4,26.5" />
+                  <mssgle:LineSegment
+                    End="-55.5,26.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-55.5,26.5"
+                    Point2="-59.5,26.5"
+                    Point3="-59.5,30.5" />
+                  <mssgle:LineSegment
+                    End="-59.5,45.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="13.75,5,16,16"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Import Date.Paths[Derived Column Output7]"
+          TopLeft="394,747">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="37,0"
+              Start="0,0"
+              End="29.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="29.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Import Date.Paths[Derived Column Output6]"
           TopLeft="188,745.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -1632,42 +1428,6 @@
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Import Date.Paths[Derived Column Output6]"
-          TopLeft="471,230">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-137.5,23"
-              Start="0,0"
-              End="-137.5,15.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,7.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,7.5"
-                    Point2="0,11.5"
-                    Point3="-4,11.5" />
-                  <mssgle:LineSegment
-                    End="-133.5,11.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-133.5,11.5"
-                    Point2="-137.5,11.5"
-                    Point3="-137.5,15.5" />
-                  <mssgle:LineSegment
-                    End="-137.5,15.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-76.75,16.5,16,16"
-              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -1803,87 +1563,31 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Import Date.Paths[Data Conversion Output1]"
-          TopLeft="388.5,155">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="82.5,33"
-              Start="0,0"
-              End="82.5,25.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,12.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,12.5"
-                    Point2="0,16.5"
-                    Point3="4,16.5" />
-                  <mssgle:LineSegment
-                    End="78.5,16.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="78.5,16.5"
-                    Point2="82.5,16.5"
-                    Point3="82.5,20.5" />
-                  <mssgle:LineSegment
-                    End="82.5,25.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package\Import Date.Paths[Data Conversion Output]"
-          TopLeft="211,143">
+          TopLeft="115,164">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="97,-9"
+              EndConnector="218.5,89"
               Start="0,0"
-              End="89.5,-9">
+              End="218.5,81.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="44.5,0" />
+                    End="0,40.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="44.5,0"
-                    Point2="48.5,0"
-                    Point3="48.5,-4" />
+                    Point1="0,40.5"
+                    Point2="0,44.5"
+                    Point3="4,44.5" />
                   <mssgle:LineSegment
-                    End="48.5,-5" />
+                    End="214.5,44.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="48.5,-5"
-                    Point2="48.5,-9"
-                    Point3="52.5,-9" />
+                    Point1="214.5,44.5"
+                    Point2="218.5,44.5"
+                    Point3="218.5,48.5" />
                   <mssgle:LineSegment
-                    End="89.5,-9" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Import Date.Paths[Sort Output]"
-          TopLeft="284,275.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-118,0"
-              Start="0,0"
-              End="-110.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="-110.5,0" />
+                    End="218.5,81.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1895,19 +1599,6 @@
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Import Date\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Import Date\OLE DB Destination">
     <Properties>
