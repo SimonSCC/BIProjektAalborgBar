@@ -43,7 +43,7 @@ ELSE
 	ProductKey INT IDENTITY(1,1),
 	ProductID INT,
 	[Name] NVARCHAR(255),
-	ListedPrice INT,
+	ListedPrice MONEY,
 	Category NVARCHAR(255),
 	ValidFrom DATE,
 	ValidTo DATE,
@@ -215,8 +215,11 @@ DROP TABLE Dimension.[Room]
 ----ALTER DATABASE BiProjektDW 
 ----SET multi_user WITH ROLLBACK IMMEDIATE
 ----GO
+SELECT * FROM Dimension.Product
+INSERT INTO Dimension.Product(ProductID, [Name], ListedPrice, Category)
+VALUES (99, 'poo', 6.55, 'CoolStuff');
 
-
+SELECT ListedPrice from Dimension.Product
 
 
 
