@@ -209,20 +209,6 @@ DROP TABLE Dimension.[Date]
 DROP TABLE Dimension.[Room]
 
 
---USE MASTER 
---GO
-
-----ALTER DATABASE BiProjektDW 
-----SET multi_user WITH ROLLBACK IMMEDIATE
-----GO
-SELECT * FROM Dimension.Product
-INSERT INTO Dimension.Product(ProductID, [Name], ListedPrice, Category)
-VALUES (99, 'poo', 6.55, 'CoolStuff');
-
-SELECT ListedPrice from Dimension.Product
-
-
-
 
 --OLD ROOM DIMENSION WHICH IS NOW A DEGENERATE DIMENSION
 
@@ -256,3 +242,22 @@ CONSTRAINT_NAME = 'FK_Fact_Sale_RoomKey_Dimension_Room_RoomKey')
 	END
 ELSE
 	PRINT 'FK_Fact_Sale_RoomKey_Dimension_Room_RoomKey constraint already exists!'
+
+
+
+
+
+	--TESTS
+
+
+	--USE MASTER 
+--GO
+
+----ALTER DATABASE BiProjektDW 
+----SET multi_user WITH ROLLBACK IMMEDIATE
+----GO
+--SELECT * FROM Dimension.Product
+--INSERT INTO Dimension.Product(ProductID, [Name], ListedPrice, Category)
+--VALUES (99, 'poo', 6.55, 'CoolStuff');
+
+--SELECT ListedPrice from Dimension.Product

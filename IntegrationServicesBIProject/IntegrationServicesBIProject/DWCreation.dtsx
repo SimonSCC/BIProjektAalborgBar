@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="38"
-  DTS:VersionGUID="{C3A7F71A-DB00-4FE5-B76F-7D7576C198F6}">
+  DTS:VersionBuild="39"
+  DTS:VersionGUID="{79F76EE3-0CA9-4B75-B8E7-3196034B0429}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -270,7 +270,7 @@
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4BA4440F-495A-47F7-8022-1E737464C341}"
-              SQLTask:SqlStatementSource="USE BIProjektDW&#xA;IF object_id('Fact.[Sale]', 'U') IS NOT NULL&#xA;&#x9;PRINT 'Sale table already created!'&#xA;ELSE&#xA;&#x9;BEGIN &#xA;&#x9;PRINT 'Not present! Sale table is being created'&#xA;&#x9;CREATE TABLE Fact.Sale&#xA;&#x9;(&#xA;&#x9;SaleKey INT IDENTITY(1,1),&#xA;&#x9;AlternativeSaleKey INT UNIQUE,&#xA;&#x9;MemberKey INT,&#xA;&#x9;ProductKey INT,&#xA;&#x9;TimeKey TIME,&#xA;&#x9;DateKey DATE,&#xA;&#x9;RoomKey INT,&#xA;&#x9;Price MONEY,&#xA;&#x9;SaleLocation NVARCHAR(255),&#xA;&#x9;&#xA;&#xA;&#x9;PRIMARY KEY (SaleKey)&#xA;&#x9;);&#xA;END" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:SqlStatementSource="USE BIProjektDW&#xA;IF object_id('Fact.[Sale]', 'U') IS NOT NULL&#xA;&#x9;PRINT 'Sale table already created!'&#xA;ELSE&#xA;&#x9;BEGIN &#xA;&#x9;PRINT 'Not present! Sale table is being created'&#xA;&#x9;CREATE TABLE Fact.Sale&#xA;&#x9;(&#xA;&#x9;SaleKey INT IDENTITY(1,1),&#xA;&#x9;AlternativeSaleKey INT UNIQUE,&#xA;&#x9;MemberKey INT,&#xA;&#x9;ProductKey INT,&#xA;&#x9;TimeKey TIME,&#xA;&#x9;DateKey DATE,&#x9;&#xA;&#x9;Price MONEY,&#xA;&#x9;SaleLocation NVARCHAR(255),&#x9;&#xA;&#xA;&#x9;PRIMARY KEY (SaleKey)&#xA;&#x9;);&#xA;END" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
@@ -358,14 +358,35 @@
           VSTAMinorVersion="0"
           Language="CSharp">
           <ProjectItem
-            Name="Properties\Settings.settings"
-            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
-</SettingsFile>]]></ProjectItem>
+            Name="Properties\AssemblyInfo.cs"
+            Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_d4287bd37a6d4d078ad72163078c80e0")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_d4287bd37a6d4d078ad72163078c80e0")]
+[assembly: AssemblyCopyright("Copyright @  2021")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
           <ProjectItem
             Name="ST_d4287bd37a6d4d078ad72163078c80e0.csproj"
             Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
@@ -749,35 +770,14 @@ namespace ST_d4287bd37a6d4d078ad72163078c80e0.Properties {
     }
 }]]></ProjectItem>
           <ProjectItem
-            Name="Properties\AssemblyInfo.cs"
-            Encoding="UTF8"><![CDATA[using System.Reflection;
-using System.Runtime.CompilerServices;
-
-//
-// General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
-//
-[assembly: AssemblyTitle("ST_d4287bd37a6d4d078ad72163078c80e0")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ST_d4287bd37a6d4d078ad72163078c80e0")]
-[assembly: AssemblyCopyright("Copyright @  2021")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-//
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Revision and Build Numbers 
-// by using the '*' as shown below:
-
-[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
           <ProjectItem
             Name="Properties\Resources.Designer.cs"
             Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------

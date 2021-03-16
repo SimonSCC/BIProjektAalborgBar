@@ -11,22 +11,10 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="ImportDateDimension"
   DTS:PackageType="5"
-  DTS:VersionBuild="63"
-  DTS:VersionGUID="{B10C1C91-CAF3-47EC-AEEC-84496968C4D8}">
+  DTS:VersionBuild="64"
+  DTS:VersionGUID="{41AA4453-BD65-4DB6-BD12-05E230CD8EA5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:ConnectionManagers>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[LocalHost.BIProjektDW]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{B17BCD15-11D8-4BB9-B030-B0260F96F618}"
-      DTS:ObjectName="LocalHost.BIProjektDW">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=.;Initial Catalog=BIProjektDW;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-  </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
@@ -312,8 +300,8 @@
               <connections>
                 <connection
                   refId="Package\Import Date\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LocalHost.BIProjektDW]"
-                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.BIProjektDW]"
+                  connectionManagerID="{4FA198D2-2B35-4AEE-962E-CA800AD165C6}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[MSSQLServer.BIProjektDW]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1216,7 +1204,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{B17BCD15-11D8-4BB9-B030-B0260F96F618}"
+          SQLTask:Connection="{4FA198D2-2B35-4AEE-962E-CA800AD165C6}"
           SQLTask:BypassPrepare="False"
           SQLTask:SqlStatementSource="USE BIProjektDW;&#xA;ALTER TABLE Fact.Sale&#xA;DROP CONSTRAINT FK_Fact_Sale_DateKey_Dimension_Date_DateKey;&#xA;TRUNCATE TABLE Dimension.Date;&#xA;&#x9;&#x9;ALTER TABLE Fact.Sale ADD CONSTRAINT FK_Fact_Sale_DateKey_Dimension_Date_DateKey FOREIGN KEY (DateKey)&#xA;&#x9;&#x9;REFERENCES Dimension.[Date](DateKey)&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
