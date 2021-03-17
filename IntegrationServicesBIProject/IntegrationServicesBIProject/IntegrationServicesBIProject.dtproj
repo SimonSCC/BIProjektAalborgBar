@@ -26,18 +26,18 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">MSI</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAvV6tSU5D+km16ofIMT5hjAAAAAACAAAAAAAQZgAAAAEAACAAAAAGvx8O3Qj3XfUn4QqccyLCanjtjeCfGJNLdb1XzE8xkgAAAAAOgAAAAAIAACAAAADB06K8LNc9+6x62+HXMmoZ2RU+rGFBjjdXQpMrCauEQZAAAACEUB5P1xBVzIq+YFB9Ux2jeDS3qIL7YD1qnHJLMymcauj9APkg3+weyCY/3bH0GiEqZa8WCvttE7YbvMSuPLUdBk0n1zN+evDKlLoweup2M4NCUQ6Ya4sfiKtc1M3IZlrUVk8kXW1XtZJa/5rwB4PgiVIQ7bouvgi0eZrsOh/8qHoO19dlbUStV/CxAX5e8OJAAAAAOHg8BRaDLhyew6WeXeIoxk+GYURBqmd+rzxL00tBU6VC9z53TqLAhVrVy77xvDMiuvpthtsleggbKE4z72puYA==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAvV6tSU5D+km16ofIMT5hjAAAAAACAAAAAAAQZgAAAAEAACAAAAAeXnPvQYreU7WJVIez7/vCYVKD99OUyf/6m7FDB1ilvAAAAAAOgAAAAAIAACAAAACEGg2CrneEZRQ50r1k/0q01u/IHAUGmrFs92Jt0/hSVJAAAAD6WlGj/RZXGeyC1UbpQBnq+pjLTrXj3VmJJYt6TR/bPsFi8yD0cXwWN8i88ccwkZp6DQe3HJMBanLWmyC5A0zgnkhFeMPUD8DUostcdGYPJ+BeuHVFi3csIRrdkJ/cpOEz9GUKqiSSJf4ueGx7Nxh7Cq/6jiQvzTwB327zF6fxHTvTLt3GEKQk53PlJ8pB0q5AAAAA0uEPZqvAcb/sTAZt2o6HEmfAHQD25bLRfqsS51V8MMHvaLdzNqkp7FueJqyApXTBR/lOUeuoWMG4v2aHGp0OIw==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
           <SSIS:Package SSIS:Name="Drop Database.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="DWCreation.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="ImportMemberDimension.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="ImportTimeDimension.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="DropDatabase-DWCreation.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="ImportDateDimension.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="ImportProductDimension.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="ImportSaleFact.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="ImportMemberDimension.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="MSSQLServer.conmgr" />
@@ -567,23 +567,6 @@
               </SSIS:Properties>
               <SSIS:Parameters />
             </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="ImportMemberDimension.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{EDEE590F-92BF-4D54-A3FC-895C1590EA9F}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">Package</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">40</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{3CCBFC06-1ECD-4CB7-8517-2F6F3D538D06}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="ImportTimeDimension.dtsx">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">{F3C531B1-9574-4782-A3A0-1C1D910CE03D}</SSIS:Property>
@@ -624,10 +607,10 @@
                 <SSIS:Property SSIS:Name="Name">ImportDateDimension</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">67</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">68</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{22A6830C-C621-4414-B253-A17BFDFE4A1D}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{10641960-62D4-45CA-8227-C00C009EAE5A}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -662,6 +645,23 @@
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionGUID">{0B66048B-A866-4929-9019-660700FB5F36}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="ImportMemberDimension.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{7733D6ED-3D4D-4DCC-934E-7CC6A1F40712}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Package</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">41</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{5CD1EDAA-BD1D-4FCC-9085-F84682504016}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>

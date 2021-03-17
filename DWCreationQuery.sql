@@ -272,3 +272,16 @@ ELSE
  --SELECT * FROM Fact.Sale WHERE TimeKey = '12:10'
 
  --6237
+
+  --SELECT * FROm Dimension.Member WHE
+
+ --Truncate and add member to handle null references 
+  USE BIProjektDW;
+ALTER TABLE Fact.Sale
+DROP CONSTRAINT FK_Fact_Sale_MemberKey_Dimension_Member_MemberKey;
+TRUNCATE TABLE Dimension.Member;
+  ALTER TABLE Fact.Sale ADD CONSTRAINT FK_Fact_Sale_MemberKey_Dimension_Member_MemberKey FOREIGN KEY (MemberKey)
+  REFERENCES Dimension.[Member](MemberKey)
+
+INSERT INTO Dimension.Member (MemberID, YearJoined, SemesterPeriod, Semester, ValidFROM)
+VALUES (0, 0, 'EEE', 'DAT', '1990-01-01');
