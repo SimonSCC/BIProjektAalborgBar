@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="ImportSaleFact"
   DTS:PackageType="5"
-  DTS:VersionBuild="50"
-  DTS:VersionGUID="{A72975CD-DA4C-4781-A1CE-A968C19F8E64}">
+  DTS:VersionBuild="51"
+  DTS:VersionGUID="{DF211442-0BDD-4F72-AE8D-191FCD133E57}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -109,29 +109,6 @@
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\Data Flow Task\Audit"
-              componentClassID="Microsoft.Lineage"
-              contactInfo="Audit;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Includes data about the environment in which the package runs. Map system variables to new output columns. For example, add the name of the computer and operator to the data flow."
-              name="Audit">
-              <inputs>
-                <input
-                  refId="Package\Data Flow Task\Audit.Inputs[Audit Input 1]"
-                  name="Audit Input 1">
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Data Flow Task\Audit.Outputs[Audit Output 1]"
-                  exclusionGroup="1"
-                  name="Audit Output 1"
-                  synchronousInputId="Package\Data Flow Task\Audit.Inputs[Audit Input 1]">
                   <externalMetadataColumns />
                 </output>
               </outputs>
@@ -2361,6 +2338,21 @@ where [refTable].[TimeKey] = ?</property>
               name="Data Conversion Output"
               startId="Package\Data Flow Task\Convert CurrencyString Back To Currency.Outputs[Data Conversion Output]" />
             <path
+              refId="Package\Data Flow Task.Paths[Derived Column Output3]"
+              endId="Package\Data Flow Task\Union All.Inputs[Union All Input 1]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\Convert Price to Comma.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Derived Column Output2]"
+              endId="Package\Data Flow Task\Union All.Inputs[Union All Input 2]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\Add zeroes.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Derived Column Output4]"
+              endId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\SaleLocationFinal.Outputs[Derived Column Output]" />
+            <path
               refId="Package\Data Flow Task.Paths[Derived Column Output]"
               endId="Package\Data Flow Task\HourAndMinute.Inputs[Derived Column Input]"
               name="Derived Column Output"
@@ -2371,55 +2363,35 @@ where [refTable].[TimeKey] = ?</property>
               name="Derived Column Output"
               startId="Package\Data Flow Task\HourAndMinute.Outputs[Derived Column Output]" />
             <path
-              refId="Package\Data Flow Task.Paths[Derived Column Output2]"
-              endId="Package\Data Flow Task\Union All.Inputs[Union All Input 2]"
-              name="Derived Column Output"
-              startId="Package\Data Flow Task\Add zeroes.Outputs[Derived Column Output]" />
-            <path
-              refId="Package\Data Flow Task.Paths[Derived Column Output3]"
-              endId="Package\Data Flow Task\Union All.Inputs[Union All Input 1]"
-              name="Derived Column Output"
-              startId="Package\Data Flow Task\Convert Price to Comma.Outputs[Derived Column Output]" />
-            <path
-              refId="Package\Data Flow Task.Paths[Derived Column Output4]"
-              endId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
-              name="Derived Column Output"
-              startId="Package\Data Flow Task\SaleLocationFinal.Outputs[Derived Column Output]" />
-            <path
               refId="Package\Data Flow Task.Paths[Is 0]"
               endId="Package\Data Flow Task\Add zeroes.Inputs[Derived Column Input]"
               name="Is 0"
               startId="Package\Data Flow Task\Conditional Split.Outputs[Is 0]" />
             <path
-              refId="Package\Data Flow Task.Paths[Lookup Match Output4]"
+              refId="Package\Data Flow Task.Paths[Lookup Match Output]"
               endId="Package\Data Flow Task\SaleLocationFinal.Inputs[Derived Column Input]"
               name="Lookup Match Output"
               startId="Package\Data Flow Task\Lookup in Room Table.Outputs[Lookup Match Output]" />
             <path
-              refId="Package\Data Flow Task.Paths[Lookup Match Output3]"
+              refId="Package\Data Flow Task.Paths[Lookup Match Output1]"
               endId="Package\Data Flow Task\PriceToString.Inputs[Data Conversion Input]"
               name="Lookup Match Output"
               startId="Package\Data Flow Task\Lookup Time.Outputs[Lookup Match Output]" />
             <path
-              refId="Package\Data Flow Task.Paths[Lookup Match Output]"
+              refId="Package\Data Flow Task.Paths[Lookup Match Output2]"
               endId="Package\Data Flow Task\Lookup Member.Inputs[Lookup Input]"
               name="Lookup Match Output"
               startId="Package\Data Flow Task\Lookup Product.Outputs[Lookup Match Output]" />
             <path
-              refId="Package\Data Flow Task.Paths[Lookup Match Output1]"
+              refId="Package\Data Flow Task.Paths[Lookup Match Output3]"
               endId="Package\Data Flow Task\Timestamp Conversion To Date.Inputs[Data Conversion Input]"
               name="Lookup Match Output"
               startId="Package\Data Flow Task\Lookup Member.Outputs[Lookup Match Output]" />
             <path
-              refId="Package\Data Flow Task.Paths[Lookup Match Output2]"
+              refId="Package\Data Flow Task.Paths[Lookup Match Output4]"
               endId="Package\Data Flow Task\GetHourAndMinute.Inputs[Derived Column Input]"
               name="Lookup Match Output"
               startId="Package\Data Flow Task\Lookup Date.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\Data Flow Task.Paths[Lookup No Match Output]"
-              endId="Package\Data Flow Task\Audit.Inputs[Audit Input 1]"
-              name="Lookup No Match Output"
-              startId="Package\Data Flow Task\Lookup Member.Outputs[Lookup No Match Output]" />
             <path
               refId="Package\Data Flow Task.Paths[Not 0]"
               endId="Package\Data Flow Task\Convert Price to Comma.Inputs[Derived Column Input]"
@@ -2519,17 +2491,25 @@ where [refTable].[TimeKey] = ?</property>
       <GraphLayout
         Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="193,42"
-          Id="Package\Data Flow Task\Convert Price to Comma"
-          TopLeft="360,108.111111111111" />
+          Size="228,42"
+          Id="Package\Data Flow Task\Timestamp Conversion To Time"
+          TopLeft="602,386" />
         <NodeLayout
           Size="138,42"
           Id="Package\Data Flow Task\Lookup Date"
           TopLeft="165,456" />
         <NodeLayout
-          Size="152,42"
-          Id="Package\Data Flow Task\Lookup Product"
-          TopLeft="150,168" />
+          Size="121,42"
+          Id="Package\Data Flow Task\Union All"
+          TopLeft="591,105" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Data Flow Task\OLE DB Destination"
+          TopLeft="851,390" />
+        <NodeLayout
+          Size="193,42"
+          Id="Package\Data Flow Task\Convert Price to Comma"
+          TopLeft="360,108.111111111111" />
         <NodeLayout
           Size="274,42"
           Id="Package\Data Flow Task\Convert CurrencyString Back To Currency"
@@ -2539,10 +2519,6 @@ where [refTable].[TimeKey] = ?</property>
           Id="Package\Data Flow Task\Lookup Time"
           TopLeft="648,295" />
         <NodeLayout
-          Size="228,42"
-          Id="Package\Data Flow Task\Timestamp Conversion To Time"
-          TopLeft="602,386" />
-        <NodeLayout
           Size="152,42"
           Id="Package\Data Flow Task\HourAndMinute"
           TopLeft="637,461" />
@@ -2551,21 +2527,17 @@ where [refTable].[TimeKey] = ?</property>
           Id="Package\Data Flow Task\Lookup in Room Table"
           TopLeft="854,199" />
         <NodeLayout
-          Size="121,42"
-          Id="Package\Data Flow Task\Union All"
-          TopLeft="591,105" />
+          Size="227,42"
+          Id="Package\Data Flow Task\Timestamp Conversion To Date"
+          TopLeft="116,370" />
         <NodeLayout
           Size="155,42"
           Id="Package\Data Flow Task\Conditional Split"
           TopLeft="400.888888888889,209.111111111111" />
         <NodeLayout
-          Size="227,42"
-          Id="Package\Data Flow Task\Timestamp Conversion To Date"
-          TopLeft="116,370" />
-        <NodeLayout
-          Size="171,42"
-          Id="Package\Data Flow Task\OLE DB Destination"
-          TopLeft="851,390" />
+          Size="160,42"
+          Id="Package\Data Flow Task\SaleLocationFinal"
+          TopLeft="850,300" />
         <NodeLayout
           Size="155,42"
           Id="Package\Data Flow Task\Lookup Member"
@@ -2579,79 +2551,17 @@ where [refTable].[TimeKey] = ?</property>
           Id="Package\Data Flow Task\OLE DB Source"
           TopLeft="149,56" />
         <NodeLayout
+          Size="141,42"
+          Id="Package\Data Flow Task\PriceToString"
+          TopLeft="403.666666666667,299" />
+        <NodeLayout
           Size="131,42"
           Id="Package\Data Flow Task\Add zeroes"
           TopLeft="593,205.444444444444" />
         <NodeLayout
-          Size="141,42"
-          Id="Package\Data Flow Task\PriceToString"
-          TopLeft="403.666666666667,299" />
-        <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Data Conversion Output2]"
-          TopLeft="476.277777777778,299">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,-47.888888888889"
-              Start="0,0"
-              End="0,-40.388888888889">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,-40.388888888889" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Data Conversion Output1]"
-          TopLeft="231.75,412">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,44"
-              Start="0,0"
-              End="0,36.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,36.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Data Conversion Output]"
-          TopLeft="717,386">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,-49"
-              Start="0,0"
-              End="0,-41.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,-41.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="152,42"
+          Id="Package\Data Flow Task\Lookup Product"
+          TopLeft="150,168" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Union All Output 1]"
           TopLeft="712,124.464646464647">
@@ -2721,31 +2631,7 @@ where [refTable].[TimeKey] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Lookup Match Output3]"
-          TopLeft="648,318">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-103.333333333333,0"
-              Start="0,0"
-              End="-95.833333333333,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="-95.833333333333,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-96.1080533854165,5,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Lookup Match Output2]"
+          Id="Package\Data Flow Task.Paths[Lookup Match Output4]"
           TopLeft="303,479">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -2769,7 +2655,7 @@ where [refTable].[TimeKey] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Lookup Match Output1]"
+          Id="Package\Data Flow Task.Paths[Lookup Match Output3]"
           TopLeft="226,314">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -2793,7 +2679,7 @@ where [refTable].[TimeKey] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Lookup Match Output]"
+          Id="Package\Data Flow Task.Paths[Lookup Match Output2]"
           TopLeft="224.25,210">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -2813,6 +2699,66 @@ where [refTable].[TimeKey] = ?</property>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
               BoundingBox="-48.19138671875,21.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Lookup Match Output1]"
+          TopLeft="648,318">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-103.333333333333,0"
+              Start="0,0"
+              End="-95.833333333333,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-95.833333333333,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-96.1080533854165,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Lookup Match Output]"
+          TopLeft="946,241">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-16,59"
+              Start="0,0"
+              End="-16,51.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.5"
+                    Point2="0,29.5"
+                    Point3="-4,29.5" />
+                  <mssgle:LineSegment
+                    End="-12,29.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-12,29.5"
+                    Point2="-16,29.5"
+                    Point3="-16,33.5" />
+                  <mssgle:LineSegment
+                    End="-16,51.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-56.19138671875,34.5,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -2838,6 +2784,28 @@ where [refTable].[TimeKey] = ?</property>
             <mssgm:EdgeLabel
               BoundingBox="5.84575086805545,5,17.919609375,9.568359375"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Derived Column Output4]"
+          TopLeft="933.25,342">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48"
+              Start="0,0"
+              End="0,40.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2950,67 +2918,20 @@ where [refTable].[TimeKey] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <AnnotationLayout
-          Text="Lookup date &#xA;Og time overflødige?"
-          ParentId="Package\Data Flow Task"
-          FontInfo="{assembly:Null}"
-          Size="141,56"
-          Id="1944f6b4-0015-427a-8b28-d89ecccb4c3e"
-          TopLeft="10,440" />
-        <NodeLayout
-          Size="160,42"
-          Id="Package\Data Flow Task\SaleLocationFinal"
-          TopLeft="850,300" />
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Lookup Match Output4]"
-          TopLeft="946,241">
+          Id="Package\Data Flow Task.Paths[Data Conversion Output2]"
+          TopLeft="476.277777777778,299">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-16,59"
+              EndConnector="0,-47.888888888889"
               Start="0,0"
-              End="-16,51.5">
+              End="0,-40.388888888889">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,25.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,25.5"
-                    Point2="0,29.5"
-                    Point3="-4,29.5" />
-                  <mssgle:LineSegment
-                    End="-12,29.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-12,29.5"
-                    Point2="-16,29.5"
-                    Point3="-16,33.5" />
-                  <mssgle:LineSegment
-                    End="-16,51.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-56.19138671875,34.5,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Derived Column Output4]"
-          TopLeft="933.25,342">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,48"
-              Start="0,0"
-              End="0,40.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,40.5" />
+                    End="0,-40.388888888889" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3019,46 +2940,57 @@ where [refTable].[TimeKey] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="103,42"
-          Id="Package\Data Flow Task\Audit"
-          TopLeft="18,197" />
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Lookup No Match Output]"
-          TopLeft="198,272">
+          Id="Package\Data Flow Task.Paths[Data Conversion Output1]"
+          TopLeft="231.75,412">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-128.5,-33"
+              EndConnector="0,44"
               Start="0,0"
-              End="-128.5,-25.5">
+              End="0,36.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,-9.40229885057471" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,-9.40229885057471"
-                    Point2="0,-13.4022988505747"
-                    Point3="-4,-13.4022988505747" />
-                  <mssgle:LineSegment
-                    End="-124.5,-13.4022988505747" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-124.5,-13.4022988505747"
-                    Point2="-128.5,-13.4022988505747"
-                    Point3="-128.5,-17.4022988505747" />
-                  <mssgle:LineSegment
-                    End="-128.5,-25.5" />
+                    End="0,36.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-128.9250390625,-8.40229885057471,129.350078125,16"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Data Conversion Output]"
+          TopLeft="717,386">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,-49"
+              Start="0,0"
+              End="0,-41.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-41.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="Lookup date &#xA;Og time overflødige?"
+          ParentId="Package\Data Flow Task"
+          FontInfo="{assembly:Null}"
+          Size="141,56"
+          Id="1944f6b4-0015-427a-8b28-d89ecccb4c3e"
+          TopLeft="10,440" />
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -3086,25 +3018,15 @@ where [refTable].[TimeKey] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\Lookup Product">
+    design-time-name="Package\Data Flow Task\OLE DB Destination">
     <Properties>
       <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[Dimension].[Product]</Value>
+        <Name>DataSourceViewID</Name>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -3155,25 +3077,12 @@ where [refTable].[TimeKey] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\OLE DB Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Data Flow Task\Lookup Member">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -3183,7 +3092,7 @@ where [refTable].[TimeKey] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -3200,6 +3109,29 @@ where [refTable].[TimeKey] = ?</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Lookup Product">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[Dimension].[Product]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
