@@ -6,12 +6,28 @@
     <Name>BIProjektAnalysisServices.database</Name>
     <FullPath>BIProjektAnalysisServices.database</FullPath>
   </Database>
+  <Dimensions>
+    <ProjectItem>
+      <Name>Date.dim</Name>
+      <FullPath>Date.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Product.dim</Name>
+      <FullPath>Product.dim</FullPath>
+    </ProjectItem>
+  </Dimensions>
   <DataSources>
     <ProjectItem>
       <Name>BI Projekt DW.ds</Name>
       <FullPath>BI Projekt DW.ds</FullPath>
     </ProjectItem>
   </DataSources>
+  <DataSourceViews>
+    <ProjectItem>
+      <Name>BI Projekt DW.dsv</Name>
+      <FullPath>BI Projekt DW.dsv</FullPath>
+    </ProjectItem>
+  </DataSourceViews>
   <Configurations>
     <Configuration>
       <Name>Development</Name>
