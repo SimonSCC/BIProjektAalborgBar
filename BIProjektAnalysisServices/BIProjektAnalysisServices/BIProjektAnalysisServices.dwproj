@@ -24,16 +24,16 @@
       <FullPath>Member.dim</FullPath>
     </ProjectItem>
     <ProjectItem>
-      <Name>Product.dim</Name>
-      <FullPath>Product.dim</FullPath>
-    </ProjectItem>
-    <ProjectItem>
       <Name>Date.dim</Name>
       <FullPath>Date.dim</FullPath>
     </ProjectItem>
     <ProjectItem>
       <Name>Time.dim</Name>
       <FullPath>Time.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Product.dim</Name>
+      <FullPath>Product.dim</FullPath>
     </ProjectItem>
   </Dimensions>
   <DataSources>

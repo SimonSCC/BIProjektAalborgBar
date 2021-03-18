@@ -135,7 +135,6 @@ ELSE
 	DateKey DATE,
 	RoomKey INT,
 	Price MONEY,
-	SaleLocation NVARCHAR(255),
 	
 
 	PRIMARY KEY (SaleKey)
@@ -210,7 +209,7 @@ DROP TABLE Dimension.[Room]
 
 
 
---OLD ROOM DIMENSION WHICH IS NOW A DEGENERATE DIMENSION
+--OLD ROOM DIMENSION WHICH IS NOW A DEGENERATE DIMENSION REVERSED AGAIN. ONLY INT Values CAN BE IN A FACT. DET ER HURTIGERE
 
 --Create Room Dimension table
 
@@ -223,8 +222,7 @@ ELSE
 	CREATE TABLE Dimension.[Room]
 	(
 	RoomKey INT IDENTITY(1,1),
-	[Name] NVARCHAR(255),
-	[Description] NVARCHAR(255),
+	RoomName NVARCHAR(255),
 	
 
 	PRIMARY KEY (RoomKey)
@@ -281,7 +279,7 @@ SELECT * FROM Fact.Sale
 
   --SELECT * FROm Dimension.Member WHE
 
- --Truncate and add member to handle null references 
+-- Truncate and add member to handle null references 
 --  USE BIProjektDW;
 --ALTER TABLE Fact.Sale
 --DROP CONSTRAINT FK_Fact_Sale_MemberKey_Dimension_Member_MemberKey;
@@ -317,11 +315,19 @@ SELECT * FROM Fact.Sale
 --FROM [Dimension].[Time] AS [Dimension_Time]
 
 
-  
+  --Trauncate Product 
 -- USE BIProjektDW;
 --ALTER TABLE Fact.Sale
 --DROP CONSTRAINT FK_Fact_Sale_ProductKey_Dimension_Product_ProductKey;
 --TRUNCATE TABLE Dimension.Product;
 --  ALTER TABLE Fact.Sale ADD CONSTRAINT FK_Fact_Sale_ProductKey_Dimension_Product_ProductKey FOREIGN KEY (ProductKey)
 --  REFERENCES Dimension.Product(ProductKey)
+
+ --Truncate Room
+-- USE BIProjektDW;
+--ALTER TABLE Fact.Sale
+--DROP CONSTRAINT FK_Fact_Sale_RoomKey_Dimension_Room_RoomKey;
+--TRUNCATE TABLE Dimension.Room;
+--  ALTER TABLE Fact.Sale ADD CONSTRAINT FK_Fact_Sale_RoomKey_Dimension_Room_RoomKey FOREIGN KEY (RoomKey)
+--  REFERENCES Dimension.Room(RoomKey)
 

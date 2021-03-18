@@ -70,13 +70,13 @@
       <Value>
         <DiagramLayout ZoomPercent="100" ViewPortX="0" ViewPortY="0" xmlns="">
           <Shapes NodeWidth="110">
-            <Shape Id="Time Key" Expanded="false">
+            <Shape Id="Time Key" Expanded="true">
               <Attributes>
                 <Attribute Id="Time Key" />
               </Attributes>
               <Position x="20" y="20" />
             </Shape>
-            <Shape Id="Minute Of Day" Expanded="true">
+            <Shape Id="Minute Of Day" Expanded="false">
               <Attributes>
                 <Attribute Id="Minute Of Day" />
               </Attributes>
@@ -129,13 +129,13 @@
       </KeyColumns>
       <NameColumn dwd:design-time-name="1277c5d7-ef9d-45bc-865f-1616e02dfa49">
         <DataType>WChar</DataType>
-        <Source xsi:type="ColumnBinding" dwd:design-time-name="37f7d4fb-8a66-4faa-81e0-ef4ace4e2825">
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="82ffbf0d-a8c3-47ba-bf61-afe7a7775c21">
           <TableID>Dimension_Time</TableID>
-          <ColumnID>TimeKey</ColumnID>
+          <ColumnID>MinuteOfDay</ColumnID>
         </Source>
       </NameColumn>
       <AttributeRelationships>
-        <AttributeRelationship dwd:design-time-name="2774c708-0848-4d58-a94f-9c11a25f5e9e">
+        <AttributeRelationship dwd:design-time-name="710be9bd-2fe3-45fc-bab3-dcee59525115">
           <AttributeID>Minute Of Day</AttributeID>
           <Name>Minute Of Day</Name>
         </AttributeRelationship>
@@ -149,9 +149,9 @@
       <Name>Hour Of Day</Name>
       <Type>Hours</Type>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="23988b05-194f-42bf-b1fb-32da6a60afa7">
+        <KeyColumn dwd:design-time-name="b157d58f-eb4e-4e73-98f6-eddee21cf0f8">
           <DataType>Integer</DataType>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="fb8ae5bb-cb46-4142-94b0-3712eff8acca">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="c07b94fb-c2d3-41fd-ade8-da1d0401024f">
             <TableID>Dimension_Time</TableID>
             <ColumnID>HourOfDay</ColumnID>
           </Source>
@@ -165,9 +165,8 @@
         </Source>
       </NameColumn>
       <AttributeRelationships>
-        <AttributeRelationship dwd:design-time-name="583f1a6a-4d49-4370-8114-102f1bb7132f">
+        <AttributeRelationship dwd:design-time-name="e75f4c6c-4117-4ac6-8e71-ec5fff6e46a6">
           <AttributeID>Time Of Day</AttributeID>
-          <RelationshipType>Rigid</RelationshipType>
           <Name>Time Of Day</Name>
         </AttributeRelationship>
       </AttributeRelationships>
@@ -180,16 +179,16 @@
       <Name>Minute Of Day</Name>
       <Type>Minutes</Type>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="32ad7742-b6f9-49aa-b174-9d62e0bbee9d">
+        <KeyColumn dwd:design-time-name="0a259f42-20ad-47e3-bc8b-83e65babb8f9">
           <DataType>Integer</DataType>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="1fe359af-dde5-4413-b1c5-36106989cff9">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="f70ea994-0edf-45de-91a7-f9fba005762f">
             <TableID>Dimension_Time</TableID>
             <ColumnID>MinuteOfDay</ColumnID>
           </Source>
         </KeyColumn>
-        <KeyColumn dwd:design-time-name="ea6ab62d-3e85-482f-b23e-13ecd7b9c073">
+        <KeyColumn dwd:design-time-name="173953b4-3b6b-44be-b7ce-1b1bd0cba4b6">
           <DataType>Integer</DataType>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="7eab2eef-8dab-4d96-97c4-9085d857192e">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="6131be8a-eccc-42f1-b790-8cbc2ed32f2a">
             <TableID>Dimension_Time</TableID>
             <ColumnID>HourOfDay</ColumnID>
           </Source>
@@ -204,7 +203,7 @@
         </Source>
       </NameColumn>
       <AttributeRelationships>
-        <AttributeRelationship dwd:design-time-name="06c70fdd-1cca-4f81-97b1-1cc3297e67c9">
+        <AttributeRelationship dwd:design-time-name="7e8b25cb-a881-4359-b89d-c11d0d929689">
           <AttributeID>Hour Of Day</AttributeID>
           <Name>Hour Of Day</Name>
         </AttributeRelationship>
@@ -240,21 +239,21 @@
     </Attribute>
   </Attributes>
   <Hierarchies>
-    <Hierarchy dwd:design-time-name="0bef712d-634f-4db9-afcc-ae078581b8db">
+    <Hierarchy dwd:design-time-name="16e9f734-a5bb-4f44-9d2c-c6299722fab2">
       <ID>Hierarchy</ID>
-      <Name>TimeHierarchy</Name>
+      <Name>Hierarchy</Name>
       <Levels>
-        <Level dwd:design-time-name="ecfe8009-9d26-41bd-af06-152208799086">
+        <Level dwd:design-time-name="4d49973c-960b-45e7-b1d8-0ba21997b911">
           <ID>Time Of Day</ID>
           <Name>Time Of Day</Name>
           <SourceAttributeID>Time Of Day</SourceAttributeID>
         </Level>
-        <Level dwd:design-time-name="1ceb214c-5ac3-4837-a257-b4fc0e02ce36">
+        <Level dwd:design-time-name="460710d3-2410-45f2-a9ce-88c8efc65dcb">
           <ID>Hour Of Day</ID>
           <Name>Hour Of Day</Name>
           <SourceAttributeID>Hour Of Day</SourceAttributeID>
         </Level>
-        <Level dwd:design-time-name="9dc76805-73c4-4f0e-9f91-605f0eb91486">
+        <Level dwd:design-time-name="97f749c4-f6c3-40ec-a25d-14576dfbc6b7">
           <ID>Minute Of Day</ID>
           <Name>Minute Of Day</Name>
           <SourceAttributeID>Minute Of Day</SourceAttributeID>

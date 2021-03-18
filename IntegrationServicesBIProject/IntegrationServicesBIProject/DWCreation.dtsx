@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="41"
-  DTS:VersionGUID="{75664C2B-864A-4818-809A-CCDCDC295DED}">
+  DTS:VersionBuild="44"
+  DTS:VersionGUID="{78A0F0D3-14FA-4C6F-9C30-95DBE794C85A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -96,6 +96,23 @@
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
+          DTS:refId="Package\Create Dimension Tables\Create Room Dimension"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{D243EC9D-ECE8-4B8D-BD95-B79F400C4FE1}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Create Room Dimension"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{4FA198D2-2B35-4AEE-962E-CA800AD165C6}"
+              SQLTask:SqlStatementSource="USE BIProjektDW&#xA;IF object_id('Dimension.[Room]', 'U') IS NOT NULL&#xA;&#x9;PRINT 'Room table already created!'&#xA;ELSE&#xA;&#x9;BEGIN &#xA;&#x9;PRINT 'Not present! Room table is being created'&#xA;&#x9;CREATE TABLE Dimension.[Room]&#xA;&#x9;(&#xA;&#x9;RoomKey INT IDENTITY(1,1),&#xA;&#x9;RoomName NVARCHAR(255),&#xA;&#x9;&#xA;&#xA;&#x9;PRIMARY KEY (RoomKey)&#xA;&#x9;);&#xA;&#x9;END" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
           DTS:refId="Package\Create Dimension Tables\Create Time Dimension"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
@@ -138,6 +155,14 @@
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 2"
           DTS:To="Package\Create Dimension Tables\Create Date Dimension" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Create Dimension Tables.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{42A99CD9-AF15-4480-BF1A-28F564902B9C}"
+          DTS:From="Package\Create Dimension Tables\Create Date Dimension"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\Create Dimension Tables\Create Room Dimension" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
@@ -212,6 +237,23 @@
               </DTS:ObjectData>
             </DTS:Executable>
             <DTS:Executable
+              DTS:refId="Package\Create Fact Table\Add Constraints\Create Sale To Room Constraint"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{C5635E44-9504-4821-914E-17DD419BCDB5}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Create Sale To Room Constraint"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="0">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{4FA198D2-2B35-4AEE-962E-CA800AD165C6}"
+                  SQLTask:SqlStatementSource="USE BIProjektDW&#xA;IF NOT EXISTS(SELECT * FROM INFORMATION_SCHEMA.REFERENTIAL_CONSTRAINTS WHERE CONSTRAINT_CATALOG = 'BIProjektDW' AND &#xA;CONSTRAINT_NAME = 'FK_Fact_Sale_RoomKey_Dimension_Room_RoomKey')&#xA;&#x9;BEGIN&#x9;&#x9;&#xA;&#x9;&#x9;ALTER TABLE Fact.Sale ADD CONSTRAINT FK_Fact_Sale_RoomKey_Dimension_Room_RoomKey FOREIGN KEY (RoomKey)&#xA;&#x9;&#x9;REFERENCES Dimension.[Room](RoomKey)&#xA;&#x9;END&#xA;ELSE&#xA;&#x9;PRINT 'FK_Fact_Sale_RoomKey_Dimension_Room_RoomKey constraint already exists!'&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
               DTS:refId="Package\Create Fact Table\Add Constraints\Create Sale To Time Constraint"
               DTS:CreationName="Microsoft.ExecuteSQLTask"
               DTS:Description="Execute SQL Task"
@@ -254,6 +296,14 @@
               DTS:LogicalAnd="True"
               DTS:ObjectName="Constraint 2"
               DTS:To="Package\Create Fact Table\Add Constraints\Create Sale To Product Constraint" />
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\Create Fact Table\Add Constraints.PrecedenceConstraints[Constraint 3]"
+              DTS:CreationName=""
+              DTS:DTSID="{C8195556-7955-465C-87E1-93770FC989A3}"
+              DTS:From="Package\Create Fact Table\Add Constraints\Create Sale To Product Constraint"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint 3"
+              DTS:To="Package\Create Fact Table\Add Constraints\Create Sale To Room Constraint" />
           </DTS:PrecedenceConstraints>
         </DTS:Executable>
         <DTS:Executable
@@ -270,7 +320,7 @@
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4BA4440F-495A-47F7-8022-1E737464C341}"
-              SQLTask:SqlStatementSource="USE BIProjektDW&#xA;IF object_id('Fact.[Sale]', 'U') IS NOT NULL&#xA;&#x9;PRINT 'Sale table already created!'&#xA;ELSE&#xA;&#x9;BEGIN &#xA;&#x9;PRINT 'Not present! Sale table is being created'&#xA;&#x9;CREATE TABLE Fact.Sale&#xA;&#x9;(&#xA;&#x9;SaleKey INT IDENTITY(1,1),&#xA;&#x9;AlternativeSaleKey INT UNIQUE,&#xA;&#x9;MemberKey INT,&#xA;&#x9;ProductKey INT,&#xA;&#x9;TimeKey TIME,&#xA;&#x9;DateKey DATE,&#x9;&#xA;&#x9;Price MONEY,&#xA;&#x9;SaleLocation NVARCHAR(255),&#x9;&#xA;&#xA;&#x9;PRIMARY KEY (SaleKey)&#xA;&#x9;);&#xA;END" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:SqlStatementSource="USE BIProjektDW&#xA;IF object_id('Fact.[Sale]', 'U') IS NOT NULL&#xA;&#x9;PRINT 'Sale table already created!'&#xA;ELSE&#xA;&#x9;BEGIN &#xA;&#x9;PRINT 'Not present! Sale table is being created'&#xA;&#x9;CREATE TABLE Fact.Sale&#xA;&#x9;(&#xA;&#x9;SaleKey INT IDENTITY(1,1),&#xA;&#x9;AlternativeSaleKey INT UNIQUE,&#xA;&#x9;MemberKey INT,&#xA;&#x9;ProductKey INT,&#xA;&#x9;TimeKey TIME,&#xA;&#x9;DateKey DATE,&#xA;&#x9;RoomKey INT,&#x9;&#xA;&#x9;Price MONEY,&#xA;&#x9;&#xA;&#x9;&#xA;&#xA;&#x9;PRIMARY KEY (SaleKey)&#xA;&#x9;);&#xA;END" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
@@ -357,15 +407,6 @@
           VSTAMajorVersion="15"
           VSTAMinorVersion="0"
           Language="CSharp">
-          <ProjectItem
-            Name="Properties\Settings.settings"
-            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
-</SettingsFile>]]></ProjectItem>
           <ProjectItem
             Name="ST_d4287bd37a6d4d078ad72163078c80e0.csproj"
             Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
@@ -585,6 +626,35 @@
   </resheader>
 </root>]]></ProjectItem>
           <ProjectItem
+            Name="Properties\Settings.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_d4287bd37a6d4d078ad72163078c80e0.Properties.Settings.get_Default():ST_d4287bd37a6d4d078ad72163078c80e0.Properties.Sett" +
+    "ings")]
+
+namespace ST_d4287bd37a6d4d078ad72163078c80e0.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <ProjectItem
             Name="ScriptMain.cs"
             Encoding="UTF8"><![CDATA[#region Help:  Introduction to the script task
 /* The Script Task allows you to perform virtually any operation that can be accomplished in
@@ -720,35 +790,6 @@ namespace ST_d4287bd37a6d4d078ad72163078c80e0
   </msb:ItemGroup>
 </c:Project>]]></ProjectItem>
           <ProjectItem
-            Name="Properties\Settings.Designer.cs"
-            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
-// <auto-generated>
-//     This code was generated by a tool.
-//
-//     Changes to this file may cause incorrect behavior and will be lost if
-//     the code is regenerated.
-// </auto-generated>
-//------------------------------------------------------------------------------
-
-[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_d4287bd37a6d4d078ad72163078c80e0.Properties.Settings.get_Default():ST_d4287bd37a6d4d078ad72163078c80e0.Properties.Sett" +
-    "ings")]
-
-namespace ST_d4287bd37a6d4d078ad72163078c80e0.Properties {
-    
-    
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
-        
-        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-        private static Settings defaultInstance = new Settings();
-        
-        public static Settings Default {
-            get {
-                return defaultInstance;
-            }
-        }
-    }
-}]]></ProjectItem>
-          <ProjectItem
             Name="Properties\AssemblyInfo.cs"
             Encoding="UTF8"><![CDATA[using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -778,6 +819,15 @@ using System.Runtime.CompilerServices;
 // by using the '*' as shown below:
 
 [assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
           <ProjectItem
             Name="Properties\Resources.Designer.cs"
             Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
@@ -1005,7 +1055,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="220,42"
           Id="Package\Create Database BIProjektDW"
@@ -1022,6 +1072,10 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
           Size="201,42"
           Id="Package\Create Dimension Tables\Create Product Dimension"
           TopLeft="48,11" />
+        <NodeLayout
+          Size="193,42"
+          Id="Package\Create Dimension Tables\Create Room Dimension"
+          TopLeft="49,287" />
         <NodeLayout
           Size="199,42"
           Id="Package\Create Dimension Tables\Create Time Dimension"
@@ -1092,11 +1146,33 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Create Dimension Tables.PrecedenceConstraints[Constraint 3]"
+          TopLeft="144.5,257">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,30"
+              Start="0,0"
+              End="0,22.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="288,342"
-          Size="288,385"
+          PanelSize="288,389"
+          Size="288,432"
           Id="Package\Create Dimension Tables"
           TopLeft="238.444444444444,494.888888888889" />
         <NodeLayout
@@ -1111,6 +1187,10 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
           Size="238,42"
           Id="Package\Create Fact Table\Add Constraints\Create Sale To Product Constraint"
           TopLeft="34,219" />
+        <NodeLayout
+          Size="230,42"
+          Id="Package\Create Fact Table\Add Constraints\Create Sale To Room Constraint"
+          TopLeft="40,308" />
         <NodeLayout
           Size="226,42"
           Id="Package\Create Fact Table\Add Constraints\Create Sale To Time Constraint"
@@ -1181,11 +1261,33 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Create Fact Table\Add Constraints.PrecedenceConstraints[Constraint 3]"
+          TopLeft="154,261">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47"
+              Start="0,0"
+              End="0,39.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="316,376"
-          Size="316,419"
+          PanelSize="316,405"
+          Size="316,448"
           Id="Package\Create Fact Table\Add Constraints"
           TopLeft="26,98" />
         <NodeLayout
@@ -1298,7 +1400,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="383.555555555555,387">
+          TopLeft="383.555555555556,387">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1320,18 +1422,30 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="526.444444444444,687.72077922078">
+          TopLeft="526.444444444444,710.888888888889">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="78.540404040404,0"
+              EndConnector="78.540404040404,-22.836219336219"
               Start="0,0"
-              End="71.040404040404,0">
+              End="71.040404040404,-22.836219336219">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="71.040404040404,0" />
+                    End="35.270202020202,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="35.270202020202,0"
+                    Point2="39.270202020202,0"
+                    Point3="39.270202020202,-4" />
+                  <mssgle:LineSegment
+                    End="39.270202020202,-18.836219336219" />
+                  <mssgle:CubicBezierSegment
+                    Point1="39.270202020202,-18.836219336219"
+                    Point2="39.270202020202,-22.836219336219"
+                    Point3="43.270202020202,-22.836219336219" />
+                  <mssgle:LineSegment
+                    End="71.040404040404,-22.836219336219" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
