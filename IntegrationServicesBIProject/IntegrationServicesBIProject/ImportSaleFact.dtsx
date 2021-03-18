@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="ImportSaleFact"
   DTS:PackageType="5"
-  DTS:VersionBuild="54"
-  DTS:VersionGUID="{D9111DEB-49D1-4D15-B69B-C51F71101E8D}">
+  DTS:VersionBuild="57"
+  DTS:VersionGUID="{7052E753-B961-4DC6-AC20-031DF8004335}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -555,163 +555,6 @@
               </outputs>
             </component>
             <component
-              refId="Package\Data Flow Task\Lookup Date"
-              componentClassID="Microsoft.Lookup"
-              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
-              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
-              name="Lookup Date"
-              usesDispositions="true"
-              version="6">
-              <properties>
-                <property
-                  dataType="System.String"
-                  description="Specifies the SQL statement that generates the lookup table."
-                  expressionType="Notify"
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [Dimension].[Date]</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
-                  expressionType="Notify"
-                  name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [Dimension].[Date]) [refTable]
-where [refTable].[DateKey] = ?</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the type of connection used to access the reference dataset."
-                  name="ConnectionType"
-                  typeConverter="LookupConnectionType">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the cache type of the lookup table."
-                  name="CacheType"
-                  typeConverter="CacheType">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
-                  name="NoMatchBehavior"
-                  typeConverter="LookupNoMatchBehavior">1</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
-                  name="NoMatchCachePercentage">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
-                  name="MaxMemoryUsage">25</property>
-                <property
-                  dataType="System.Int64"
-                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
-                  name="MaxMemoryUsage64">25</property>
-                <property
-                  dataType="System.String"
-                  description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="DateKey" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Year" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Quarter" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Month" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Week" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="WeekDayNumber" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DayOfWeek" dataType="DT_WSTR" length="55" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IsWeekend" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
-                <property
-                  containsID="true"
-                  dataType="System.String"
-                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Data Flow Task\Timestamp Conversion To Date.Outputs[Data Conversion Output].Columns[date]};</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
-                  name="TreatDuplicateKeysAsError">false</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Data Flow Task\Lookup Date.Connections[OleDbConnection]"
-                  connectionManagerID="{4FA198D2-2B35-4AEE-962E-CA800AD165C6}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[MSSQLServer.BIProjektDW]"
-                  description="Connection manager used to access lookup data."
-                  name="OleDbConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\Data Flow Task\Lookup Date.Inputs[Lookup Input]"
-                  name="Lookup Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Data Flow Task\Lookup Date.Inputs[Lookup Input].Columns[date]"
-                      cachedDataType="dbDate"
-                      cachedName="date"
-                      lineageId="Package\Data Flow Task\Timestamp Conversion To Date.Outputs[Data Conversion Output].Columns[date]">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">DateKey</property>
-                        <property
-                          dataType="System.Null"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn" />
-                      </properties>
-                    </inputColumn>
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Data Flow Task\Lookup Date.Outputs[Lookup Match Output]"
-                  errorOrTruncationOperation="Lookup"
-                  exclusionGroup="1"
-                  name="Lookup Match Output"
-                  synchronousInputId="Package\Data Flow Task\Lookup Date.Inputs[Lookup Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Data Flow Task\Lookup Date.Outputs[Lookup Match Output].Columns[DateKey]"
-                      dataType="dbDate"
-                      errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\Data Flow Task\Lookup Date.Outputs[Lookup Match Output].Columns[DateKey]"
-                      name="DateKey"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">DateKey</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Data Flow Task\Lookup Date.Outputs[Lookup No Match Output]"
-                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
-                  exclusionGroup="1"
-                  name="Lookup No Match Output"
-                  synchronousInputId="Package\Data Flow Task\Lookup Date.Inputs[Lookup Input]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Data Flow Task\Lookup Date.Outputs[Lookup Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Lookup Error Output"
-                  synchronousInputId="Package\Data Flow Task\Lookup Date.Inputs[Lookup Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Data Flow Task\Lookup Date.Outputs[Lookup Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Data Flow Task\Lookup Date.Outputs[Lookup Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\Lookup Date.Outputs[Lookup Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Data Flow Task\Lookup Date.Outputs[Lookup Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
               refId="Package\Data Flow Task\Lookup Member"
               componentClassID="Microsoft.Lookup"
               contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
@@ -1176,165 +1019,6 @@ where [refTable].[RoomKey] = ?</property>
                       refId="Package\Data Flow Task\Lookup Room.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       dataType="i4"
                       lineageId="Package\Data Flow Task\Lookup Room.Outputs[Lookup Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\Data Flow Task\Lookup Time"
-              componentClassID="Microsoft.Lookup"
-              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
-              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
-              name="Lookup Time"
-              usesDispositions="true"
-              version="6">
-              <properties>
-                <property
-                  dataType="System.String"
-                  description="Specifies the SQL statement that generates the lookup table."
-                  expressionType="Notify"
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [Dimension].[Time]</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
-                  expressionType="Notify"
-                  name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [Dimension].[Time]) [refTable]
-where [refTable].[TimeKey] = ?</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the type of connection used to access the reference dataset."
-                  name="ConnectionType"
-                  typeConverter="LookupConnectionType">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the cache type of the lookup table."
-                  name="CacheType"
-                  typeConverter="CacheType">2</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
-                  name="NoMatchBehavior"
-                  typeConverter="LookupNoMatchBehavior">1</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
-                  name="NoMatchCachePercentage">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
-                  name="MaxMemoryUsage">25</property>
-                <property
-                  dataType="System.Int64"
-                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
-                  name="MaxMemoryUsage64">25</property>
-                <property
-                  dataType="System.String"
-                  description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="TimeKey" dataType="DT_DBTIME2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;referenceColumn name="HourOfDay" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="MinuteOfDay" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TimeOfDay" dataType="DT_WSTR" length="30" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
-                <property
-                  containsID="true"
-                  dataType="System.String"
-                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Data Flow Task\Timestamp Conversion To Time.Outputs[Data Conversion Output].Columns[TimeFinal]};</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
-                  name="TreatDuplicateKeysAsError">false</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Data Flow Task\Lookup Time.Connections[OleDbConnection]"
-                  connectionManagerID="{4FA198D2-2B35-4AEE-962E-CA800AD165C6}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[MSSQLServer.BIProjektDW]"
-                  description="Connection manager used to access lookup data."
-                  name="OleDbConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\Data Flow Task\Lookup Time.Inputs[Lookup Input]"
-                  name="Lookup Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Data Flow Task\Lookup Time.Inputs[Lookup Input].Columns[TimeFinal]"
-                      cachedDataType="dbTime2"
-                      cachedName="TimeFinal"
-                      cachedScale="7"
-                      lineageId="Package\Data Flow Task\Timestamp Conversion To Time.Outputs[Data Conversion Output].Columns[TimeFinal]">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">TimeKey</property>
-                        <property
-                          dataType="System.Null"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn" />
-                      </properties>
-                    </inputColumn>
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Data Flow Task\Lookup Time.Outputs[Lookup Match Output]"
-                  errorOrTruncationOperation="Lookup"
-                  exclusionGroup="1"
-                  name="Lookup Match Output"
-                  synchronousInputId="Package\Data Flow Task\Lookup Time.Inputs[Lookup Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Data Flow Task\Lookup Time.Outputs[Lookup Match Output].Columns[TimeKey]"
-                      dataType="dbTime2"
-                      errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\Data Flow Task\Lookup Time.Outputs[Lookup Match Output].Columns[TimeKey]"
-                      name="TimeKey"
-                      scale="7"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">TimeKey</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Data Flow Task\Lookup Time.Outputs[Lookup No Match Output]"
-                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
-                  exclusionGroup="1"
-                  name="Lookup No Match Output"
-                  synchronousInputId="Package\Data Flow Task\Lookup Time.Inputs[Lookup Input]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Data Flow Task\Lookup Time.Outputs[Lookup Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Lookup Error Output"
-                  synchronousInputId="Package\Data Flow Task\Lookup Time.Inputs[Lookup Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Data Flow Task\Lookup Time.Outputs[Lookup Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Data Flow Task\Lookup Time.Outputs[Lookup Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\Lookup Time.Outputs[Lookup Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Data Flow Task\Lookup Time.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -1822,12 +1506,12 @@ where [refTable].[TimeKey] = ?</property>
                   synchronousInputId="Package\Data Flow Task\Timestamp Conversion To Date.Inputs[Data Conversion Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Timestamp Conversion To Date.Outputs[Data Conversion Output].Columns[date]"
+                      refId="Package\Data Flow Task\Timestamp Conversion To Date.Outputs[Data Conversion Output].Columns[DateKey]"
                       dataType="dbDate"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      lineageId="Package\Data Flow Task\Timestamp Conversion To Date.Outputs[Data Conversion Output].Columns[date]"
-                      name="date"
+                      lineageId="Package\Data Flow Task\Timestamp Conversion To Date.Outputs[Data Conversion Output].Columns[DateKey]"
+                      name="DateKey"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -1898,12 +1582,12 @@ where [refTable].[TimeKey] = ?</property>
                   synchronousInputId="Package\Data Flow Task\Timestamp Conversion To Time.Inputs[Data Conversion Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Timestamp Conversion To Time.Outputs[Data Conversion Output].Columns[TimeFinal]"
+                      refId="Package\Data Flow Task\Timestamp Conversion To Time.Outputs[Data Conversion Output].Columns[TimeKey]"
                       dataType="dbTime2"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      lineageId="Package\Data Flow Task\Timestamp Conversion To Time.Outputs[Data Conversion Output].Columns[TimeFinal]"
-                      name="TimeFinal"
+                      lineageId="Package\Data Flow Task\Timestamp Conversion To Time.Outputs[Data Conversion Output].Columns[TimeKey]"
+                      name="TimeKey"
                       scale="7"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -2013,7 +1697,7 @@ where [refTable].[TimeKey] = ?</property>
                       refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[DateKey]"
                       cachedDataType="dbDate"
                       cachedName="DateKey"
-                      lineageId="Package\Data Flow Task\Lookup Date.Outputs[Lookup Match Output].Columns[DateKey]">
+                      lineageId="Package\Data Flow Task\Timestamp Conversion To Date.Outputs[Data Conversion Output].Columns[DateKey]">
                       <properties>
                         <property
                           containsID="true"
@@ -2027,7 +1711,7 @@ where [refTable].[TimeKey] = ?</property>
                       cachedDataType="dbTime2"
                       cachedName="TimeKey"
                       cachedScale="7"
-                      lineageId="Package\Data Flow Task\Lookup Time.Outputs[Lookup Match Output].Columns[TimeKey]">
+                      lineageId="Package\Data Flow Task\Timestamp Conversion To Time.Outputs[Data Conversion Output].Columns[TimeKey]">
                       <properties>
                         <property
                           containsID="true"
@@ -2114,7 +1798,7 @@ where [refTable].[TimeKey] = ?</property>
                       refId="Package\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[DateKey]"
                       cachedDataType="dbDate"
                       cachedName="DateKey"
-                      lineageId="Package\Data Flow Task\Lookup Date.Outputs[Lookup Match Output].Columns[DateKey]">
+                      lineageId="Package\Data Flow Task\Timestamp Conversion To Date.Outputs[Data Conversion Output].Columns[DateKey]">
                       <properties>
                         <property
                           containsID="true"
@@ -2128,7 +1812,7 @@ where [refTable].[TimeKey] = ?</property>
                       cachedDataType="dbTime2"
                       cachedName="TimeKey"
                       cachedScale="7"
-                      lineageId="Package\Data Flow Task\Lookup Time.Outputs[Lookup Match Output].Columns[TimeKey]">
+                      lineageId="Package\Data Flow Task\Timestamp Conversion To Time.Outputs[Data Conversion Output].Columns[TimeKey]">
                       <properties>
                         <property
                           containsID="true"
@@ -2213,24 +1897,24 @@ where [refTable].[TimeKey] = ?</property>
           <paths>
             <path
               refId="Package\Data Flow Task.Paths[Data Conversion Output]"
-              endId="Package\Data Flow Task\Lookup Time.Inputs[Lookup Input]"
-              name="Data Conversion Output"
-              startId="Package\Data Flow Task\Timestamp Conversion To Time.Outputs[Data Conversion Output]" />
-            <path
-              refId="Package\Data Flow Task.Paths[Data Conversion Output1]"
-              endId="Package\Data Flow Task\Lookup Date.Inputs[Lookup Input]"
-              name="Data Conversion Output"
-              startId="Package\Data Flow Task\Timestamp Conversion To Date.Outputs[Data Conversion Output]" />
-            <path
-              refId="Package\Data Flow Task.Paths[Data Conversion Output2]"
               endId="Package\Data Flow Task\Conditional Split.Inputs[Conditional Split Input]"
               name="Data Conversion Output"
               startId="Package\Data Flow Task\PriceToString.Outputs[Data Conversion Output]" />
             <path
-              refId="Package\Data Flow Task.Paths[Data Conversion Output3]"
+              refId="Package\Data Flow Task.Paths[Data Conversion Output1]"
               endId="Package\Data Flow Task\Lookup Room.Inputs[Lookup Input]"
               name="Data Conversion Output"
               startId="Package\Data Flow Task\Convert CurrencyString Back To Currency.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Data Conversion Output2]"
+              endId="Package\Data Flow Task\GetHourAndMinute.Inputs[Derived Column Input]"
+              name="Data Conversion Output"
+              startId="Package\Data Flow Task\Timestamp Conversion To Date.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Data Conversion Output3]"
+              endId="Package\Data Flow Task\PriceToString.Inputs[Data Conversion Input]"
+              name="Data Conversion Output"
+              startId="Package\Data Flow Task\Timestamp Conversion To Time.Outputs[Data Conversion Output]" />
             <path
               refId="Package\Data Flow Task.Paths[Derived Column Output]"
               endId="Package\Data Flow Task\HourAndMinute.Inputs[Derived Column Input]"
@@ -2257,27 +1941,17 @@ where [refTable].[TimeKey] = ?</property>
               name="Is 0"
               startId="Package\Data Flow Task\Conditional Split.Outputs[Is 0]" />
             <path
-              refId="Package\Data Flow Task.Paths[Lookup Match Output3]"
-              endId="Package\Data Flow Task\GetHourAndMinute.Inputs[Derived Column Input]"
-              name="Lookup Match Output"
-              startId="Package\Data Flow Task\Lookup Date.Outputs[Lookup Match Output]" />
-            <path
               refId="Package\Data Flow Task.Paths[Lookup Match Output]"
-              endId="Package\Data Flow Task\PriceToString.Inputs[Data Conversion Input]"
-              name="Lookup Match Output"
-              startId="Package\Data Flow Task\Lookup Time.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\Data Flow Task.Paths[Lookup Match Output1]"
               endId="Package\Data Flow Task\Lookup Member.Inputs[Lookup Input]"
               name="Lookup Match Output"
               startId="Package\Data Flow Task\Lookup Product.Outputs[Lookup Match Output]" />
             <path
-              refId="Package\Data Flow Task.Paths[Lookup Match Output2]"
+              refId="Package\Data Flow Task.Paths[Lookup Match Output1]"
               endId="Package\Data Flow Task\Timestamp Conversion To Date.Inputs[Data Conversion Input]"
               name="Lookup Match Output"
               startId="Package\Data Flow Task\Lookup Member.Outputs[Lookup Match Output]" />
             <path
-              refId="Package\Data Flow Task.Paths[Lookup Match Output4]"
+              refId="Package\Data Flow Task.Paths[Lookup Match Output2]"
               endId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
               name="Lookup Match Output"
               startId="Package\Data Flow Task\Lookup Room.Outputs[Lookup Match Output]" />
@@ -2378,47 +2052,15 @@ where [refTable].[TimeKey] = ?</property>
     design-time-name="Package\Data Flow Task">
     <LayoutInfo>
       <GraphLayout
-        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="193,42"
           Id="Package\Data Flow Task\Convert Price to Comma"
           TopLeft="360,108.111111111111" />
         <NodeLayout
-          Size="138,42"
-          Id="Package\Data Flow Task\Lookup Date"
-          TopLeft="165,456" />
-        <NodeLayout
-          Size="121,42"
-          Id="Package\Data Flow Task\Union All"
-          TopLeft="591,105" />
-        <NodeLayout
-          Size="152,42"
-          Id="Package\Data Flow Task\Lookup Product"
-          TopLeft="150,168" />
-        <NodeLayout
-          Size="274,42"
-          Id="Package\Data Flow Task\Convert CurrencyString Back To Currency"
-          TopLeft="829,104.929292929293" />
-        <NodeLayout
-          Size="140,42"
-          Id="Package\Data Flow Task\Lookup Time"
-          TopLeft="648,295" />
-        <NodeLayout
           Size="227,42"
           Id="Package\Data Flow Task\Timestamp Conversion To Date"
           TopLeft="116,370" />
-        <NodeLayout
-          Size="152,42"
-          Id="Package\Data Flow Task\HourAndMinute"
-          TopLeft="637,461" />
-        <NodeLayout
-          Size="228,42"
-          Id="Package\Data Flow Task\Timestamp Conversion To Time"
-          TopLeft="602,386" />
-        <NodeLayout
-          Size="155,42"
-          Id="Package\Data Flow Task\Conditional Split"
-          TopLeft="400.888888888889,209.111111111111" />
         <NodeLayout
           Size="171,42"
           Id="Package\Data Flow Task\OLE DB Destination"
@@ -2428,21 +2070,49 @@ where [refTable].[TimeKey] = ?</property>
           Id="Package\Data Flow Task\Lookup Member"
           TopLeft="145,272" />
         <NodeLayout
-          Size="168,42"
-          Id="Package\Data Flow Task\GetHourAndMinute"
-          TopLeft="417,460" />
-        <NodeLayout
           Size="157,42"
           Id="Package\Data Flow Task\OLE DB Source"
           TopLeft="149,56" />
         <NodeLayout
-          Size="131,42"
-          Id="Package\Data Flow Task\Add zeroes"
-          TopLeft="593,205.444444444444" />
+          Size="274,42"
+          Id="Package\Data Flow Task\Convert CurrencyString Back To Currency"
+          TopLeft="829,104.929292929293" />
         <NodeLayout
           Size="141,42"
           Id="Package\Data Flow Task\PriceToString"
           TopLeft="403.666666666667,299" />
+        <NodeLayout
+          Size="152,42"
+          Id="Package\Data Flow Task\HourAndMinute"
+          TopLeft="637,461" />
+        <NodeLayout
+          Size="152,42"
+          Id="Package\Data Flow Task\Lookup Product"
+          TopLeft="150,168" />
+        <NodeLayout
+          Size="121,42"
+          Id="Package\Data Flow Task\Union All"
+          TopLeft="591,105" />
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Data Flow Task\Conditional Split"
+          TopLeft="400.888888888889,209.111111111111" />
+        <NodeLayout
+          Size="144,42"
+          Id="Package\Data Flow Task\Lookup Room"
+          TopLeft="893,219" />
+        <NodeLayout
+          Size="168,42"
+          Id="Package\Data Flow Task\GetHourAndMinute"
+          TopLeft="417,460" />
+        <NodeLayout
+          Size="228,42"
+          Id="Package\Data Flow Task\Timestamp Conversion To Time"
+          TopLeft="602,386" />
+        <NodeLayout
+          Size="131,42"
+          Id="Package\Data Flow Task\Add zeroes"
+          TopLeft="593,205.444444444444" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Union All Output 1]"
           TopLeft="712,125.964646464647">
@@ -2512,31 +2182,31 @@ where [refTable].[TimeKey] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Lookup Match Output3]"
-          TopLeft="303,479">
+          Id="Package\Data Flow Task.Paths[Lookup Match Output2]"
+          TopLeft="961.25,261">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="114,0"
+              EndConnector="0,132"
               Start="0,0"
-              End="106.5,0">
+              End="0,124.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="106.5,0" />
+                    End="0,124.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="5.05861328125,5,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,56.4453125,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Lookup Match Output2]"
+          Id="Package\Data Flow Task.Paths[Lookup Match Output1]"
           TopLeft="226,314">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -2560,7 +2230,7 @@ where [refTable].[TimeKey] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Lookup Match Output1]"
+          Id="Package\Data Flow Task.Paths[Lookup Match Output]"
           TopLeft="224.25,210">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -2580,30 +2250,6 @@ where [refTable].[TimeKey] = ?</property>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
               BoundingBox="-48.19138671875,21.4453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Lookup Match Output]"
-          TopLeft="648,318">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-103.333333333333,0"
-              Start="0,0"
-              End="-95.833333333333,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="-95.833333333333,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-96.1080533854165,5,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -2720,19 +2366,65 @@ where [refTable].[TimeKey] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Data Conversion Output2]"
-          TopLeft="476.277777777778,299">
+          Id="Package\Data Flow Task.Paths[Data Conversion Output3]"
+          TopLeft="716,386">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,-47.888888888889"
+              EndConnector="-241.833333333333,-45"
               Start="0,0"
-              End="0,-40.388888888889">
+              End="-241.833333333333,-37.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,-40.388888888889" />
+                    End="0,-18.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-18.5"
+                    Point2="0,-22.5"
+                    Point3="-4,-22.5" />
+                  <mssgle:LineSegment
+                    End="-237.833333333333,-22.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-237.833333333333,-22.5"
+                    Point2="-241.833333333333,-22.5"
+                    Point3="-241.833333333333,-26.5" />
+                  <mssgle:LineSegment
+                    End="-241.833333333333,-37.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Data Conversion Output2]"
+          TopLeft="229.5,412">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="271.5,48"
+              Start="0,0"
+              End="271.5,40.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20"
+                    Point2="0,24"
+                    Point3="4,24" />
+                  <mssgle:LineSegment
+                    End="267.5,24" />
+                  <mssgle:CubicBezierSegment
+                    Point1="267.5,24"
+                    Point2="271.5,24"
+                    Point3="271.5,28" />
+                  <mssgle:LineSegment
+                    End="271.5,40.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2743,61 +2435,6 @@ where [refTable].[TimeKey] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Data Conversion Output1]"
-          TopLeft="231.75,412">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,44"
-              Start="0,0"
-              End="0,36.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,36.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Data Conversion Output]"
-          TopLeft="717,386">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,-49"
-              Start="0,0"
-              End="0,-41.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,-41.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <AnnotationLayout
-          Text="Lookup date &#xA;Og time overflødige?"
-          ParentId="Package\Data Flow Task"
-          FontInfo="{assembly:Null}"
-          Size="141,56"
-          Id="1944f6b4-0015-427a-8b28-d89ecccb4c3e"
-          TopLeft="10,440" />
-        <NodeLayout
-          Size="144,42"
-          Id="Package\Data Flow Task\Lookup Room"
-          TopLeft="893,219" />
-        <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Data Conversion Output3]"
           TopLeft="965.5,146.929292929293">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -2819,101 +2456,37 @@ where [refTable].[TimeKey] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Lookup Match Output4]"
-          TopLeft="961.25,261">
+          Id="Package\Data Flow Task.Paths[Data Conversion Output]"
+          TopLeft="476.277777777778,299">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,132"
+              EndConnector="0,-47.888888888889"
               Start="0,0"
-              End="0,124.5">
+              End="0,-40.388888888889">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,124.5" />
+                    End="0,-40.388888888889" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,56.4453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <AnnotationLayout
+          Text="Lookup date &#xA;Og time overflødige?"
+          ParentId="Package\Data Flow Task"
+          FontInfo="{assembly:Null}"
+          Size="141,56"
+          Id="1944f6b4-0015-427a-8b28-d89ecccb4c3e"
+          TopLeft="10,440" />
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\Lookup Date">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[Dimension].[Date]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\Lookup Product">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[Dimension].[Product]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\Lookup Time">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[Dimension].[Time]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Data Flow Task\OLE DB Destination">
     <Properties>
@@ -2964,12 +2537,35 @@ where [refTable].[TimeKey] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Lookup Product">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[Dimension].[Product]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\Data Flow Task\Lookup Room">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -2979,7 +2575,7 @@ where [refTable].[TimeKey] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
