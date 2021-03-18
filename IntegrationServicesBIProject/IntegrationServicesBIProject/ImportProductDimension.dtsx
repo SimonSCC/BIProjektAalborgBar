@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="ImportProductDimension"
   DTS:PackageType="5"
-  DTS:VersionBuild="82"
-  DTS:VersionGUID="{2E4757C9-8095-4BD6-8A65-3E8EB57C971D}">
+  DTS:VersionBuild="83"
+  DTS:VersionGUID="{EB6B5929-2C95-46E8-B163-D50EAC22836D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -1013,7 +1013,7 @@
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
       [ProductID]
-      ,[Name]
+      ,ProductName
       ,[ListedPrice]
 FROM [Dimension].[Product]
 WHERE [ValidTo] IS NULL;</property>
@@ -1024,7 +1024,7 @@ WHERE [ValidTo] IS NULL;</property>
                   name="SqlCommandParam"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT 
       [ProductID]
-      ,[Name]
+      ,ProductName
       ,[ListedPrice]
 FROM [Dimension].[Product]
 WHERE [ValidTo] IS NULL;) [refTable]
@@ -1059,7 +1059,7 @@ where [refTable].[ProductID] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ProductID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Name" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ListedPrice" dataType="DT_CY" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ProductID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ProductName" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ListedPrice" dataType="DT_CY" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
@@ -1127,21 +1127,6 @@ where [refTable].[ProductID] = ?</property>
                           dataType="System.String"
                           description="Specifies the column in the reference table from which a column is copied."
                           name="CopyFromReferenceColumn">ProductID</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Data Flow Task\Is the rows an UPDATE or an INSERT.Outputs[Lookup Match Output].Columns[Name]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Copy Column"
-                      length="255"
-                      lineageId="Package\Data Flow Task\Is the rows an UPDATE or an INSERT.Outputs[Lookup Match Output].Columns[Name]"
-                      name="Name"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">Name</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
@@ -1543,13 +1528,6 @@ where [refTable].[ProductID] = ?</property>
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Category]"
                       lineageId="Package\Data Flow Task\Join With Category.Outputs[Merge Join Output].Columns[Category]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ConvertedName]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="ConvertedName"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
-                      lineageId="Package\Data Flow Task\Join With Category.Outputs[Merge Join Output].Columns[ConvertedName]" />
-                    <inputColumn
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CurrentDate]"
                       cachedDataType="dbTimeStamp"
                       cachedName="CurrentDate"
@@ -1573,11 +1551,6 @@ where [refTable].[ProductID] = ?</property>
                       dataType="i4"
                       name="ProductID" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
-                      dataType="wstr"
-                      length="255"
-                      name="Name" />
-                    <externalMetadataColumn
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ListedPrice]"
                       dataType="cy"
                       name="ListedPrice" />
@@ -1594,6 +1567,11 @@ where [refTable].[ProductID] = ?</property>
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ValidTo]"
                       dataType="dbDate"
                       name="ValidTo" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProductName]"
+                      dataType="wstr"
+                      length="255"
+                      name="ProductName" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -2903,13 +2881,33 @@ where [refTable].[ProductID] = ?</property>
           Id="Package\Data Flow Task\Sort"
           TopLeft="323,365.666666666667" />
         <NodeLayout
+          Size="192,42"
+          Id="Package\Data Flow Task\Check for price changes"
+          TopLeft="910,514.666666666667" />
+        <NodeLayout
+          Size="159,42"
+          Id="Package\Data Flow Task\SortOnProductID"
+          TopLeft="515,699.666666666667" />
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Data Flow Task\Conditional Split"
+          TopLeft="774.888888888889,242.666666666667" />
+        <NodeLayout
+          Size="126,42"
+          Id="Package\Data Flow Task\ValidFrom"
+          TopLeft="209.909090909091,775.575757575758" />
+        <NodeLayout
           Size="256,42"
           Id="Package\Data Flow Task\Is the rows an UPDATE or an INSERT"
           TopLeft="468,517.666666666667" />
         <NodeLayout
-          Size="192,42"
-          Id="Package\Data Flow Task\Check for price changes"
-          TopLeft="910,514.666666666667" />
+          Size="196,42"
+          Id="Package\Data Flow Task\Convert DT_R8 to DT_I4 1"
+          TopLeft="270,244.666666666667" />
+        <NodeLayout
+          Size="107,42"
+          Id="Package\Data Flow Task\Sort 1"
+          TopLeft="108,365.666666666667" />
         <NodeLayout
           Size="164,42"
           Id="Package\Data Flow Task\Duplicate Streams"
@@ -2919,41 +2917,9 @@ where [refTable].[ProductID] = ?</property>
           Id="Package\Data Flow Task\OLE DB Destination"
           TopLeft="191.909090909091,853.484848484849" />
         <NodeLayout
-          Size="155,42"
-          Id="Package\Data Flow Task\Conditional Split"
-          TopLeft="774.888888888889,242.666666666667" />
-        <NodeLayout
           Size="168,42"
           Id="Package\Data Flow Task\Join With Category"
           TopLeft="193.909090909091,697.030303030303" />
-        <NodeLayout
-          Size="126,42"
-          Id="Package\Data Flow Task\ValidFrom"
-          TopLeft="209.909090909091,775.575757575758" />
-        <NodeLayout
-          Size="107,42"
-          Id="Package\Data Flow Task\Sort 1"
-          TopLeft="108,365.666666666667" />
-        <NodeLayout
-          Size="196,42"
-          Id="Package\Data Flow Task\Convert DT_R8 to DT_I4 1"
-          TopLeft="270,244.666666666667" />
-        <NodeLayout
-          Size="159,42"
-          Id="Package\Data Flow Task\SortOnProductID"
-          TopLeft="515,699.666666666667" />
-        <NodeLayout
-          Size="140,42"
-          Id="Package\Data Flow Task\JoinCategory"
-          TopLeft="194,460.666666666667" />
-        <NodeLayout
-          Size="141,42"
-          Id="Package\Data Flow Task\PriceToString"
-          TopLeft="778.666666666667,158.555555555556" />
-        <NodeLayout
-          Size="150,42"
-          Id="Package\Data Flow Task\OLE DB Source"
-          TopLeft="526,68.6666666666667" />
         <NodeLayout
           Size="141,42"
           Id="Package\Data Flow Task\ProductTable"
@@ -2967,9 +2933,17 @@ where [refTable].[ProductID] = ?</property>
           Id="Package\Data Flow Task\Convert CurrencyString Back To Currency"
           TopLeft="457,428.484848484849" />
         <NodeLayout
+          Size="150,42"
+          Id="Package\Data Flow Task\OLE DB Source"
+          TopLeft="526,68.6666666666667" />
+        <NodeLayout
           Size="193,42"
           Id="Package\Data Flow Task\Convert Price to Comma"
           TopLeft="502,246.666666666667" />
+        <NodeLayout
+          Size="140,42"
+          Id="Package\Data Flow Task\JoinCategory"
+          TopLeft="194,460.666666666667" />
         <NodeLayout
           Size="120,42"
           Id="Package\Data Flow Task\Combine"
@@ -2978,6 +2952,10 @@ where [refTable].[ProductID] = ?</property>
           Size="121,42"
           Id="Package\Data Flow Task\Union All"
           TopLeft="540.5,609.166666666667" />
+        <NodeLayout
+          Size="141,42"
+          Id="Package\Data Flow Task\PriceToString"
+          TopLeft="778.666666666667,158.555555555556" />
         <NodeLayout
           Size="131,42"
           Id="Package\Data Flow Task\Add zeroes"
@@ -3611,7 +3589,7 @@ where [refTable].[ProductID] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -3621,7 +3599,7 @@ where [refTable].[ProductID] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -3642,7 +3620,7 @@ where [refTable].[ProductID] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\OLE DB Source">
+    design-time-name="Package\Data Flow Task\ProductTable">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -3655,7 +3633,7 @@ where [refTable].[ProductID] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\ProductTable">
+    design-time-name="Package\Data Flow Task\OLE DB Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
