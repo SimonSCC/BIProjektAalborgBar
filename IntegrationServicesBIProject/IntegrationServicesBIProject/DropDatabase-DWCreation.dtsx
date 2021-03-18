@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="DropDatabase-DWCreation"
   DTS:PackageType="5"
-  DTS:VersionBuild="4"
-  DTS:VersionGUID="{B3B45023-F326-4F40-881E-9687AD9FE826}">
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{23E48CB0-2B6A-4190-88AF-F8AD690F1EB2}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -49,7 +49,7 @@
       <DTS:ObjectData>
         <ExecutePackageTask>
           <UseProjectReference>True</UseProjectReference>
-          <PackageName>Drop Database.dtsx</PackageName>
+          <PackageName>Drop_Database.dtsx</PackageName>
         </ExecutePackageTask>
       </DTS:ObjectData>
     </DTS:Executable>
