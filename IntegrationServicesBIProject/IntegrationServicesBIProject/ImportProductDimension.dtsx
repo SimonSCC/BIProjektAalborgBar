@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="ImportProductDimension"
   DTS:PackageType="5"
-  DTS:VersionBuild="83"
-  DTS:VersionGUID="{EB6B5929-2C95-46E8-B163-D50EAC22836D}">
+  DTS:VersionBuild="92"
+  DTS:VersionGUID="{BD6DDE72-80C5-454E-9CC9-84D1CB47B8B4}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -1143,6 +1143,21 @@ where [refTable].[ProductID] = ?</property>
                           name="CopyFromReferenceColumn">ListedPrice</property>
                       </properties>
                     </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Is the rows an UPDATE or an INSERT.Outputs[Lookup Match Output].Columns[ProductName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Is the rows an UPDATE or an INSERT.Outputs[Lookup Match Output].Columns[ProductName]"
+                      name="ProductName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">ProductName</property>
+                      </properties>
+                    </outputColumn>
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -1539,6 +1554,13 @@ where [refTable].[ProductID] = ?</property>
                       cachedName="PriceAsCurrency"
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ListedPrice]"
                       lineageId="Package\Data Flow Task\Join With Category.Outputs[Merge Join Output].Columns[PriceAsCurrency]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ConvertedName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="ConvertedName"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProductName]"
+                      lineageId="Package\Data Flow Task\Join With Category.Outputs[Merge Join Output].Columns[ConvertedName]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2847,7 +2869,34 @@ where [refTable].[ProductID] = ?</property>
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate Product Table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{F7F0EF9D-7AA4-435C-B662-8D12266FDD16}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate Product Table"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{4FA198D2-2B35-4AEE-962E-CA800AD165C6}"
+          SQLTask:SqlStatementSource=" USE BIProjektDW;&#xA;ALTER TABLE Fact.Sale&#xA;DROP CONSTRAINT FK_Fact_Sale_ProductKey_Dimension_Product_ProductKey;&#xA;TRUNCATE TABLE Dimension.Product;&#xA;  ALTER TABLE Fact.Sale ADD CONSTRAINT FK_Fact_Sale_ProductKey_Dimension_Product_ProductKey FOREIGN KEY (ProductKey)&#xA;  REFERENCES Dimension.Product(ProductKey)&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{C4C3890A-0130-427D-943D-9F843D11A223}"
+      DTS:From="Package\Truncate Product Table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Data Flow Task" />
+  </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
 <!--If you manually edit this section and make a mistake, you can delete it. -->
@@ -2859,11 +2908,37 @@ where [refTable].[ProductID] = ?</property>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="151,42"
           Id="Package\Data Flow Task"
-          TopLeft="292,121" />
+          TopLeft="303,135" />
+        <NodeLayout
+          Size="189,42"
+          Id="Package\Truncate Product Table"
+          TopLeft="285,49" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="379,91">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44"
+              Start="0,0"
+              End="0,36.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -2877,6 +2952,14 @@ where [refTable].[ProductID] = ?</property>
           Id="Package\Data Flow Task\Convert Name column to nvarchar(255)"
           TopLeft="468,154.666666666667" />
         <NodeLayout
+          Size="107,42"
+          Id="Package\Data Flow Task\Sort 3"
+          TopLeft="217,558.666666666667" />
+        <NodeLayout
+          Size="140,42"
+          Id="Package\Data Flow Task\JoinCategory"
+          TopLeft="194,460.666666666667" />
+        <NodeLayout
           Size="98,42"
           Id="Package\Data Flow Task\Sort"
           TopLeft="323,365.666666666667" />
@@ -2885,17 +2968,17 @@ where [refTable].[ProductID] = ?</property>
           Id="Package\Data Flow Task\Check for price changes"
           TopLeft="910,514.666666666667" />
         <NodeLayout
-          Size="159,42"
-          Id="Package\Data Flow Task\SortOnProductID"
-          TopLeft="515,699.666666666667" />
-        <NodeLayout
           Size="155,42"
           Id="Package\Data Flow Task\Conditional Split"
           TopLeft="774.888888888889,242.666666666667" />
         <NodeLayout
-          Size="126,42"
-          Id="Package\Data Flow Task\ValidFrom"
-          TopLeft="209.909090909091,775.575757575758" />
+          Size="150,42"
+          Id="Package\Data Flow Task\OLE DB Source"
+          TopLeft="526,68.6666666666667" />
+        <NodeLayout
+          Size="141,42"
+          Id="Package\Data Flow Task\PriceToString"
+          TopLeft="778.666666666667,158.555555555556" />
         <NodeLayout
           Size="256,42"
           Id="Package\Data Flow Task\Is the rows an UPDATE or an INSERT"
@@ -2905,6 +2988,10 @@ where [refTable].[ProductID] = ?</property>
           Id="Package\Data Flow Task\Convert DT_R8 to DT_I4 1"
           TopLeft="270,244.666666666667" />
         <NodeLayout
+          Size="126,42"
+          Id="Package\Data Flow Task\ValidFrom"
+          TopLeft="209.909090909091,775.575757575758" />
+        <NodeLayout
           Size="107,42"
           Id="Package\Data Flow Task\Sort 1"
           TopLeft="108,365.666666666667" />
@@ -2912,6 +2999,10 @@ where [refTable].[ProductID] = ?</property>
           Size="164,42"
           Id="Package\Data Flow Task\Duplicate Streams"
           TopLeft="929,609.666666666667" />
+        <NodeLayout
+          Size="159,42"
+          Id="Package\Data Flow Task\SortOnProductID"
+          TopLeft="515,699.666666666667" />
         <NodeLayout
           Size="171,42"
           Id="Package\Data Flow Task\OLE DB Destination"
@@ -2921,10 +3012,6 @@ where [refTable].[ProductID] = ?</property>
           Id="Package\Data Flow Task\Join With Category"
           TopLeft="193.909090909091,697.030303030303" />
         <NodeLayout
-          Size="141,42"
-          Id="Package\Data Flow Task\ProductTable"
-          TopLeft="294,152.666666666667" />
-        <NodeLayout
           Size="173,42"
           Id="Package\Data Flow Task\Convert DT_R8 to DT_I4"
           TopLeft="80,247.666666666667" />
@@ -2933,41 +3020,97 @@ where [refTable].[ProductID] = ?</property>
           Id="Package\Data Flow Task\Convert CurrencyString Back To Currency"
           TopLeft="457,428.484848484849" />
         <NodeLayout
-          Size="150,42"
-          Id="Package\Data Flow Task\OLE DB Source"
-          TopLeft="526,68.6666666666667" />
+          Size="141,42"
+          Id="Package\Data Flow Task\ProductTable"
+          TopLeft="294,152.666666666667" />
         <NodeLayout
           Size="193,42"
           Id="Package\Data Flow Task\Convert Price to Comma"
           TopLeft="502,246.666666666667" />
         <NodeLayout
-          Size="140,42"
-          Id="Package\Data Flow Task\JoinCategory"
-          TopLeft="194,460.666666666667" />
-        <NodeLayout
           Size="120,42"
           Id="Package\Data Flow Task\Combine"
           TopLeft="536,339" />
-        <NodeLayout
-          Size="121,42"
-          Id="Package\Data Flow Task\Union All"
-          TopLeft="540.5,609.166666666667" />
-        <NodeLayout
-          Size="141,42"
-          Id="Package\Data Flow Task\PriceToString"
-          TopLeft="778.666666666667,158.555555555556" />
         <NodeLayout
           Size="131,42"
           Id="Package\Data Flow Task\Add zeroes"
           TopLeft="788,335" />
         <NodeLayout
-          Size="107,42"
-          Id="Package\Data Flow Task\Sort 3"
-          TopLeft="217,558.666666666667" />
+          Size="121,42"
+          Id="Package\Data Flow Task\Union All"
+          TopLeft="540.5,609.166666666667" />
         <NodeLayout
           Size="147,42"
           Id="Package\Data Flow Task\CategoryTable"
           TopLeft="96,156.666666666667" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Derived Column Output1]"
+          TopLeft="275.159090909091,817.575757575758">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35.909090909091"
+              Start="0,0"
+              End="0,28.409090909091">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.409090909091" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,6.2045454545455,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Derived Column Output]"
+          TopLeft="597.25,288.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50.333333333333"
+              Start="0,0"
+              End="0,42.833333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.833333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Data Conversion Output4]"
+          TopLeft="164,289.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,76"
+              Start="0,0"
+              End="0,68.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,68.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Data Conversion Output3]"
           TopLeft="850.777777777778,200.555555555556">
@@ -3486,72 +3629,6 @@ where [refTable].[ProductID] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Derived Column Output1]"
-          TopLeft="275.159090909091,817.575757575758">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,35.909090909091"
-              Start="0,0"
-              End="0,28.409090909091">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,28.409090909091" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Derived Column Output]"
-          TopLeft="597.25,288.666666666667">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,50.333333333333"
-              Start="0,0"
-              End="0,42.833333333333">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,42.833333333333" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Data Conversion Output4]"
-          TopLeft="164,289.666666666667">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,76"
-              Start="0,0"
-              End="0,68.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,68.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <AnnotationLayout
           Text="If They don't match we need to add the new name and price&#xA;With the same product key, and select the last entry of said product key&#xA;to inactive&#xA;"
           ParentId="Package\Data Flow Task"
@@ -3583,6 +3660,19 @@ where [refTable].[ProductID] = ?</property>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Data Flow Task\Is the rows an UPDATE or an INSERT">
     <Properties>
@@ -3621,19 +3711,6 @@ where [refTable].[ProductID] = ?</property>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Data Flow Task\ProductTable">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\OLE DB Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

@@ -249,6 +249,12 @@ ELSE
 
 	--TESTS
 
+SELECT * FROM Dimension.Product
+SELECT * FROM Dimension.[Date]
+SELECT * FROM Dimension.[Time]
+SELECT * FROM Dimension.Member
+SELECT * FROM Fact.Sale
+
 
 	--USE MASTER 
 --GO
@@ -276,12 +282,46 @@ ELSE
   --SELECT * FROm Dimension.Member WHE
 
  --Truncate and add member to handle null references 
-  USE BIProjektDW;
-ALTER TABLE Fact.Sale
-DROP CONSTRAINT FK_Fact_Sale_MemberKey_Dimension_Member_MemberKey;
-TRUNCATE TABLE Dimension.Member;
-  ALTER TABLE Fact.Sale ADD CONSTRAINT FK_Fact_Sale_MemberKey_Dimension_Member_MemberKey FOREIGN KEY (MemberKey)
-  REFERENCES Dimension.[Member](MemberKey)
+--  USE BIProjektDW;
+--ALTER TABLE Fact.Sale
+--DROP CONSTRAINT FK_Fact_Sale_MemberKey_Dimension_Member_MemberKey;
+--TRUNCATE TABLE Dimension.Member;
+--  ALTER TABLE Fact.Sale ADD CONSTRAINT FK_Fact_Sale_MemberKey_Dimension_Member_MemberKey FOREIGN KEY (MemberKey)
+--  REFERENCES Dimension.[Member](MemberKey)
 
-INSERT INTO Dimension.Member (MemberID, YearJoined, SemesterPeriod, Semester, ValidFROM)
-VALUES (0, 0, 'EEE', 'DAT', '1990-01-01');
+--INSERT INTO Dimension.Member (MemberID, YearJoined, SemesterPeriod, Semester, ValidFROM)
+--VALUES (0, 0, 'EEE', 'DAT', '1990-01-01');
+
+
+--USE BIProjektDW;
+--SELECT * FROM  Dimension.Member
+--select * FROM Dimension.Product
+ 
+-- SELECT * FROM Dimension.[Time]
+
+-- --Check function if the results of the cube is true
+--SELECT SUM(price) FROM Dimension.[Time] inner join Fact.Sale ON Dimension.[Time].TimeKey=Fact.Sale.TimeKey WHERE HourOfDay = 18
+
+
+----Minute
+--SELECT 
+--DISTINCT
+--[Dimension_Time].[MinuteOfDay] AS [Dimension_TimeMinuteOfDay0_0],[Dimension_Time].[HourOfDay] AS [Dimension_TimeHourOfDay0_1]
+--FROM [Dimension].[Time] AS [Dimension_Time]
+
+
+----Hour
+--SELECT 
+--DISTINCT
+--[Dimension_Time].[HourOfDay] AS [Dimension_TimeHourOfDay0_0],[Dimension_Time].[TimeOfDay] AS [Dimension_TimeTimeOfDay0_1]
+--FROM [Dimension].[Time] AS [Dimension_Time]
+
+
+  
+-- USE BIProjektDW;
+--ALTER TABLE Fact.Sale
+--DROP CONSTRAINT FK_Fact_Sale_ProductKey_Dimension_Product_ProductKey;
+--TRUNCATE TABLE Dimension.Product;
+--  ALTER TABLE Fact.Sale ADD CONSTRAINT FK_Fact_Sale_ProductKey_Dimension_Product_ProductKey FOREIGN KEY (ProductKey)
+--  REFERENCES Dimension.Product(ProductKey)
+

@@ -8,32 +8,32 @@
   </Database>
   <Cubes>
     <ProjectItem>
-      <Name>Cube.cube</Name>
-      <FullPath>Cube.cube</FullPath>
+      <Name>BI Projekt DW.cube</Name>
+      <FullPath>BI Projekt DW.cube</FullPath>
       <Dependencies>
         <ProjectItem>
-          <Name>Cube.partitions</Name>
-          <FullPath>Cube.partitions</FullPath>
+          <Name>BI Projekt DW.partitions</Name>
+          <FullPath>BI Projekt DW.partitions</FullPath>
         </ProjectItem>
       </Dependencies>
     </ProjectItem>
   </Cubes>
   <Dimensions>
     <ProjectItem>
-      <Name>Date.dim</Name>
-      <FullPath>Date.dim</FullPath>
-    </ProjectItem>
-    <ProjectItem>
       <Name>Member.dim</Name>
       <FullPath>Member.dim</FullPath>
     </ProjectItem>
     <ProjectItem>
-      <Name>Time.dim</Name>
-      <FullPath>Time.dim</FullPath>
-    </ProjectItem>
-    <ProjectItem>
       <Name>Product.dim</Name>
       <FullPath>Product.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Date.dim</Name>
+      <FullPath>Date.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Time.dim</Name>
+      <FullPath>Time.dim</FullPath>
     </ProjectItem>
   </Dimensions>
   <DataSources>
@@ -56,14 +56,14 @@
           <ConfigurationSetting>
             <Id>BI Projekt DW</Id>
             <Name>BI Projekt DW</Name>
-            <Value xsi:type="xsd:string">Provider=SQLNCLI11.1;Data Source=localhost;Integrated Security=SSPI;Initial Catalog=BIProjektDW</Value>
+            <Value xsi:type="xsd:string">Provider=SQLNCLI11.1;Data Source=MSI\MSSQLBISERVER;Persist Security Info=True;Password=;User ID=;Initial Catalog=BIProjektDW</Value>
           </ConfigurationSetting>
         </ConnectionMappings>
         <ConnectionSecurityMappings>
           <ConfigurationSetting>
             <Id>BI Projekt DW</Id>
             <Name>BI Projekt DW</Name>
-            <Value xsi:type="xsd:int">0</Value>
+            <Value xsi:type="xsd:int">1</Value>
           </ConfigurationSetting>
         </ConnectionSecurityMappings>
       </Options>
