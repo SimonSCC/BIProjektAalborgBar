@@ -291,15 +291,18 @@ SELECT * FROM Fact.Sale
 --VALUES (0, 0, 'EEE', 'DAT', '1990-01-01');
 
 
---USE BIProjektDW;
+USE BIProjektDW;
 --SELECT * FROM  Dimension.Member
 --select * FROM Dimension.Product
  
 -- SELECT * FROM Dimension.[Time]
 
--- --Check function if the results of the cube is true
---SELECT SUM(price) FROM Dimension.[Time] inner join Fact.Sale ON Dimension.[Time].TimeKey=Fact.Sale.TimeKey WHERE HourOfDay = 18
+ --Check function if the results of the cube is true
+SELECT * FROM Dimension.[Time] inner join Fact.Sale ON Dimension.[Time].TimeKey=Fact.Sale.TimeKey
+--SUM(price)
 
+
+SELECT * FROm Dimension.[Time]
 
 ----Minute
 --SELECT 

@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="67"
-  DTS:VersionGUID="{BB0C3BD6-EF5B-40F3-996D-66526CED248A}">
+  DTS:VersionBuild="68"
+  DTS:VersionGUID="{A43911CA-3B9B-4072-A966-F962413C1B63}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -2055,7 +2055,7 @@ where `refTable`.`member_id` = ?</property>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{4FA198D2-2B35-4AEE-962E-CA800AD165C6}"
-          SQLTask:SqlStatementSource="&#xA; USE BIProjektDW;&#xA;ALTER TABLE Fact.Sale&#xA;DROP CONSTRAINT FK_Fact_Sale_MemberKey_Dimension_Member_MemberKey;&#xA;TRUNCATE TABLE Dimension.Member;&#xA;  ALTER TABLE Fact.Sale ADD CONSTRAINT FK_Fact_Sale_MemberKey_Dimension_Member_MemberKey FOREIGN KEY (MemberKey)&#xA;  REFERENCES Dimension.[Member](MemberKey)&#xA;&#xA;INSERT INTO Dimension.Member (MemberID, YearJoined, SemesterPeriod, Semester, ValidFROM)&#xA;VALUES (0, 0, 'EEE', 'DAT', '1990-01-01');" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="&#xA; USE BIProjektDW;&#xA;ALTER TABLE Fact.Sale&#xA;DROP CONSTRAINT FK_Fact_Sale_MemberKey_Dimension_Member_MemberKey;&#xA;TRUNCATE TABLE Dimension.Member;&#xA;  ALTER TABLE Fact.Sale ADD CONSTRAINT FK_Fact_Sale_MemberKey_Dimension_Member_MemberKey FOREIGN KEY (MemberKey)&#xA;  REFERENCES Dimension.[Member](MemberKey)&#xA;&#xA;INSERT INTO Dimension.Member (MemberID, YearJoined, SemesterPeriod, Semester, ValidFROM)&#xA;VALUES (0, 0, 'NoSemesterPeriod', 'NoSemester', '1990-01-01');" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -2202,9 +2202,7 @@ where `refTable`.`member_id` = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2226,9 +2224,7 @@ where `refTable`.`member_id` = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2250,9 +2246,7 @@ where `refTable`.`member_id` = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2274,9 +2268,7 @@ where `refTable`.`member_id` = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2346,9 +2338,7 @@ where `refTable`.`member_id` = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2370,9 +2360,7 @@ where `refTable`.`member_id` = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2394,9 +2382,7 @@ where `refTable`.`member_id` = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2526,9 +2512,7 @@ where `refTable`.`member_id` = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout

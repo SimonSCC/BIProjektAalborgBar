@@ -35,6 +35,10 @@
       <Name>Product.dim</Name>
       <FullPath>Product.dim</FullPath>
     </ProjectItem>
+    <ProjectItem>
+      <Name>Room.dim</Name>
+      <FullPath>Room.dim</FullPath>
+    </ProjectItem>
   </Dimensions>
   <DataSources>
     <ProjectItem>

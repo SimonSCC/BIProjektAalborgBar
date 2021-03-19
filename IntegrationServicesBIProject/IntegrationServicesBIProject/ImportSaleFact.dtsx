@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="ImportSaleFact"
   DTS:PackageType="5"
-  DTS:VersionBuild="57"
-  DTS:VersionGUID="{7052E753-B961-4DC6-AC20-031DF8004335}">
+  DTS:VersionBuild="67"
+  DTS:VersionGUID="{1CA6C73C-DA6B-49C1-9CED-D51DDE33DFC6}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -418,11 +418,9 @@
                     </outputColumn>
                     <outputColumn
                       refId="Package\Data Flow Task\GetHourAndMinute.Outputs[Derived Column Output].Columns[Minute]"
-                      codePage="1252"
-                      dataType="str"
+                      dataType="i4"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      length="50"
                       lineageId="Package\Data Flow Task\GetHourAndMinute.Outputs[Derived Column Output].Columns[Minute]"
                       name="Minute"
                       truncationRowDisposition="FailComponent">
@@ -431,13 +429,13 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[DATEPART]("mm",#{Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[timestamp]})</property>
+                          name="Expression">[DATEPART]("mi",#{Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[timestamp]})</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">DATEPART("mm",timestamp)</property>
+                          name="FriendlyExpression">DATEPART("mi",timestamp)</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -487,10 +485,11 @@
                       cachedName="Hour"
                       lineageId="Package\Data Flow Task\GetHourAndMinute.Outputs[Derived Column Output].Columns[Hour]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\HourAndMinute.Inputs[Derived Column Input].Columns[Minute]"
-                      cachedDataType="i4"
-                      cachedName="Minute"
-                      lineageId="Package\Data Flow Task\GetHourAndMinute.Outputs[Derived Column Output].Columns[Minute]" />
+                      refId="Package\Data Flow Task\HourAndMinute.Inputs[Derived Column Input].Columns[MinuteAsString]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="MinuteAsString"
+                      lineageId="Package\Data Flow Task\IntToString.Outputs[Data Conversion Output].Columns[MinuteAsString]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -517,13 +516,13 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">#{Package\Data Flow Task\GetHourAndMinute.Outputs[Derived Column Output].Columns[Hour]} + ":" + #{Package\Data Flow Task\GetHourAndMinute.Outputs[Derived Column Output].Columns[Minute]} + ":" + "00"</property>
+                          name="Expression">#{Package\Data Flow Task\GetHourAndMinute.Outputs[Derived Column Output].Columns[Hour]} + ":" + #{Package\Data Flow Task\IntToString.Outputs[Data Conversion Output].Columns[MinuteAsString]} + ":" + "00"</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">Hour + ":" + Minute + ":" + "00"</property>
+                          name="FriendlyExpression">Hour + ":" + MinuteAsString + ":" + "00"</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -547,6 +546,82 @@
                       refId="Package\Data Flow Task\HourAndMinute.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       dataType="i4"
                       lineageId="Package\Data Flow Task\HourAndMinute.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\IntToString"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="IntToString"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\IntToString.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\IntToString.Inputs[Data Conversion Input].Columns[Minute]"
+                      cachedDataType="i4"
+                      cachedName="Minute"
+                      lineageId="Package\Data Flow Task\GetHourAndMinute.Outputs[Derived Column Output].Columns[Minute]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\IntToString.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Data Flow Task\IntToString.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\IntToString.Outputs[Data Conversion Output].Columns[MinuteAsString]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Data Flow Task\IntToString.Outputs[Data Conversion Output].Columns[MinuteAsString]"
+                      name="MinuteAsString"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\GetHourAndMinute.Outputs[Derived Column Output].Columns[Minute]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\IntToString.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Data Flow Task\IntToString.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\IntToString.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\IntToString.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\IntToString.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\IntToString.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -1916,25 +1991,30 @@ where [refTable].[RoomKey] = ?</property>
               name="Data Conversion Output"
               startId="Package\Data Flow Task\Timestamp Conversion To Time.Outputs[Data Conversion Output]" />
             <path
-              refId="Package\Data Flow Task.Paths[Derived Column Output]"
+              refId="Package\Data Flow Task.Paths[Data Conversion Output4]"
               endId="Package\Data Flow Task\HourAndMinute.Inputs[Derived Column Input]"
-              name="Derived Column Output"
-              startId="Package\Data Flow Task\GetHourAndMinute.Outputs[Derived Column Output]" />
+              name="Data Conversion Output"
+              startId="Package\Data Flow Task\IntToString.Outputs[Data Conversion Output]" />
             <path
-              refId="Package\Data Flow Task.Paths[Derived Column Output1]"
+              refId="Package\Data Flow Task.Paths[Derived Column Output]"
               endId="Package\Data Flow Task\Timestamp Conversion To Time.Inputs[Data Conversion Input]"
               name="Derived Column Output"
               startId="Package\Data Flow Task\HourAndMinute.Outputs[Derived Column Output]" />
             <path
-              refId="Package\Data Flow Task.Paths[Derived Column Output2]"
+              refId="Package\Data Flow Task.Paths[Derived Column Output1]"
               endId="Package\Data Flow Task\Union All.Inputs[Union All Input 1]"
               name="Derived Column Output"
               startId="Package\Data Flow Task\Convert Price to Comma.Outputs[Derived Column Output]" />
             <path
-              refId="Package\Data Flow Task.Paths[Derived Column Output3]"
+              refId="Package\Data Flow Task.Paths[Derived Column Output2]"
               endId="Package\Data Flow Task\Union All.Inputs[Union All Input 2]"
               name="Derived Column Output"
               startId="Package\Data Flow Task\Add zeroes.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Derived Column Output3]"
+              endId="Package\Data Flow Task\IntToString.Inputs[Data Conversion Input]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\GetHourAndMinute.Outputs[Derived Column Output]" />
             <path
               refId="Package\Data Flow Task.Paths[Is 0]"
               endId="Package\Data Flow Task\Add zeroes.Inputs[Derived Column Input]"
@@ -2052,7 +2132,7 @@ where [refTable].[RoomKey] = ?</property>
     design-time-name="Package\Data Flow Task">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="193,42"
           Id="Package\Data Flow Task\Convert Price to Comma"
@@ -2084,7 +2164,7 @@ where [refTable].[RoomKey] = ?</property>
         <NodeLayout
           Size="152,42"
           Id="Package\Data Flow Task\HourAndMinute"
-          TopLeft="637,461" />
+          TopLeft="661,462" />
         <NodeLayout
           Size="152,42"
           Id="Package\Data Flow Task\Lookup Product"
@@ -2102,13 +2182,13 @@ where [refTable].[RoomKey] = ?</property>
           Id="Package\Data Flow Task\Lookup Room"
           TopLeft="893,219" />
         <NodeLayout
-          Size="168,42"
+          Size="168,48"
           Id="Package\Data Flow Task\GetHourAndMinute"
-          TopLeft="417,460" />
+          TopLeft="291,459" />
         <NodeLayout
           Size="228,42"
           Id="Package\Data Flow Task\Timestamp Conversion To Time"
-          TopLeft="602,386" />
+          TopLeft="621,387" />
         <NodeLayout
           Size="131,42"
           Id="Package\Data Flow Task\Add zeroes"
@@ -2278,7 +2358,7 @@ where [refTable].[RoomKey] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Derived Column Output3]"
+          Id="Package\Data Flow Task.Paths[Derived Column Output2]"
           TopLeft="655,205.444444444444">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -2300,7 +2380,7 @@ where [refTable].[RoomKey] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Derived Column Output2]"
+          Id="Package\Data Flow Task.Paths[Derived Column Output1]"
           TopLeft="553,127.555555555555">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -2322,8 +2402,8 @@ where [refTable].[RoomKey] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Derived Column Output1]"
-          TopLeft="714.5,461">
+          Id="Package\Data Flow Task.Paths[Derived Column Output]"
+          TopLeft="736,462">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2344,53 +2424,31 @@ where [refTable].[RoomKey] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Derived Column Output]"
-          TopLeft="585,481.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="52,0"
-              Start="0,0"
-              End="44.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="44.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package\Data Flow Task.Paths[Data Conversion Output3]"
-          TopLeft="716,386">
+          TopLeft="735,387">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-241.833333333333,-45"
+              EndConnector="-260.833333333333,-46"
               Start="0,0"
-              End="-241.833333333333,-37.5">
+              End="-260.833333333333,-38.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,-18.5" />
+                    End="0,-19" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,-18.5"
-                    Point2="0,-22.5"
-                    Point3="-4,-22.5" />
+                    Point1="0,-19"
+                    Point2="0,-23"
+                    Point3="-4,-23" />
                   <mssgle:LineSegment
-                    End="-237.833333333333,-22.5" />
+                    End="-256.833333333333,-23" />
                   <mssgle:CubicBezierSegment
-                    Point1="-237.833333333333,-22.5"
-                    Point2="-241.833333333333,-22.5"
-                    Point3="-241.833333333333,-26.5" />
+                    Point1="-256.833333333333,-23"
+                    Point2="-260.833333333333,-23"
+                    Point3="-260.833333333333,-27" />
                   <mssgle:LineSegment
-                    End="-241.833333333333,-37.5" />
+                    End="-260.833333333333,-38.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2405,26 +2463,26 @@ where [refTable].[RoomKey] = ?</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="271.5,48"
+              EndConnector="145.5,47"
               Start="0,0"
-              End="271.5,40.5">
+              End="145.5,39.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20" />
+                    End="0,19.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,20"
-                    Point2="0,24"
-                    Point3="4,24" />
+                    Point1="0,19.5"
+                    Point2="0,23.5"
+                    Point3="4,23.5" />
                   <mssgle:LineSegment
-                    End="267.5,24" />
+                    End="141.5,23.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="267.5,24"
-                    Point2="271.5,24"
-                    Point3="271.5,28" />
+                    Point1="141.5,23.5"
+                    Point2="145.5,23.5"
+                    Point3="145.5,27.5" />
                   <mssgle:LineSegment
-                    End="271.5,40.5" />
+                    End="145.5,39.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2484,6 +2542,54 @@ where [refTable].[RoomKey] = ?</property>
           Size="141,56"
           Id="1944f6b4-0015-427a-8b28-d89ecccb4c3e"
           TopLeft="10,440" />
+        <NodeLayout
+          Size="132,42"
+          Id="Package\Data Flow Task\IntToString"
+          TopLeft="490,467" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Derived Column Output3]"
+          TopLeft="459,485.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="31,0"
+              Start="0,0"
+              End="23.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="23.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Data Conversion Output4]"
+          TopLeft="622,485.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="39,0"
+              Start="0,0"
+              End="31.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="31.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>

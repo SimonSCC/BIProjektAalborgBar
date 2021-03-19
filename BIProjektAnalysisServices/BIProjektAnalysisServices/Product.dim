@@ -1,4 +1,4 @@
-﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="90bb42af-ceb4-4eff-a35c-eec420a6e3cc" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="7322b159-4af0-4fb1-9e9c-9e4905c6a0f6" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
   <ID>Product</ID>
   <Name>Product</Name>
   <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
@@ -8,7 +8,7 @@
       <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
       <Value>
         <dds xmlns="">
-          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="2" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-1258" scrolltop="-5557" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="11351" y="15108" backcolor="2434342" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="3" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-1258" scrolltop="-5557" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="11351" y="15822" backcolor="2434342" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
             <font>
               <ddsxmlobjectstreamwrapper binary="01000000900144420100065461686f6d61" />
             </font>
@@ -19,7 +19,7 @@
           <layoutmanager>
             <ddsxmlobj />
           </layoutmanager>
-          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="Product" left="20" top="0" logicalid="1" controlid="1" masterid="0" hint1="0" hint2="0" width="3000" height="3995" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="Product" left="20" top="0" logicalid="2" controlid="1" masterid="0" hint1="0" hint2="0" width="3000" height="3995" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
             <control>
               <ddsxmlobjectstreaminitwrapper binary="000e0000b80b00009b0f0000" />
             </control>
@@ -94,61 +94,61 @@
   </Annotations>
   <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
   <State>Unprocessed</State>
-  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="c6bf9a19-1230-4dbd-8be4-eeef5469d4b7">
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="348f4431-6169-43d1-9e4f-db3528f4e51d">
     <DataSourceViewID>BI Projekt DW</DataSourceViewID>
   </Source>
   <UnknownMember>Visible</UnknownMember>
-  <ErrorConfiguration dwd:design-time-name="e8098774-479b-4477-95aa-371a66129d8e">
+  <ErrorConfiguration dwd:design-time-name="cebaa73b-8b2c-4c22-85d1-8910c15d6e8c">
     <KeyNotFound>ReportAndStop</KeyNotFound>
     <KeyDuplicate>ReportAndStop</KeyDuplicate>
     <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
   </ErrorConfiguration>
   <CurrentStorageMode>Molap</CurrentStorageMode>
   <Attributes>
-    <Attribute dwd:design-time-name="7fa68a53-6a5f-4229-971e-a44e47471480">
+    <Attribute dwd:design-time-name="ccfe9957-8453-431c-adc4-be4e73a406b0">
       <ID>Product Key</ID>
-      <Name>Product Key</Name>
+      <Name>ProductKey</Name>
       <Usage>Key</Usage>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="2dd9fd54-fb4e-4014-80fd-83aa45a717de">
+        <KeyColumn dwd:design-time-name="5c11c9d6-9223-48ad-a601-1ae8f80fef39">
           <DataType>Integer</DataType>
           <NullProcessing>UnknownMember</NullProcessing>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="dd484ff0-f9da-4d8c-93db-93e87ab53473">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="78deec16-4930-4fe1-a109-beff22e03d7f">
             <TableID>Dimension_Product</TableID>
             <ColumnID>ProductKey</ColumnID>
           </Source>
         </KeyColumn>
       </KeyColumns>
-      <NameColumn dwd:design-time-name="02534df5-dab7-4aca-a9de-06ff5a27d14a">
+      <NameColumn dwd:design-time-name="99b9af09-ef95-4f52-bd81-3e181e80f177">
         <DataType>WChar</DataType>
         <DataSize>255</DataSize>
-        <Source xsi:type="ColumnBinding" dwd:design-time-name="75ecb569-98bf-475c-9031-a3955c008d96">
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="4303ade2-b458-48ca-914a-7f07be43c594">
           <TableID>Dimension_Product</TableID>
           <ColumnID>ProductName</ColumnID>
         </Source>
       </NameColumn>
       <AttributeRelationships>
-        <AttributeRelationship dwd:design-time-name="a11fff71-0555-4689-9d91-987524e3c736">
+        <AttributeRelationship dwd:design-time-name="14f444d6-0be3-4019-b45c-39bb94f7b05f">
           <AttributeID>Product ID</AttributeID>
           <Name>Product ID</Name>
         </AttributeRelationship>
-        <AttributeRelationship dwd:design-time-name="e4c4ccb8-9861-44c2-bd06-fbeded1c00e8">
+        <AttributeRelationship dwd:design-time-name="8c28f359-f9e4-4a55-9ebb-8c16c8b0b6be">
           <AttributeID>Product Name</AttributeID>
           <Name>Product Name</Name>
         </AttributeRelationship>
-        <AttributeRelationship dwd:design-time-name="5f8543c1-9ed2-4cac-bd24-5c5d285397c9">
+        <AttributeRelationship dwd:design-time-name="5d6828a6-b3d5-4241-9aae-6d5849e8d526">
           <AttributeID>Listed Price</AttributeID>
           <Name>Listed Price</Name>
         </AttributeRelationship>
-        <AttributeRelationship dwd:design-time-name="851e0651-7de5-4c7c-9078-2364a7ca4c75">
+        <AttributeRelationship dwd:design-time-name="3ac5c849-d63e-4bf4-9fd5-d26fd7ec761f">
           <AttributeID>Category</AttributeID>
           <Name>Category</Name>
         </AttributeRelationship>
-        <AttributeRelationship dwd:design-time-name="9b9c5285-9c53-4ddc-a251-9d34db7fb0b3">
+        <AttributeRelationship dwd:design-time-name="b4e4db9d-40a4-49e1-bd14-620a7d724b12">
           <AttributeID>Valid From</AttributeID>
           <Name>Valid From</Name>
         </AttributeRelationship>
-        <AttributeRelationship dwd:design-time-name="35a3a816-f4fb-4179-8b8c-e30bd209ae67">
+        <AttributeRelationship dwd:design-time-name="cfb684cf-31c1-401a-ab29-d4934dc6fb42">
           <AttributeID>Valid To</AttributeID>
           <Name>Valid To</Name>
         </AttributeRelationship>
@@ -157,13 +157,13 @@
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute dwd:design-time-name="4c48dcbb-f38e-45d8-a3b6-14dfa1fd5c11">
+    <Attribute dwd:design-time-name="fe129572-8f4a-415f-aa5a-a4d7e8581e53">
       <ID>Product ID</ID>
       <Name>Product ID</Name>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="c34b5ad1-9269-43c9-88d0-dcc7d6db1c6b">
+        <KeyColumn dwd:design-time-name="899ae1bd-e9ca-4630-b4a5-ca793d56d874">
           <DataType>Integer</DataType>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="60a9c1ee-88d3-4172-a4d5-e87741dac033">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="d13146bb-efa3-4fbd-9ffa-bacf70e858c5">
             <TableID>Dimension_Product</TableID>
             <ColumnID>ProductID</ColumnID>
           </Source>
@@ -173,14 +173,14 @@
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute dwd:design-time-name="0207916f-8305-4cc0-aeae-d18bea68e48a">
+    <Attribute dwd:design-time-name="9e117c0f-a94a-472c-915b-a80ca12f8ee8">
       <ID>Product Name</ID>
       <Name>Product Name</Name>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="db0a67b7-16e0-458e-acd5-5372f48f9eca">
+        <KeyColumn dwd:design-time-name="d8a7980e-ad79-472c-8673-bc28049addb5">
           <DataType>WChar</DataType>
           <DataSize>255</DataSize>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="13c86c96-8e20-4b8e-a277-ffbce271bc90">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="c982bc34-a512-48c9-b569-65691d369f8e">
             <TableID>Dimension_Product</TableID>
             <ColumnID>ProductName</ColumnID>
           </Source>
@@ -190,13 +190,13 @@
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute dwd:design-time-name="047e0906-49e2-4cec-94c5-426cbc9bfba2">
+    <Attribute dwd:design-time-name="47f08007-199b-4b26-bd67-bcd120845737">
       <ID>Listed Price</ID>
       <Name>Listed Price</Name>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="850d54c6-67ba-479d-be76-25cf3947c763">
+        <KeyColumn dwd:design-time-name="83b45aaf-f5d9-42ee-af0c-3f7d5e920aeb">
           <DataType>Double</DataType>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="2b761d44-5fe4-4fad-be10-bd97cb2424d5">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="b4c2cd26-d9e1-4584-9eba-03c83e6f1ed2">
             <TableID>Dimension_Product</TableID>
             <ColumnID>ListedPrice</ColumnID>
           </Source>
@@ -206,14 +206,14 @@
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute dwd:design-time-name="678580c4-5841-4b25-a2c8-cfce03f9074e">
+    <Attribute dwd:design-time-name="4499bb11-2941-4484-9183-9d6f9f8c2476">
       <ID>Category</ID>
       <Name>Category</Name>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="b2205a66-7a1d-405a-b0b5-3df43b65f887">
+        <KeyColumn dwd:design-time-name="b958500e-13b3-4fb4-8ac7-8f32f5654baf">
           <DataType>WChar</DataType>
           <DataSize>255</DataSize>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="bbc52646-b741-44ba-b88b-053e07084ca0">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="f14e5ded-7ab2-450c-a2e7-d077c00e9dfc">
             <TableID>Dimension_Product</TableID>
             <ColumnID>Category</ColumnID>
           </Source>
@@ -223,13 +223,13 @@
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute dwd:design-time-name="7455dea8-37ff-402e-8c88-6979a021d733">
+    <Attribute dwd:design-time-name="5a83d84f-94e7-47e4-9979-6177bba409a6">
       <ID>Valid From</ID>
       <Name>Valid From</Name>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="b8789a77-f4cb-45f3-9cfd-fcb012f279c7">
+        <KeyColumn dwd:design-time-name="8ea0f61b-1471-49c8-816e-e6122453d3be">
           <DataType>Date</DataType>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="96e30f66-f32e-4f1f-995f-203f3e96c1ab">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="1a6c6696-90f4-49db-930e-fa9639ae199a">
             <TableID>Dimension_Product</TableID>
             <ColumnID>ValidFrom</ColumnID>
           </Source>
@@ -239,13 +239,13 @@
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute dwd:design-time-name="0d5af80e-c992-40ae-8ef5-617010353792">
+    <Attribute dwd:design-time-name="98eec3e2-e559-44ab-92ac-6b76c1d33c33">
       <ID>Valid To</ID>
       <Name>Valid To</Name>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="e58a0442-80eb-4a5c-a0d6-ecf11e8ed475">
+        <KeyColumn dwd:design-time-name="9d14d249-463c-477f-a800-132495ef9fb6">
           <DataType>Date</DataType>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="56c10318-920c-4661-9c22-3200700421b3">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="c0eaf78a-49d6-4f76-93df-bf7c3c0cbb16">
             <TableID>Dimension_Product</TableID>
             <ColumnID>ValidTo</ColumnID>
           </Source>
@@ -257,18 +257,18 @@
     </Attribute>
   </Attributes>
   <Hierarchies>
-    <Hierarchy dwd:design-time-name="c1916f8c-8365-4583-b0b5-e3eff5d9ee28">
+    <Hierarchy dwd:design-time-name="0cef1346-f3bf-4f05-bbc1-dbd84f10a507">
       <ID>Hierarchy</ID>
       <Name>ProductHierarchy</Name>
       <Levels>
-        <Level dwd:design-time-name="aeb3833a-873e-4356-851e-abf9432d3ec3">
+        <Level dwd:design-time-name="2c84498e-5529-45c0-930f-f35d5493f423">
           <ID>Category</ID>
           <Name>Category</Name>
           <SourceAttributeID>Category</SourceAttributeID>
         </Level>
-        <Level dwd:design-time-name="c48c58b3-0de3-48ef-95eb-e59d12bdfa42">
+        <Level dwd:design-time-name="28a84673-7219-4478-ab2d-69dd763d4046">
           <ID>Product Key</ID>
-          <Name>Product Key</Name>
+          <Name>Product Name</Name>
           <SourceAttributeID>Product Key</SourceAttributeID>
         </Level>
       </Levels>
