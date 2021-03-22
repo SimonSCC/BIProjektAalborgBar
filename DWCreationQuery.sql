@@ -265,6 +265,14 @@ SELECT * FROM Dimension.[Time]
 SELECT * FROM Dimension.Member
 SELECT * FROM Fact.Sale
 
+
+
+--Errors in the OLAP storage engine: A duplicate attribute key has been found when processing: 
+--Table: 'Dimension_Date', Column: 'Weekday', Value: '2'; Table: 'Dimension_Date', 
+--Column: 'WeekOfMonth', Value: '4'; Table: 'Dimension_Date', Column: 'Month', Value: '1'; 
+--Table: 'Dimension_Date', Column: 'Quarter', Value: '1'; Table: 'Dimension_Date', Column: 'Year', Value: '2002'. The attribute is 'Weekday'.
+SELECT * FROM Dimension.[Date] Where WeekOfMonth = 4 AND [YEAR] = 2002 AND [Quarter] = 1 AND [MONTH] = 1 AND [WeekDay] = 2
+
 --Gammel date
 --USE BIProjektDW
 --IF object_id('Dimension.[Date]', 'U') IS NOT NULL

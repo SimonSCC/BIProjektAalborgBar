@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="ImportProductDimension"
   DTS:PackageType="5"
-  DTS:VersionBuild="93"
-  DTS:VersionGUID="{778337C7-7A80-46E1-B7F7-CFB89E0234B2}">
+  DTS:VersionBuild="94"
+  DTS:VersionGUID="{A5DC40B4-7CB5-4869-B604-B501288DDBA6}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -3580,9 +3580,7 @@ where [refTable].[ProductID] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-8,6.2045454545455,16,16"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
