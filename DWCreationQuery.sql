@@ -297,12 +297,13 @@ USE BIProjektDW;
  
 -- SELECT * FROM Dimension.[Time]
 
- --Check function if the results of the cube is true
-SELECT * FROM Dimension.[Time] inner join Fact.Sale ON Dimension.[Time].TimeKey=Fact.Sale.TimeKey
---SUM(price)
+-- --Check function if the results of the cube is true
+--SELECT * FROM Dimension.[Time] inner join Fact.Sale ON Dimension.[Time].TimeKey=Fact.Sale.TimeKey WHERE HourOfDay = 5 AND MinuteOfDay = 0
+----SUM(price)
 
+--SELECT SUM(price) FROM Dimension.[Product] inner join Fact.Sale ON Dimension.[Product].ProductKey = Fact.Sale.ProductKey WHERE ProductID = 11
 
-SELECT * FROm Dimension.[Time]
+--SELECT * FROm Dimension.[Time]
 
 ----Minute
 --SELECT 
@@ -333,4 +334,38 @@ SELECT * FROm Dimension.[Time]
 --TRUNCATE TABLE Dimension.Room;
 --  ALTER TABLE Fact.Sale ADD CONSTRAINT FK_Fact_Sale_RoomKey_Dimension_Room_RoomKey FOREIGN KEY (RoomKey)
 --  REFERENCES Dimension.Room(RoomKey)
+
+
+--Test Member
+
+Use BIProjektDW
+SELECT * FROm Dimension.Member where MemberID = 1175
+
+SELECT * FROm Dimension.Member where MemberID = 1222 
+--Fejlen her er at semestret vare et år, så der prøves at pege på et period som ikke er der. 
+--Salget er F98 men brugeren er startet E98 og det næste semester starter førstom et år.
+--Løsning måske være at 
+
+SELECT * FROm Dimension.Member where MemberID = 864 
+--Fejlen er er en fejl?
+
+
+SELECT * FROm Dimension.Member where MemberID = 1132 
+
+
+
+
+select * from Dimension.member
+
+
+SELECT * FROM Fact.Sale
+
+SELECT * FROM Fact.Sale inner join Dimension.Member ON Fact.Sale.MemberKey = Dimension.Member.MemberKey WHERE MemberId = 864
+
+
+SELECT * FROM Fact.Sale inner join Dimension.Member ON Fact.Sale.MemberKey = Dimension.Member.MemberKey WHERE MemberId = 1154
+
+SELECT * FROM Fact.Sale inner join Dimension.Member ON Fact.Sale.MemberKey = Dimension.Member.MemberKey WHERE MemberId = 1025
+
+SELECT * FROM Fact.Sale inner join Dimension.Member ON Fact.Sale.MemberKey = Dimension.Member.MemberKey WHERE MemberId = 1175
 
