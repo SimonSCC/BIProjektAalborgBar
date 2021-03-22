@@ -97,24 +97,36 @@ ELSE
 
 USE BIProjektDW
 IF object_id('Dimension.[Date]', 'U') IS NOT NULL
-	PRINT 'Date table already created!'
+    PRINT 'Date table already created!'
 ELSE
-	BEGIN 
-	PRINT 'Not present! Date table is being created'
-	CREATE TABLE Dimension.[Date]
-	(
-	DateKey DATE,
-	[Year] INT,
-	[Quarter] INT,
-	[Month] INT,
-	[Week] INT,
-	WeekDayNumber INT,
-	[DayOfWeek] NVARCHAR(55),
-	IsWeekend BIT,
+    BEGIN 
+    PRINT 'Not present! Date table is being created'
+    CREATE TABLE Dimension.[Date]
+    (
+    [DateKey] DATE NOT NULL PRIMARY KEY,
+    [Day] TinyINT NOT NULL,
+    [DaySuffix] CHAR(2) NOT NULL,
+    [Weekday] TINYINT NOT NULL,
+    [WeekDayName] VARCHAR(10) NOT NULL,
+    [WeekDayName_Short] CHAR(3) NOT NULL,
+    [WeekDayName_FirstLetter] CHAR(1) NOT NULL,
+    [DOWInMonth] TINYINT NOT NULL,
+    [DayOfYear] SMALLINT NOT NULL,
+    [WeekOfMonth] TINYINT NOT NULL,
+    [WeekOfYear] TINYINT NOT NULL,
+    [Year] INT NOT NULL,
+    [Quarter] TINYINT NOT NULL,
+    [Month] TINYINT NOT NULL,
+    [MonthName] VARCHAR(10) NOT NULL,
+    [MonthName_Short] CHAR(3) NOT NULL,
+    [MonthName_FirstLetter] CHAR(1) NOT NULL,
+    [QuarterName] VARCHAR(6) NOT NULL,
+    [IsWeekend] BIT NOT NULL,
+    [MMYYYY] CHAR(6) NOT NULL,
+    [MonthYear] CHAR(7) NOT NULL,
 
-	PRIMARY KEY (DateKey)
-	);
-	END
+    );
+    END
 
 
 --Create Sale Fact table
@@ -253,7 +265,27 @@ SELECT * FROM Dimension.[Time]
 SELECT * FROM Dimension.Member
 SELECT * FROM Fact.Sale
 
+--Gammel date
+--USE BIProjektDW
+--IF object_id('Dimension.[Date]', 'U') IS NOT NULL
+--	PRINT 'Date table already created!'
+--ELSE
+--	BEGIN 
+--	PRINT 'Not present! Date table is being created'
+--	CREATE TABLE Dimension.[Date]
+--	(
+--	DateKey DATE,
+--	[Year] INT,
+--	[Quarter] INT,
+--	[Month] INT,
+--	[Week] INT,
+--	WeekDayNumber INT,
+--	[DayOfWeek] NVARCHAR(55),
+--	IsWeekend BIT,
 
+--	PRIMARY KEY (DateKey)
+--	);
+--	END
 	--USE MASTER 
 --GO
 
@@ -353,6 +385,21 @@ SELECT * FROm Dimension.Member where MemberID = 864
 SELECT * FROm Dimension.Member where MemberID = 1132 
 
 
+SELECT * FROm Dimension.Member where MemberID = 979 
+
+SELECT * FROm Dimension.Member where MemberID = 191 
+
+
+SELECT * FROm Dimension.Member where MemberID = 1152
+
+SELECT * FROm Dimension.Member where MemberID = 1040 
+
+
+
+
+
+
+
 
 
 select * from Dimension.member
@@ -369,3 +416,7 @@ SELECT * FROM Fact.Sale inner join Dimension.Member ON Fact.Sale.MemberKey = Dim
 
 SELECT * FROM Fact.Sale inner join Dimension.Member ON Fact.Sale.MemberKey = Dimension.Member.MemberKey WHERE MemberId = 1175
 
+SELECT * FROM Fact.Sale inner join Dimension.Member ON Fact.Sale.MemberKey = Dimension.Member.MemberKey WHERE MemberId = 1048
+
+
+SELECT * FROm Dimension.Member where MemberID = 1048 
