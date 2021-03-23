@@ -1,5 +1,5 @@
-﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="022608fc-935a-4ef5-bf4a-630a4b99d6be" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
-  <ID>Member</ID>
+﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="e47a86da-f808-4ce7-b805-e85be7d3daf6" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Member 1</ID>
   <Name>Member</Name>
   <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
   <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
@@ -105,56 +105,56 @@
   </Annotations>
   <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
   <State>Unprocessed</State>
-  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="1a74db18-b529-4a50-a42c-80e0d669a613">
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="bb54d3f0-768b-4cbf-a7e8-b4b8882a14fe">
     <DataSourceViewID>BI Projekt DW</DataSourceViewID>
   </Source>
   <UnknownMember>Visible</UnknownMember>
-  <ErrorConfiguration dwd:design-time-name="15df57cc-96ec-4d8c-b684-7f65ccff3521">
+  <ErrorConfiguration dwd:design-time-name="f6351769-e32d-4b8f-9871-df0af7655a70">
     <KeyNotFound>ReportAndStop</KeyNotFound>
     <KeyDuplicate>ReportAndStop</KeyDuplicate>
     <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
   </ErrorConfiguration>
   <CurrentStorageMode>Molap</CurrentStorageMode>
   <Attributes>
-    <Attribute dwd:design-time-name="394081d8-80b7-46db-8625-ef58a432ffd3">
+    <Attribute dwd:design-time-name="68665e01-355a-4760-a4d1-e94c5697eec1">
       <ID>Member Key</ID>
       <Name>Member Key</Name>
       <Usage>Key</Usage>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="3aa0fcec-660d-4977-b38e-b42e57f2ea0e">
+        <KeyColumn dwd:design-time-name="a3c3fc19-452f-4595-8612-4a832ffd3c7c">
           <DataType>Integer</DataType>
           <NullProcessing>UnknownMember</NullProcessing>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="85d39e13-a186-4020-9dfc-d46793954aa5">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="b38b08bb-738e-469b-94e8-a62a1565ea19">
             <TableID>Dimension_Member</TableID>
             <ColumnID>MemberKey</ColumnID>
           </Source>
         </KeyColumn>
       </KeyColumns>
-      <NameColumn dwd:design-time-name="5a5bac92-6561-451c-9b8e-4de7b753f3b5">
+      <NameColumn dwd:design-time-name="26f2cc1a-0d06-4d19-82d4-564f1f040d19">
         <DataType>WChar</DataType>
-        <Source xsi:type="ColumnBinding" dwd:design-time-name="8002ed82-ede7-4731-a2cb-9c864edaedc4">
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="9ceecae8-3c3a-4497-a214-d2dba7a2044e">
           <TableID>Dimension_Member</TableID>
           <ColumnID>MemberID</ColumnID>
         </Source>
       </NameColumn>
       <AttributeRelationships>
-        <AttributeRelationship dwd:design-time-name="a51fe10c-bc74-4e9a-9597-41617bfbf47e">
+        <AttributeRelationship dwd:design-time-name="c9540e0d-1aca-4633-82b1-94df41949e5e">
           <AttributeID>Member ID</AttributeID>
           <Name>Member ID</Name>
         </AttributeRelationship>
-        <AttributeRelationship dwd:design-time-name="5da589c8-c61d-4b95-9c99-69b872b58544">
+        <AttributeRelationship dwd:design-time-name="0d3d8b73-a109-4c80-81b2-e2dc198250ee">
           <AttributeID>Year Joined</AttributeID>
           <Name>Year Joined</Name>
         </AttributeRelationship>
-        <AttributeRelationship dwd:design-time-name="af78dd3c-e21d-44b6-bfc3-4f22e2335be1">
+        <AttributeRelationship dwd:design-time-name="019e1d53-668e-430d-9677-af7a53bdba2d">
           <AttributeID>Valid From</AttributeID>
           <Name>Valid From</Name>
         </AttributeRelationship>
-        <AttributeRelationship dwd:design-time-name="9f1305e4-b955-4d60-89d9-5e8293e53d4c">
+        <AttributeRelationship dwd:design-time-name="365813f2-7405-4dcc-b5d2-ef7cd2336984">
           <AttributeID>Valid To</AttributeID>
           <Name>Valid To</Name>
         </AttributeRelationship>
-        <AttributeRelationship dwd:design-time-name="83dbae85-cf29-43ae-b943-117d6ad4fec9">
+        <AttributeRelationship dwd:design-time-name="7e855c1e-cacc-44f0-ab4b-073d76c6c287">
           <AttributeID>Semester Period</AttributeID>
           <RelationshipType>Rigid</RelationshipType>
           <Name>Semester Period</Name>
@@ -164,13 +164,13 @@
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute dwd:design-time-name="078ab0af-f754-4c04-b0c2-0a5bc464dbd7">
+    <Attribute dwd:design-time-name="4cd18cc8-f4e5-44df-a8c7-0da6747b5d6c">
       <ID>Member ID</ID>
       <Name>Member ID</Name>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="590071f9-2d8d-445f-950e-d5702376d2f7">
+        <KeyColumn dwd:design-time-name="66c6389f-dd60-4493-b6d6-c4f4374dd444">
           <DataType>Integer</DataType>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="4e9f4ed9-5bb8-499e-b9a5-1aae6f277695">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="dca77f44-2f7c-4bcf-a443-8aafa30ff88a">
             <TableID>Dimension_Member</TableID>
             <ColumnID>MemberID</ColumnID>
           </Source>
@@ -180,13 +180,13 @@
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute dwd:design-time-name="4f8f7abc-1597-45ee-8b00-5211907e31e6">
+    <Attribute dwd:design-time-name="5ffea9c0-cb60-4a1c-a5f1-bb88ad6ce51d">
       <ID>Year Joined</ID>
       <Name>Year Joined</Name>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="21b61133-df0a-423c-82c5-e059f5519f4e">
+        <KeyColumn dwd:design-time-name="51f67427-c550-4419-9590-71fedaa0422c">
           <DataType>Integer</DataType>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="21d6f2c7-f52e-429e-a2ea-713b5009b9b7">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="7b5ceaea-2e0d-44b4-a986-5d58e4de69c9">
             <TableID>Dimension_Member</TableID>
             <ColumnID>YearJoined</ColumnID>
           </Source>
@@ -196,45 +196,45 @@
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute dwd:design-time-name="396aef4b-689c-41ea-b7ef-4b344068fc53">
+    <Attribute dwd:design-time-name="841cb138-6ddb-4cff-9ea7-432747a04489">
       <ID>Semester Period</ID>
       <Name>Semester Period</Name>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="51ecd8f0-5e03-4054-819b-6b4d8592c712">
+        <KeyColumn dwd:design-time-name="b9d236b9-68da-4802-a6d0-85cf49b2f273">
           <DataType>WChar</DataType>
           <DataSize>50</DataSize>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="cdba96ab-8f53-48d5-b86b-833f4086b0e0">
-            <TableID>Dimension_Member</TableID>
-            <ColumnID>Study</ColumnID>
-          </Source>
-        </KeyColumn>
-        <KeyColumn dwd:design-time-name="416fa1f7-5a80-4881-bf73-dc88af750721">
-          <DataType>WChar</DataType>
-          <DataSize>50</DataSize>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="8d49a2d3-a894-4ff5-8407-cc023b6f5192">
-            <TableID>Dimension_Member</TableID>
-            <ColumnID>Semester</ColumnID>
-          </Source>
-        </KeyColumn>
-        <KeyColumn dwd:design-time-name="fd28fd3d-530b-4c88-a343-04016eba80fc">
-          <DataType>WChar</DataType>
-          <DataSize>50</DataSize>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="ace5cf3f-67c3-468f-b22a-964250c899a0">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="cdb24aaa-8ddf-4bf9-8865-00d319f29a26">
             <TableID>Dimension_Member</TableID>
             <ColumnID>SemesterPeriod</ColumnID>
           </Source>
         </KeyColumn>
+        <KeyColumn dwd:design-time-name="3cf5f151-995b-4fc0-99cb-e504da81611c">
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="a0532764-45dd-43fa-ba6e-a987b5ebbea1">
+            <TableID>Dimension_Member</TableID>
+            <ColumnID>Semester</ColumnID>
+          </Source>
+        </KeyColumn>
+        <KeyColumn dwd:design-time-name="7a40271f-2756-4510-a13a-f465cd85d158">
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="512c9e6a-eb3f-4bfd-a722-b2faee382980">
+            <TableID>Dimension_Member</TableID>
+            <ColumnID>Study</ColumnID>
+          </Source>
+        </KeyColumn>
       </KeyColumns>
-      <NameColumn dwd:design-time-name="413a94b0-02cc-4b65-b230-6d814db04d47">
+      <NameColumn dwd:design-time-name="5e000d8e-96cb-4820-8607-932bc3fdc737">
         <DataType>WChar</DataType>
         <DataSize>50</DataSize>
-        <Source xsi:type="ColumnBinding" dwd:design-time-name="921cf395-c97b-4267-9133-7448feaa16e1">
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="c2a0953e-b46b-466a-b53e-506ad7bec6c5">
           <TableID>Dimension_Member</TableID>
           <ColumnID>SemesterPeriod</ColumnID>
         </Source>
       </NameColumn>
       <AttributeRelationships>
-        <AttributeRelationship dwd:design-time-name="aec5fa6c-9af9-4db5-927c-2a4ca1f5930c">
+        <AttributeRelationship dwd:design-time-name="0a87b7cc-3390-47b3-8405-39abacf575ff">
           <AttributeID>Semester</AttributeID>
           <RelationshipType>Rigid</RelationshipType>
           <Name>Semester</Name>
@@ -244,21 +244,21 @@
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute dwd:design-time-name="d3bfac72-f59c-44bd-abab-42d50325d92a">
+    <Attribute dwd:design-time-name="937b467a-17d2-4c44-ad9a-aa482bd14ecc">
       <ID>Semester</ID>
       <Name>Semester</Name>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="43df21b6-0d70-4ab4-8d47-d2c1415f17d9">
+        <KeyColumn dwd:design-time-name="0667aa92-92ea-4e57-9305-5cc8b76fa384">
           <DataType>WChar</DataType>
           <DataSize>50</DataSize>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="d2f85a99-c704-4368-9167-b136ab76ceaa">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="bcb68297-e71d-4e9c-b1e9-899e019290fa">
             <TableID>Dimension_Member</TableID>
             <ColumnID>Semester</ColumnID>
           </Source>
         </KeyColumn>
       </KeyColumns>
       <AttributeRelationships>
-        <AttributeRelationship dwd:design-time-name="79512ab3-1137-4141-a927-bc20ec78a13e">
+        <AttributeRelationship dwd:design-time-name="7e97ffd5-dc07-4daa-b166-76b655c60b1a">
           <AttributeID>Study</AttributeID>
           <RelationshipType>Rigid</RelationshipType>
           <Name>Study</Name>
@@ -268,13 +268,13 @@
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute dwd:design-time-name="917eaaf5-756c-41cf-b04b-c51281a83fcd">
+    <Attribute dwd:design-time-name="b7e08b72-c932-45f5-97a3-c08d8653c304">
       <ID>Valid From</ID>
       <Name>Valid From</Name>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="4e76e8ea-7525-484c-94fe-f85913ed7d07">
+        <KeyColumn dwd:design-time-name="253913f8-7bff-46c4-bd19-c161c097d5c0">
           <DataType>Date</DataType>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="ff081dd1-f87a-4ab2-8202-2b121e1b9463">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="0bb0b874-29fb-4f7d-b0a0-278a7e804d16">
             <TableID>Dimension_Member</TableID>
             <ColumnID>ValidFrom</ColumnID>
           </Source>
@@ -284,13 +284,13 @@
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute dwd:design-time-name="e2d5bf6a-4733-4881-ad48-27ab5a3c957a">
+    <Attribute dwd:design-time-name="9de52f74-eeb3-453f-a27e-0bfa6e223da8">
       <ID>Valid To</ID>
       <Name>Valid To</Name>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="1eba55e9-243b-4600-ab99-dc14fbc97b4e">
+        <KeyColumn dwd:design-time-name="ce56aeab-580f-46d8-8b9a-946edfbce6f8">
           <DataType>Date</DataType>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="f6d12eb2-18d4-4e0a-9c05-0c4b3f75c06b">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="e09df84e-3bfd-4c8f-93f5-236856e74fa5">
             <TableID>Dimension_Member</TableID>
             <ColumnID>ValidTo</ColumnID>
           </Source>
@@ -300,14 +300,14 @@
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute dwd:design-time-name="9b862c23-32c8-4223-8e0f-4718d3d43752">
+    <Attribute dwd:design-time-name="26f90f8b-3197-4319-b70c-dd36aee19220">
       <ID>Study</ID>
       <Name>Study</Name>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="2a9c348d-8610-458a-832a-d13616c5da31">
+        <KeyColumn dwd:design-time-name="b6d3d58f-2408-47cc-9f42-68e990a44cad">
           <DataType>WChar</DataType>
           <DataSize>50</DataSize>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="5283540b-b854-4a69-bb8e-ceb100a4e1e2">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="edd737db-256d-48d9-9a34-8c07bc89bb20">
             <TableID>Dimension_Member</TableID>
             <ColumnID>Study</ColumnID>
           </Source>
@@ -319,26 +319,26 @@
     </Attribute>
   </Attributes>
   <Hierarchies>
-    <Hierarchy dwd:design-time-name="ba0048eb-32ee-493b-9da8-6693132577d5">
+    <Hierarchy dwd:design-time-name="4112ff16-9e01-4faf-8c28-05debedc7bb2">
       <ID>Hierarchy</ID>
       <Name>MemberHierarchy</Name>
       <Levels>
-        <Level dwd:design-time-name="839812e5-a90f-46d2-8204-341cb6d74152">
+        <Level dwd:design-time-name="ea68a9be-7319-480b-a08a-cc1a9225d606">
           <ID>Study</ID>
           <Name>Study</Name>
           <SourceAttributeID>Study</SourceAttributeID>
         </Level>
-        <Level dwd:design-time-name="527e505b-a986-4382-b98f-8cae0ae80060">
+        <Level dwd:design-time-name="cb312b94-3d8c-4651-9f3c-4a911bff6e29">
           <ID>Semester</ID>
           <Name>Semester</Name>
           <SourceAttributeID>Semester</SourceAttributeID>
         </Level>
-        <Level dwd:design-time-name="ef6d864c-3021-4ec3-aae9-249e9565f07e">
+        <Level dwd:design-time-name="e952b937-3866-43f5-9ac0-ca644326b4bd">
           <ID>Semester Period</ID>
           <Name>Semester Period</Name>
           <SourceAttributeID>Semester Period</SourceAttributeID>
         </Level>
-        <Level dwd:design-time-name="26199898-c08d-41af-896d-4b22554bd65f">
+        <Level dwd:design-time-name="d12e1558-2c98-4d76-b7b7-82bf097a9714">
           <ID>Member Key</ID>
           <Name>Member Key</Name>
           <SourceAttributeID>Member Key</SourceAttributeID>
