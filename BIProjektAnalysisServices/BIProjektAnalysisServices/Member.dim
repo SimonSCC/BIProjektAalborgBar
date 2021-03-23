@@ -130,6 +130,13 @@
           </Source>
         </KeyColumn>
       </KeyColumns>
+      <NameColumn dwd:design-time-name="5a5bac92-6561-451c-9b8e-4de7b753f3b5">
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="8002ed82-ede7-4731-a2cb-9c864edaedc4">
+          <TableID>Dimension_Member</TableID>
+          <ColumnID>MemberID</ColumnID>
+        </Source>
+      </NameColumn>
       <AttributeRelationships>
         <AttributeRelationship dwd:design-time-name="a51fe10c-bc74-4e9a-9597-41617bfbf47e">
           <AttributeID>Member ID</AttributeID>
