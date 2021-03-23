@@ -65,6 +65,7 @@ ELSE
 	MemberKey INT IDENTITY(1,1),
 	MemberID INT,
 	YearJoined INT,
+	Study NVARCHAR(50),
 	SemesterPeriod NVARCHAR(50),
 	Semester NVARCHAR(50),
 	ValidFrom DATE,
@@ -428,3 +429,50 @@ SELECT * FROM Fact.Sale inner join Dimension.Member ON Fact.Sale.MemberKey = Dim
 
 
 SELECT * FROm Dimension.Member where MemberID = 1048 
+
+
+--Hirakier
+--  • F7 Kan fortolke resultater fra lineær/logistisk/Cox-regressionsanalyse, samt diskutere konsekvenser af analysens forudsigelser
+--  K1 Kan selvstændigt gennemføre en struktureret litteratursøgning med tilhørende kritisk analyse og vurdering
+--af epidemiologiske studier publiceret i internationale tidsskrifter med inddragelse af relevante videnskabeligguidelines og checklister
+--• K2 Kan vurdere graden af evidens for forebyggende og sundhedsfremmende tiltag
+--• K3 Kan planlægge og gennemføre basale, relevante statistiske beregninger i relation til hypotesetestning
+
+--Mat
+--Inf
+--Dat
+--Dat/Inf
+--F7D
+--F7SE
+--F9SE
+--F9D
+--F10D
+--F6SE
+--F8SE
+--F10SE
+--F6S
+--F8S
+--KDE3
+--F9S
+--SSE3
+--KDE3
+--F7S
+--F8D
+
+
+
+--Mat
+	--Mat1
+		-- F99 
+			-- 1154
+			-- 2562
+		-- F22 
+			-- 1154
+
+
+--Study
+--Mat
+--Dat
+--Inf
+--Dat/Inf
+--Andet
