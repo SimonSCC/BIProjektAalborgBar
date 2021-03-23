@@ -328,8 +328,9 @@ SELECT * FROM Dimension.[Date] Where WeekOfMonth = 4 AND [YEAR] = 2002 AND [Quar
 --  ALTER TABLE Fact.Sale ADD CONSTRAINT FK_Fact_Sale_MemberKey_Dimension_Member_MemberKey FOREIGN KEY (MemberKey)
 --  REFERENCES Dimension.[Member](MemberKey)
 
---INSERT INTO Dimension.Member (MemberID, YearJoined, SemesterPeriod, Semester, ValidFROM)
---VALUES (0, 0, 'EEE', 'DAT', '1990-01-01');
+
+--INSERT INTO Dimension.Member (MemberID, YearJoined, SemesterPeriod, Semester, Study, ValidFROM)
+--VALUES (0, 0, 'NoSemesterPeriod', 'NoSemester', 'NoStudy', '1990-01-01');
 
 
 USE BIProjektDW;

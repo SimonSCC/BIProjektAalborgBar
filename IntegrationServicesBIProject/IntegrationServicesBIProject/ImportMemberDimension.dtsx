@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="91"
-  DTS:VersionGUID="{201060DC-F4CC-4AAE-B662-D91595E6FADC}">
+  DTS:VersionBuild="94"
+  DTS:VersionGUID="{11ABB22B-95A2-4EB0-BAB4-BEE470D8C6E7}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -134,7 +134,7 @@
                   expressionType="Notify"
                   name="SqlCommandParam"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [Dimension].[Member]) [refTable]
-where [refTable].[MemberID] = ?</property>
+where [refTable].[MemberID] = ? and [refTable].[Semester] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the type of connection used to access the reference dataset."
@@ -165,12 +165,12 @@ where [refTable].[MemberID] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="MemberKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="MemberID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="YearJoined" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SemesterPeriod" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Semester" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ValidFrom" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ValidTo" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="MemberKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="MemberID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="YearJoined" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Study" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SemesterPeriod" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Semester" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ValidFrom" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ValidTo" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[id]};</property>
+                  name="ParameterMap">#{Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[id]};#{Package\Data Flow Task\Clean Semester.Outputs[Derived Column Output].Columns[CleanSemester]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -204,6 +204,23 @@ where [refTable].[MemberID] = ?</property>
                           dataType="System.String"
                           description="Specifies the column in the reference table that a column joins."
                           name="JoinToReferenceColumn">MemberID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Check if entry already exists.Inputs[Lookup Input].Columns[CleanSemester]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="CleanSemester"
+                      lineageId="Package\Data Flow Task\Clean Semester.Outputs[Derived Column Output].Columns[CleanSemester]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Semester</property>
                         <property
                           dataType="System.Null"
                           description="Specifies the column in the reference table from which a column is copied."
@@ -280,6 +297,88 @@ where [refTable].[MemberID] = ?</property>
                       refId="Package\Data Flow Task\Check if entry already exists.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       dataType="i4"
                       lineageId="Package\Data Flow Task\Check if entry already exists.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Clean Semester"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Clean Semester"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Clean Semester.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Clean Semester.Inputs[Derived Column Input].Columns[Semester]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Semester"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Semester]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Clean Semester.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Data Flow Task\Clean Semester.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Clean Semester.Outputs[Derived Column Output].Columns[CleanSemester]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Clean Semester.Outputs[Derived Column Output].Columns[CleanSemester]"
+                      name="CleanSemester"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[FINDSTRING](#{Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Semester]},"Dat",1) == 1 ? [SUBSTRING](#{Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Semester]},1,4) : [FINDSTRING](#{Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Semester]},"Mat",1) == 1 ? [SUBSTRING](#{Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Semester]},1,4) : [FINDSTRING](#{Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Semester]},"Inf",1) == 1 ? [SUBSTRING](#{Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Semester]},1,4) : #{Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Semester]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">FINDSTRING(Semester,"Dat",1) == 1 ? SUBSTRING(Semester,1,4) : FINDSTRING(Semester,"Mat",1) == 1 ? SUBSTRING(Semester,1,4) : FINDSTRING(Semester,"Inf",1) == 1 ? SUBSTRING(Semester,1,4) : Semester</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Clean Semester.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Data Flow Task\Clean Semester.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Clean Semester.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Clean Semester.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Clean Semester.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Clean Semester.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -1662,12 +1761,6 @@ where `refTable`.`member_id` = ?</property>
                       cachedName="SemesterPeriod"
                       lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[SemesterPeriod]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Split changes.Inputs[Conditional Split Input].Columns[Semester]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="Semester"
-                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Semester]" />
-                    <inputColumn
                       refId="Package\Data Flow Task\Split changes.Inputs[Conditional Split Input].Columns[SemesterPeriod_OLD]"
                       cachedDataType="wstr"
                       cachedLength="50"
@@ -1679,6 +1772,12 @@ where `refTable`.`member_id` = ?</property>
                       cachedLength="50"
                       cachedName="Semester_OLD"
                       lineageId="Package\Data Flow Task\Check if entry already exists.Outputs[Lookup Match Output].Columns[Semester_OLD]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Split changes.Inputs[Conditional Split Input].Columns[CleanSemester]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="CleanSemester"
+                      lineageId="Package\Data Flow Task\Clean Semester.Outputs[Derived Column Output].Columns[CleanSemester]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -1698,13 +1797,13 @@ where `refTable`.`member_id` = ?</property>
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
-                      name="Expression">#{Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Semester]} != #{Package\Data Flow Task\Check if entry already exists.Outputs[Lookup Match Output].Columns[Semester_OLD]}</property>
+                      name="Expression">#{Package\Data Flow Task\Clean Semester.Outputs[Derived Column Output].Columns[CleanSemester]} != #{Package\Data Flow Task\Check if entry already exists.Outputs[Lookup Match Output].Columns[Semester_OLD]}</property>
                     <property
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the friendly version of the expression. This expression version uses column names."
                       expressionType="Notify"
-                      name="FriendlyExpression">Semester != Semester_OLD</property>
+                      name="FriendlyExpression">CleanSemester != Semester_OLD</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
@@ -2024,20 +2123,6 @@ where `refTable`.`member_id` = ?</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Data Flow Task\Union Mem With Sem.Inputs[Union All Input 1].Columns[Semester]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="Semester"
-                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Semester]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union Mem With Sem.Outputs[Union All Output 1].Columns[Semester]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
                       refId="Package\Data Flow Task\Union Mem With Sem.Inputs[Union All Input 1].Columns[SemesterPeriod]"
                       cachedDataType="wstr"
                       cachedLength="50"
@@ -2049,6 +2134,20 @@ where `refTable`.`member_id` = ?</property>
                           dataType="System.Int32"
                           description="Output column lineage ID"
                           name="OutputColumnLineageID">#{Package\Data Flow Task\Union Mem With Sem.Outputs[Union All Output 1].Columns[SemesterPeriod]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union Mem With Sem.Inputs[Union All Input 1].Columns[CleanSemester]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="CleanSemester"
+                      lineageId="Package\Data Flow Task\Clean Semester.Outputs[Derived Column Output].Columns[CleanSemester]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union Mem With Sem.Outputs[Union All Output 1].Columns[Semester]}</property>
                       </properties>
                     </inputColumn>
                   </inputColumns>
@@ -2087,20 +2186,6 @@ where `refTable`.`member_id` = ?</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Data Flow Task\Union Mem With Sem.Inputs[Union All Input 2].Columns[Semester]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="Semester"
-                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Semester]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union Mem With Sem.Outputs[Union All Output 1].Columns[Semester]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
                       refId="Package\Data Flow Task\Union Mem With Sem.Inputs[Union All Input 2].Columns[SemesterPeriod]"
                       cachedDataType="wstr"
                       cachedLength="50"
@@ -2112,6 +2197,20 @@ where `refTable`.`member_id` = ?</property>
                           dataType="System.Int32"
                           description="Output column lineage ID"
                           name="OutputColumnLineageID">#{Package\Data Flow Task\Union Mem With Sem.Outputs[Union All Output 1].Columns[SemesterPeriod]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union Mem With Sem.Inputs[Union All Input 2].Columns[CleanSemester]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="CleanSemester"
+                      lineageId="Package\Data Flow Task\Clean Semester.Outputs[Derived Column Output].Columns[CleanSemester]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union Mem With Sem.Outputs[Union All Output 1].Columns[Semester]}</property>
                       </properties>
                     </inputColumn>
                   </inputColumns>
@@ -2150,20 +2249,6 @@ where `refTable`.`member_id` = ?</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Data Flow Task\Union Mem With Sem.Inputs[Union All Input 3].Columns[Semester]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="Semester"
-                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Semester]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union Mem With Sem.Outputs[Union All Output 1].Columns[Semester]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
                       refId="Package\Data Flow Task\Union Mem With Sem.Inputs[Union All Input 3].Columns[SemesterPeriod]"
                       cachedDataType="wstr"
                       cachedLength="50"
@@ -2175,6 +2260,20 @@ where `refTable`.`member_id` = ?</property>
                           dataType="System.Int32"
                           description="Output column lineage ID"
                           name="OutputColumnLineageID">#{Package\Data Flow Task\Union Mem With Sem.Outputs[Union All Output 1].Columns[SemesterPeriod]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union Mem With Sem.Inputs[Union All Input 3].Columns[CleanSemester]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="CleanSemester"
+                      lineageId="Package\Data Flow Task\Clean Semester.Outputs[Derived Column Output].Columns[CleanSemester]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union Mem With Sem.Outputs[Union All Output 1].Columns[Semester]}</property>
                       </properties>
                     </inputColumn>
                   </inputColumns>
@@ -2228,6 +2327,16 @@ where `refTable`.`member_id` = ?</property>
               name="Derived Column Output"
               startId="Package\Data Flow Task\SemesterAndPeriodNull.Outputs[Derived Column Output]" />
             <path
+              refId="Package\Data Flow Task.Paths[Derived Column Output3]"
+              endId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Derived Column Output4]"
+              endId="Package\Data Flow Task\Check if entry already exists.Inputs[Lookup Input]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\Clean Semester.Outputs[Derived Column Output]" />
+            <path
               refId="Package\Data Flow Task.Paths[Derived Column Output1]"
               endId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]"
               name="Derived Column Output"
@@ -2237,11 +2346,6 @@ where `refTable`.`member_id` = ?</property>
               endId="Package\Data Flow Task\Union All.Inputs[Union All Input 4]"
               name="Derived Column Output"
               startId="Package\Data Flow Task\Add Study.Outputs[Derived Column Output]" />
-            <path
-              refId="Package\Data Flow Task.Paths[Derived Column Output3]"
-              endId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
-              name="Derived Column Output"
-              startId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output]" />
             <path
               refId="Package\Data Flow Task.Paths[Lookup Match Output]"
               endId="Package\Data Flow Task\Split changes.Inputs[Conditional Split Input]"
@@ -2264,19 +2368,19 @@ where `refTable`.`member_id` = ?</property>
               startId="Package\Data Flow Task\Check if entry already exists.Outputs[Lookup No Match Output]" />
             <path
               refId="Package\Data Flow Task.Paths[Merge Join Output]"
-              endId="Package\Data Flow Task\Check if entry already exists.Inputs[Lookup Input]"
+              endId="Package\Data Flow Task\Clean Semester.Inputs[Derived Column Input]"
               name="Merge Join Output"
               startId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output]" />
-            <path
-              refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
-              endId="Package\Data Flow Task\Sort 1.Inputs[Sort Input]"
-              name="OLE DB Source Output"
-              startId="Package\Data Flow Task\SemesterGroup.Outputs[OLE DB Source Output]" />
             <path
               refId="Package\Data Flow Task.Paths[OLE DB Source Output1]"
               endId="Package\Data Flow Task\Lookup in SemesterGroups.Inputs[Lookup Input]"
               name="OLE DB Source Output"
               startId="Package\Data Flow Task\Member.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task\Sort 1.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task\SemesterGroup.Outputs[OLE DB Source Output]" />
             <path
               refId="Package\Data Flow Task.Paths[PeriodChanged]"
               endId="Package\Data Flow Task\Union Mem With Sem.Inputs[Union All Input 2]"
@@ -2388,11 +2492,11 @@ where `refTable`.`member_id` = ?</property>
     design-time-name="Package\Data Flow Task">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="181,42"
           Id="Package\Data Flow Task\Union Mem With Sem"
-          TopLeft="761,333" />
+          TopLeft="788,403" />
         <NodeLayout
           Size="152,42"
           Id="Package\Data Flow Task\SemesterGroup"
@@ -2400,15 +2504,15 @@ where `refTable`.`member_id` = ?</property>
         <NodeLayout
           Size="159,42"
           Id="Package\Data Flow Task\Get Current Date"
-          TopLeft="514,472" />
+          TopLeft="509.555555555556,570.888888888889" />
         <NodeLayout
           Size="141,42"
           Id="Package\Data Flow Task\Split changes"
-          TopLeft="936,406" />
+          TopLeft="965,504" />
         <NodeLayout
           Size="171,42"
           Id="Package\Data Flow Task\OLE DB Destination"
-          TopLeft="508,625" />
+          TopLeft="503.555555555556,723.888888888889" />
         <NodeLayout
           Size="205,42"
           Id="Package\Data Flow Task\Lookup in SemesterGroups"
@@ -2416,7 +2520,7 @@ where `refTable`.`member_id` = ?</property>
         <NodeLayout
           Size="154,42"
           Id="Package\Data Flow Task\Derived Column"
-          TopLeft="518,537" />
+          TopLeft="513.555555555556,635.888888888889" />
         <NodeLayout
           Size="189,42"
           Id="Package\Data Flow Task\SemesterAndPeriodNull"
@@ -2424,7 +2528,7 @@ where `refTable`.`member_id` = ?</property>
         <NodeLayout
           Size="211,42"
           Id="Package\Data Flow Task\Check if entry already exists"
-          TopLeft="871,221" />
+          TopLeft="984,227" />
         <NodeLayout
           Size="117,42"
           Id="Package\Data Flow Task\Member"
@@ -2432,7 +2536,7 @@ where `refTable`.`member_id` = ?</property>
         <NodeLayout
           Size="121,42"
           Id="Package\Data Flow Task\Union All"
-          TopLeft="526,403" />
+          TopLeft="521.555555555556,501.888888888889" />
         <NodeLayout
           Size="107,42"
           Id="Package\Data Flow Task\Sort 1"
@@ -2451,7 +2555,7 @@ where `refTable`.`member_id` = ?</property>
           TopLeft="701,225" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Derived Column Output3]"
-          TopLeft="594.25,579">
+          TopLeft="589.805555555556,677.888888888889">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2473,31 +2577,31 @@ where `refTable`.`member_id` = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Derived Column Output2]"
-          TopLeft="606.916666666667,372">
+          TopLeft="604.694444444444,372">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,31"
+              EndConnector="0,129.888888888889"
               Start="0,0"
-              End="0,23.5">
+              End="0,122.388888888889">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,23.5" />
+                    End="0,122.388888888889" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-8,3.75,16,16"
+              BoundingBox="-8,53.1944444444445,16,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Derived Column Output1]"
-          TopLeft="594.25,514">
+          TopLeft="589.805555555556,612.888888888889">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2523,26 +2627,26 @@ where `refTable`.`member_id` = ?</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="151.166666666667,51"
+              EndConnector="146.722222222222,149.888888888889"
               Start="0,0"
-              End="151.166666666667,43.5">
+              End="146.722222222222,142.388888888889">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26.2006525285481" />
+                    End="0,84.7596519847744" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,26.2006525285481"
-                    Point2="0,30.2006525285481"
-                    Point3="4,30.2006525285481" />
+                    Point1="0,84.7596519847744"
+                    Point2="0,88.7596519847744"
+                    Point3="4,88.7596519847744" />
                   <mssgle:LineSegment
-                    End="147.166666666667,30.2006525285481" />
+                    End="142.722222222222,88.7596519847744" />
                   <mssgle:CubicBezierSegment
-                    Point1="147.166666666667,30.2006525285481"
-                    Point2="151.166666666667,30.2006525285481"
-                    Point3="151.166666666667,34.2006525285481" />
+                    Point1="142.722222222222,88.7596519847744"
+                    Point2="146.722222222222,88.7596519847744"
+                    Point3="146.722222222222,92.7596519847744" />
                   <mssgle:LineSegment
-                    End="151.166666666667,43.5" />
+                    End="146.722222222222,142.388888888889" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2553,7 +2657,7 @@ where `refTable`.`member_id` = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Union All Output 11]"
-          TopLeft="590,445">
+          TopLeft="585.555555555556,543.888888888889">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2575,18 +2679,30 @@ where `refTable`.`member_id` = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Union All Output 1]"
-          TopLeft="761,352.5">
+          TopLeft="849.666666666667,403">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-89,0"
+              EndConnector="-221.333333333333,-31"
               Start="0,0"
-              End="-81.5,0">
+              End="-221.333333333333,-23.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-81.5,0" />
+                    End="0,-11.4290768122696" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-11.4290768122696"
+                    Point2="0,-15.4290768122696"
+                    Point3="-4,-15.4290768122696" />
+                  <mssgle:LineSegment
+                    End="-217.333333333333,-15.4290768122696" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-217.333333333333,-15.4290768122696"
+                    Point2="-221.333333333333,-15.4290768122696"
+                    Point3="-221.333333333333,-19.4290768122696" />
+                  <mssgle:LineSegment
+                    End="-221.333333333333,-23.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2641,73 +2757,73 @@ where `refTable`.`member_id` = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[SemesterChanged]"
-          TopLeft="984.333333333333,406">
+          TopLeft="1013.33333333333,504">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-132.833333333333,-31"
+              EndConnector="-134.833333333333,-59"
               Start="0,0"
-              End="-132.833333333333,-23.5">
+              End="-134.833333333333,-51.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,-8.60869565217392" />
+                    End="0,-19.9971949509117" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,-8.60869565217392"
-                    Point2="0,-12.6086956521739"
-                    Point3="-4,-12.6086956521739" />
+                    Point1="0,-19.9971949509117"
+                    Point2="0,-23.9971949509117"
+                    Point3="-4,-23.9971949509117" />
                   <mssgle:LineSegment
-                    End="-128.833333333333,-12.6086956521739" />
+                    End="-130.833333333333,-23.9971949509117" />
                   <mssgle:CubicBezierSegment
-                    Point1="-128.833333333333,-12.6086956521739"
-                    Point2="-132.833333333333,-12.6086956521739"
-                    Point3="-132.833333333333,-16.6086956521739" />
+                    Point1="-130.833333333333,-23.9971949509117"
+                    Point2="-134.833333333333,-23.9971949509117"
+                    Point3="-134.833333333333,-27.9971949509117" />
                   <mssgle:LineSegment
-                    End="-132.833333333333,-23.5" />
+                    End="-134.833333333333,-51.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-106.840319010417,-7.60869565217392,80.8473046875,11.6630859375"
+              BoundingBox="-107.840319010417,-18.9971949509117,80.8473046875,11.6630859375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[PeriodChanged]"
-          TopLeft="984.333333333333,406">
+          TopLeft="1013.33333333333,504">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-132.833333333333,-31"
+              EndConnector="-134.833333333333,-59"
               Start="0,0"
-              End="-132.833333333333,-23.5">
+              End="-134.833333333333,-51.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,-8.60869565217392" />
+                    End="0,-19.9971949509117" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,-8.60869565217392"
-                    Point2="0,-12.6086956521739"
-                    Point3="-4,-12.6086956521739" />
+                    Point1="0,-19.9971949509117"
+                    Point2="0,-23.9971949509117"
+                    Point3="-4,-23.9971949509117" />
                   <mssgle:LineSegment
-                    End="-128.833333333333,-12.6086956521739" />
+                    End="-130.833333333333,-23.9971949509117" />
                   <mssgle:CubicBezierSegment
-                    Point1="-128.833333333333,-12.6086956521739"
-                    Point2="-132.833333333333,-12.6086956521739"
-                    Point3="-132.833333333333,-16.6086956521739" />
+                    Point1="-130.833333333333,-23.9971949509117"
+                    Point2="-134.833333333333,-23.9971949509117"
+                    Point3="-134.833333333333,-27.9971949509117" />
                   <mssgle:LineSegment
-                    End="-132.833333333333,-23.5" />
+                    End="-134.833333333333,-51.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-99.8946549479167,-7.60869565217392,66.9559765625,11.6630859375"
+              BoundingBox="-100.894654947917,-18.9971949509117,66.9559765625,11.6630859375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -2756,60 +2872,38 @@ where `refTable`.`member_id` = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Merge Join Output]"
-          TopLeft="831,244">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="40,0"
-              Start="0,0"
-              End="32.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="32.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package\Data Flow Task.Paths[Lookup No Match Output1]"
-          TopLeft="942.666666666667,263">
+          TopLeft="1055.66666666667,269">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-91.1666666666666,70"
+              EndConnector="-148.333333333333,134"
               Start="0,0"
-              End="-91.1666666666666,62.5">
+              End="-148.333333333333,126.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,24.316086547507" />
+                    End="0,62.8968569595895" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,24.316086547507"
-                    Point2="0,28.316086547507"
-                    Point3="-4,28.316086547507" />
+                    Point1="0,62.8968569595895"
+                    Point2="0,66.8968569595895"
+                    Point3="-4,66.8968569595895" />
                   <mssgle:LineSegment
-                    End="-87.1666666666666,28.316086547507" />
+                    End="-144.333333333333,66.8968569595895" />
                   <mssgle:CubicBezierSegment
-                    Point1="-87.1666666666666,28.316086547507"
-                    Point2="-91.1666666666666,28.316086547507"
-                    Point3="-91.1666666666666,32.316086547507" />
+                    Point1="-144.333333333333,66.8968569595895"
+                    Point2="-148.333333333333,66.8968569595895"
+                    Point3="-148.333333333333,70.8968569595895" />
                   <mssgle:LineSegment
-                    End="-91.1666666666666,62.5" />
+                    End="-148.333333333333,126.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-101.389720052083,33.316086547507,111.6127734375,11.609375"
+              BoundingBox="-129.973053385417,71.8968569595895,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -2863,25 +2957,105 @@ where `refTable`.`member_id` = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Lookup Match Output]"
-          TopLeft="1008.41666666667,263">
+          TopLeft="1123.33333333333,269">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,143"
+              EndConnector="-65.6666666666665,235"
               Start="0,0"
-              End="0,135.5">
+              End="-65.6666666666665,227.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,135.5" />
+                    End="0,112.959858808078" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,112.959858808078"
+                    Point2="0,116.959858808078"
+                    Point3="-4,116.959858808078" />
+                  <mssgle:LineSegment
+                    End="-61.6666666666665,116.959858808078" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-61.6666666666665,116.959858808078"
+                    Point2="-65.6666666666665,116.959858808078"
+                    Point3="-65.6666666666665,120.959858808078" />
+                  <mssgle:LineSegment
+                    End="-65.6666666666665,227.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,61.9453125,96.3827734375,11.609375"
+              BoundingBox="-81.0247200520833,121.959858808078,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="152,42"
+          Id="Package\Data Flow Task\Clean Semester"
+          TopLeft="827,161" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Merge Join Output]"
+          TopLeft="786.333333333333,225">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="40.6666666666666,-43"
+              Start="0,0"
+              End="33.1666666666666,-43">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-39" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-39"
+                    Point2="0,-43"
+                    Point3="4,-43" />
+                  <mssgle:LineSegment
+                    End="33.1666666666666,-43" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Derived Column Output4]"
+          TopLeft="903,203">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="186.5,24"
+              Start="0,0"
+              End="186.5,16.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,8" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,8"
+                    Point2="0,12"
+                    Point3="4,12" />
+                  <mssgle:LineSegment
+                    End="182.5,12" />
+                  <mssgle:CubicBezierSegment
+                    Point1="182.5,12"
+                    Point2="186.5,12"
+                    Point3="186.5,16" />
+                  <mssgle:LineSegment
+                    End="186.5,16.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="85.25,17,16,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -2943,7 +3117,7 @@ where `refTable`.`member_id` = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -2953,7 +3127,7 @@ where `refTable`.`member_id` = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
